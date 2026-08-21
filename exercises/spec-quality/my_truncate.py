@@ -17,4 +17,4 @@
 # Code
 # ----
 def truncate(text):
-    raise NotImplementedError("Paste the LLM's code into warmup/my_truncate.py")
+    raise NotImplementedError("Paste the LLM's code into my_truncate.py")

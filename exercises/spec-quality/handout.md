@@ -1,9 +1,9 @@
 In-Class Exercise: What Your Prompt Didn't Say
 ==============================================
 
-You will write two prompts today. The first will produce clean, working,
-confident code that fails most of its acceptance tests. The second will not.
-Nothing about the model will change in between.
+You will write one sentence today. It will produce clean, working, confident
+code — and a program that differs from your neighbor's in eight ways. Same
+sentence, same model, different program.
 
 Setup
 -----
@@ -13,43 +13,31 @@ Everything runs in the browser at
 install on your laptop, and no Python version to argue with.
 
 1. **Make a free account.** Click *Sign In*, then *Register*. A guest session
-   runs code but has no cloud storage, and packages are stored per project on
-   that storage — so without an account you cannot install pytest, and your
-   files disappear when the tab closes.
+   runs code but has no cloud storage, so your files disappear when the tab
+   closes.
 
 2. **Make a project.** Click the project name in the top left to open the
    dashboard, go to *Projects*, click *+*, and name it `spec-quality`.
 
 3. **Load the starter files.** Right-click the empty space in the **EXPLORER**
    panel, choose *Import Project*, and upload the bundle your instructor gave
-   you. You should end up with this handout, `model.py`, `run_tests.py`, a
-   `warmup/` folder, and a `submission/` folder at the root of the project.
+   you. You should end up with this handout, `my_truncate.py`, and
+   `warmup_truncate.py` at the root of the project. Nothing else is needed —
+   the runner uses only the standard library, so there are no packages to
+   install.
 
-4. **Install two packages.** Open the **PACKAGES** panel in the left sidebar and
-   stay on the *User* tab. Type `pytest` in the search box, and click *Install*
-   on the result. Do the same for `tzdata`.
-
-   * `pytest` runs the acceptance suite.
-   * `tzdata` is the timezone database. Python Online runs a deliberately
-     minimal container, so `ZoneInfo("America/Chicago")` fails without it, and
-     Part 2 fails for reasons that have nothing to do with your prompt.
-
-   Packages install into this project's hidden `.pypackages` folder, which means
-   you install them **once per project**, not once per file, and a package
-   installed here cannot affect any other project you own.
-
-5. **Check it.** Click the `run_tests.py` tab, then click the green **Run**
-   button (or press `Ctrl + Enter`). It should tell you there is no
-   `solution.py` yet. That is the correct answer for now — it means pytest and
-   tzdata are both working.
+4. **Check it.** Click the `warmup_truncate.py` tab, then click the green
+   **Run** button (or press `Ctrl + Enter`). Every one of the eight probes
+   should report `RAISED NotImplementedError`. That is the correct answer for
+   now — it means the runner found `my_truncate.py` and is calling it.
 
    Two things about Run that will otherwise cost you five minutes: it executes
    the last Python file you had **selected**, so click into the file you mean
    before clicking Run; and every script is killed at 60 seconds, which is
-   roughly sixty times longer than this suite needs.
+   roughly sixty times longer than this runner needs.
 
-Ground rules for both parts
----------------------------
+Ground rules
+------------
 
 1. Send the prompt **exactly** as specified. Do not add helpful detail.
 2. Do not ask the model follow-up questions.
@@ -58,8 +46,8 @@ Ground rules for both parts
 You are measuring a prompt, not producing a program. Improving the code by hand
 destroys the measurement.
 
-Part 1: what is truncation?
----------------------------
+What is truncation?
+-------------------
 
 Send this to an LLM, and nothing else:
 
@@ -87,7 +75,7 @@ The failure taxonomy
 
 Use these names in your write-up. They transfer directly to real work.
 
-| Name                     | What it is                                            | Example from today                                             |
+| Name                     | What it is                                            | Example                                                        |
 | ------------------------ | ----------------------------------------------------- | -------------------------------------------------------------- |
 | **Ambiguity**            | Your words have more than one valid reading           | Does the ellipsis count toward the 100?                        |
 | **Omission**             | You gave no reading at all, so the model invented one | The sixty-minute grace window                                  |
