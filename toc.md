@@ -1,7 +1,13 @@
 1. Course materials
-   1. [Syllabus](course_materials/Syllabus-ECE_4793-6793_and_CSE_4353-6353-2026_Fall-Applications_of_Literate_Programming_in_Software_Development.pdf)
-   2. Slides
+   1. [Introduction](README.md)
+   2. [Syllabus](course_materials/Syllabus-ECE_4793-6793_and_CSE_4353-6353-2026_Fall-Applications_of_Literate_Programming_in_Software_Development.pdf)
+   3. Slides
       1. Week 1 - [introduction](course_materials/course_introduction.pptx)
+   4. Exercises
+      1. Spec quality
+         1. [Handout](exercises/spec-quality/handout.md)
+         2. [warmup_truncate.py](exercises/spec-quality/warmup_truncate.py)
+         3. [my_truncate.py](exercises/spec-quality/my_truncate.py)
 2. Literate programming
    1. Introduction to literate programming (LP)
    2. Origins of LP
@@ -24,4 +30,3 @@
    1. [Table of contents](toc.md)
    2. [Changelog](CHANGELOG.md)
    3. [License](LICENSE.md)
-

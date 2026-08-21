@@ -12,7 +12,7 @@
 # Your function must be named `truncate`. If the LLM named it something else,
 # add an alias at the bottom of the file:
 #
-# > `truncate = shorten_string`
+#       truncate = shorten_string
 #
 # Code
 # ----
