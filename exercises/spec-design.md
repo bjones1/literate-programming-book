@@ -21,4 +21,25 @@ questions. Your spec must answer them:
    101 characters, etc.
 
 Read the tests to look for more questions; not all are listed here. Then ask:
-what else is unspecified? Ensure your spec answers all these questions.
+what else is unspecified? Ensure your spec answers all these questions. Review
+it with an LLM until the review comes back without corrections or the items
+listed don't apply.
+
+Another method to develop a specification and transform the written spec into
+testable items in to develop a series of tests. Ask questions of yourself: what
+valid but unexpected input could produce an incorrect output?
+
+An essential part of writing a spec is learning: becoming an expert in a
+particular area, then creatively applying this knowledge to crafting a
+thoughtful specification, along with associated tests which makes the spec more
+concrete. For this problem, you need to truly understand the difference between
+a byte, a code point, and a grapheme; you need to know what an ellipsis is
+(including its representation as a Unicode code point), what qualifies as
+whitespace even in an international context, how to write unit tests in Python,
+etc.
+
+For this example, use [pytest](https://docs.pytest.org/en/stable/). Place your
+tests in a new file called `test_truncate.py`, which must be located in the same
+directory as `my_truncate.py`. To run your tests, upload the `test_truncate.py`
+you created along with `run_tests.py` to [https://pythononline.net](https://pythononline.net). Click on run\_tests.py in this web IDE, then click
+the green Run button.
