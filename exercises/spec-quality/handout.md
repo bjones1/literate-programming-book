@@ -22,8 +22,8 @@ install on your laptop, and no Python version to argue with.
 3. **Load the starter files.** Right-click the empty space in the **EXPLORER**
    panel, choose *Import Project*, and upload the bundle your instructor gave
    you. You should end up with this handout, `my_truncate.py`,
-   `warmup_truncate.py`, `run_test.py`, and the `test_*.py` files at the root of
-   the project.
+   `warmup_truncate.py`, `run_tests.py`, and the `test_*.py` files at the
+   root of the project.
 
 4. **Install pytest.** The warm-up needs nothing but the standard library, but
    the graded suite runs under pytest, and pytest is not there by default.
@@ -35,7 +35,7 @@ install on your laptop, and no Python version to argue with.
    this once; they do count against your storage quota, which is why the bundle
    does not ship anything you do not need.
 
-   If you skip this step, `run_test.py` will tell you so rather than failing
+   If you skip this step, `run_tests.py` will tell you so rather than failing
    mysteriously.
 
 5. **Check it.** Click the `warmup_truncate.py` tab, then click the green
@@ -43,11 +43,11 @@ install on your laptop, and no Python version to argue with.
    should report `RAISED NotImplementedError`. That is the correct answer for
    now — it means the runner found `my_truncate.py` and is calling it.
 
-   Then click the `run_test.py` tab and **Run** that. Expect a few seconds of
+   Then click the `run_tests.py` tab and **Run** that. Expect a few seconds of
    nothing before any output appears: importing pytest costs over two hundred
    module loads, and in a browser IDE you wait for every one of them. That
    delay is startup, not your code — set `TIMING = True` at the top of
-   `run_test.py` if you want to watch it happen.
+   `run_tests.py` if you want to watch it happen.
 
    Two things about Run that will otherwise cost you five minutes: it executes
    the last Python file you had **selected**, so click into the file you mean

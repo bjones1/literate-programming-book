@@ -5,6 +5,7 @@
       1. [Handout](exercises/spec-quality/handout.md)
       2. [warmup\_truncate.py](exercises/spec-quality/warmup_truncate.py)
       3. [my\_truncate.py](exercises/spec-quality/my_truncate.py)
+      4. [run\_tests.py](exercises/spec-quality/run_tests.py)
 2. Week 2 - Literate programming
    1. Introduction to literate programming (LP)
       1. Exercise: [writing a spec and tests](exercises/spec-design.md)

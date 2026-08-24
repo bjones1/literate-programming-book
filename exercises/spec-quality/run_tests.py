@@ -16,7 +16,7 @@
 # License along with the Literate Programming Book. If not,
 # see [https://www.gnu.org/licenses/](https://www.gnu.org/licenses/).
 #
-# # `run_test.py` - run every pytest file in this folder
+# # `run_tests.py` - run every pytest file in this folder
 #
 # Python Online has no command line for you to type `pytest` into, so this file
 # is the command line. Click this tab, then click **Run** (or press
