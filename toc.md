@@ -28,3 +28,4 @@
 5. Misc
    1. [Table of contents](toc.md)
    2. [License](LICENSE.md)
+   3. [Ignores](.gitignore)
