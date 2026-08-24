@@ -7,12 +7,12 @@
 # Free Software Foundation, either version 3 of the License, or (at your option)
 # any later version.
 #
-# The CodeChat Editor is distributed in the hope that it will be useful, but
-# WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-# FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
-# details.
+# The Literate Programming Book is distributed in the hope that it will be
+# useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
+# Public License for more details.
 #
-# You should have received a [copy](LICENSE.html) of the GNU General Public
+# You should have received a [copy](../../LICENSE.md) of the GNU General Public
 # License along with the Literate Programming Book. If not,
 # see [https://www.gnu.org/licenses/](https://www.gnu.org/licenses/).
 #

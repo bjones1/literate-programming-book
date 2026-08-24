@@ -3,8 +3,8 @@
    2. [Syllabus](course_materials/Syllabus-ECE_4793-6793_and_CSE_4353-6353-2026_Fall-Applications_of_Literate_Programming_in_Software_Development.pdf)
    3. Exercise: spec quality
       1. [Handout](exercises/spec-quality/handout.md)
-      2. [warmup_truncate.py](exercises/spec-quality/warmup_truncate.py)
-      3. [my_truncate.py](exercises/spec-quality/my_truncate.py)
+      2. [warmup\_truncate.py](exercises/spec-quality/warmup_truncate.py)
+      3. [my\_truncate.py](exercises/spec-quality/my_truncate.py)
 2. Week 2 - Literate programming
    1. Introduction to literate programming (LP)
       1. Exercise: [writing a spec and tests](exercises/spec-design.md)
@@ -27,5 +27,4 @@
    5. Software project management with GitHub
 5. Misc
    1. [Table of contents](toc.md)
-   2. [Changelog](CHANGELOG.md)
-   3. [License](LICENSE.md)
+   2. [License](LICENSE.md)

@@ -7,12 +7,12 @@
 # Free Software Foundation, either version 3 of the License, or (at your option)
 # any later version.
 #
-# The CodeChat Editor is distributed in the hope that it will be useful, but
-# WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-# FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
-# details.
+# The Literate Programming Book is distributed in the hope that it will be
+# useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
+# Public License for more details.
 #
-# You should have received a [copy](LICENSE.html) of the GNU General Public
+# You should have received a [copy](../../LICENSE.md) of the GNU General Public
 # License along with the Literate Programming Book. If not,
 # see [https://www.gnu.org/licenses/](https://www.gnu.org/licenses/).
 #
@@ -93,25 +93,39 @@ PROBES: list[tuple[str, object, str]] = [
 def call(value):
     """Call the student's truncate with whatever signature it happens to have."""
     params = list(inspect.signature(truncate).parameters.values())
-    required = [
+    unfilled = [p for p in params[1:] if p.default is inspect.Parameter.empty]
+    positional = [
         p
-        for p in params[1:]
-        if p.default is inspect.Parameter.empty
-        and p.kind
+        for p in unfilled
+        if p.kind
         in (
             inspect.Parameter.POSITIONAL_ONLY,
             inspect.Parameter.POSITIONAL_OR_KEYWORD,
         )
     ]
-    return truncate(value, *(100 for _ in required))
+    # An LLM that made the limit keyword-only would otherwise raise TypeError
+    # here, and the student would read the harness's gap as their own mistake.
+    keyword = {
+        p.name: 100 for p in unfilled if p.kind is inspect.Parameter.KEYWORD_ONLY
+    }
+    return truncate(value, *(100 for _ in positional), **keyword)
 
 
 def measure(result) -> str:
     if not isinstance(result, str):
         return f"type={type(result).__name__}"
-    graphemes = sum(
-        1 for ch in result if not unicodedata.combining(ch) and ch != ZWJ
-    )
+    # Approximate grapheme clusters: a combining mark, a ZWJ, and whatever
+    # follows a ZWJ all continue the cluster already in progress instead of
+    # starting a new one. Rough, but enough to show that a four-person family
+    # is one character rather than four.
+    graphemes = 0
+    previous = ""
+    for ch in result:
+        if unicodedata.combining(ch) or ch == ZWJ or previous == ZWJ:
+            previous = ch
+            continue
+        graphemes += 1
+        previous = ch
     return (
         f"{len(result):>4} code points, {len(result.encode('utf-8')):>4} bytes, "
         f"~{graphemes:>4} graphemes"
@@ -127,6 +141,11 @@ def preview(result) -> str:
 
 
 def main() -> int:
+    try:
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    except (AttributeError, ValueError):
+        pass
+
     print()
     print("=" * 78)
     print("  WARM-UP: one sentence, eight questions you did not know you answered")

@@ -22,9 +22,8 @@ install on your laptop, and no Python version to argue with.
 3. **Load the starter files.** Right-click the empty space in the **EXPLORER**
    panel, choose *Import Project*, and upload the bundle your instructor gave
    you. You should end up with this handout, `my_truncate.py`, and
-   `warmup_truncate.py` at the root of the project. Nothing else is needed —
-   the runner uses only the standard library, so there are no packages to
-   install.
+   `warmup_truncate.py` at the root of the project. Nothing else is needed — the
+   runner uses only the standard library, so there are no packages to install.
 
 4. **Check it.** Click the `warmup_truncate.py` tab, then click the green
    **Run** button (or press `Ctrl + Enter`). Every one of the eight probes
@@ -68,7 +67,8 @@ that the model made those decisions differently for each of you. Write down
 which of the eight answers you actually intended. Most people find they had an
 opinion about two or three and had never considered the rest.
 
-> "The model's job is to produce something plausible. Your job is to make sure only one thing is plausible."
+> "The model's job is to produce something plausible. Your job is to make sure
+> only one thing is plausible."
 
 The failure taxonomy
 --------------------
