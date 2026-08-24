@@ -7,7 +7,7 @@
       3. [my_truncate.py](exercises/spec-quality/my_truncate.py)
 2. Week 2 - Literate programming
    1. Introduction to literate programming (LP)
-      1. Exercise: writing a spec and tests
+      1. Exercise: [writing a spec and tests](exercises/spec-design.md)
       2. Introduction to the CodeChat Editor
    2. [Origins of LP](origins.md)
    3. Current approaches to LP
