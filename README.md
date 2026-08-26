@@ -10,6 +10,7 @@ Resources
 
 * BCoE video archives -
   [video lectures](https://oc-engage.engr.msstate.edu/engage/ui/index.html)
+* Webex - from [Canvas](https://canvas.msstate.edu/courses/186065/external_tools/137), click on "Completed" to see all recordings.
 * MS Teams -
   [discussion and announcements](https://teams.microsoft.com/l/team/19%3Ail-cegmZtS7hdmoIfXU-norcg-6rejJbvgs60YZ3MAA1%40thread.tacv2/conversations?groupId=434e4ca5-f6fb-434c-bf3f-8ff55bcb5667&tenantId=ed51dbb0-af86-45a2-9c97-73fb3935df17)
 * Canvas - [assignments and grades](https://canvas.msstate.edu/courses/186065)
