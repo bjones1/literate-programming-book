@@ -39,6 +39,7 @@
 10. Week 10: finalize project 1.
 11. Week 11-15: final project.
 12. Misc
-    1. [Table of contents](toc.md)
-    2. [License](LICENSE.md)
-    3. [Ignores](.gitignore)
+    1. [Class notes](class_notes.md)
+    2. [Table of contents](toc.md)
+    3. [License](LICENSE.md)
+    4. [Ignores](.gitignore)
