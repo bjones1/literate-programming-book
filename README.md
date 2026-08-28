@@ -6,7 +6,7 @@ of Literate Programming in Software Development, offered at Mississippi State
 University.
 
 Resources
-=========
+---------
 
 * BCoE video archives -
   [video lectures](https://oc-engage.engr.msstate.edu/engage/ui/index.html)
@@ -20,29 +20,6 @@ Resources
 * The CodeChat Editor -
   [issue tracker](https://github.com/bjones1/CodeChat_Editor/issues),
   [VSCode extension](https://marketplace.visualstudio.com/items?itemName=CodeChat.codechat-editor-client)
-
-<!--
-Outline:
-
-* Course introduction
-  * Goal: effective LLM development.
-  * Introduce myself and my family.
-  * Review syllabus.
-* Introduction to literate programming:
-  * Knuth's original vision, tangle/weave. Go over his PDF.
-    * Problems
-    * Core features
-    * Evolution of Knuth's implementation
-  * Evolution of literate programming:
-    * Doxygen/Javadoc/Rustdoc
-    * Jupyter
-    * R lang stuff?
-    * E-books, such as the Micro textbook.
-    * The CodeChat Editor.
-* Principles of literate programming
-  * Style guide, when comments matter.
-  * Does anyone actually read code?
--->
 
 Disclaimer
 ----------
@@ -69,4 +46,4 @@ details.
 
 You should have received a [copy](LICENSE.md) of the GNU General Public License
 along with the Literate Programming Book. If not,
-see [https://www.gnu.org/licenses/](https://www.gnu.org/licenses/).
+see [https://www.gnu.org/licenses/](https://www.gnu.org/licenses/).
