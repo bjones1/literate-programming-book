@@ -21,7 +21,7 @@
    2. Exercise: commit and merge your truncation function, adding it to the TOC.
    3. Github: create a PR, respond to comments, push changes.
    4. Exercise: do this with truncation function
-5. Week 5: CCE use
+5. Week 5: CCE use - design as documentation
    1. Create a project, a TOC, use (hopefully) xrefs, gathers.
    2. Exercise: create a project with MD files, code files, xrefs, gathers based
       on code you wrote for another class or a small open-source project.
