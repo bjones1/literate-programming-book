@@ -9,6 +9,11 @@ Classical literate programming
 
 1. Knuth, D. E. (1984). [Literate programming](course_materials/knuthweb.pdf).
    The Computer Journal, 27(2), 97–111.
+   1. Explain to human beings what we want a computer to do; enabled Knuth to
+      write better programs.
+   2. Literate source ordered for readers. Weave transforms this into a
+      beautiful web page/PDF.
+   3. Source code tangled to compiler-enforced order.
 2. [CWEB](https://mirrors.mit.edu/CTAN/web/cweb/cwebman.pdf)
 3. Modern tools: [Literate](https://zyedidia.github.io/literate/)
    ([main.lit](https://zyedidia.github.io/literate/literate-source/main.html) /
@@ -27,15 +32,15 @@ Documentation generators
 Literate computing -- notebooks
 -------------------------------
 
-* [Jupyter](https://jupyter.org/)
-* [MATLAB live editor](https://www.mathworks.com/products/matlab/live-editor.html)
-* [Wolfram notebooks](https://reference.wolfram.com/language/tutorial/UsingANotebookInterface.html)
-* [Maple](https://www.maplesoft.com/products/maple/app_gallery/)
+1. [Jupyter](https://jupyter.org/)
+2. [MATLAB live editor](https://www.mathworks.com/products/matlab/live-editor.html)
+3. [Wolfram notebooks](https://reference.wolfram.com/language/tutorial/UsingANotebookInterface.html)
+4. [Maple](https://www.maplesoft.com/products/maple/app_gallery/)
 
 Personal works
 --------------
 
-* [CodeChat](https://github.com/bjones1/CodeChat)
-* The [CodeChat System](https://codechat-system.readthedocs.io/en/latest/)
-  ([Enki](https://github.com/andreikop/enki) editor plugin)
-* The [CodeChat Editor](https://github.com/bjones1/CodeChat_Editor)
+1. [CodeChat](https://github.com/bjones1/CodeChat)
+2. The [CodeChat System](https://codechat-system.readthedocs.io/en/latest/)
+   ([Enki](https://github.com/andreikop/enki) editor plugin)
+3. The [CodeChat Editor](https://github.com/bjones1/CodeChat_Editor)
