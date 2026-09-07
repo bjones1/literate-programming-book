@@ -1,5 +1,5 @@
 1. Week 0: [Introduction](README.md)
-   1. [Class notes](class_notes.md)
+   1. Class notes: [MSU](class_notes-MSU.md), [KBTU](class_notes-KBTU.md)
    2. [Introduction slides](course_materials/course_introduction.pptx)
    3. [Syllabus](course_materials/Syllabus-ECE_4793-6793_and_CSE_4353-6353-2026_Fall-Applications_of_Literate_Programming_in_Software_Development.pdf)
    4. Exercise: [What your prompt didn't say](exercises/spec-quality/handout.md)

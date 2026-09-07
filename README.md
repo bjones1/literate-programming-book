@@ -3,25 +3,31 @@ Literate Programming
 
 This book accompanies the course ECE 4793/6793 and CSE 4353/6353: Applications
 of Literate Programming in Software Development, offered at Mississippi State
-University.
+University, and the course CSDA 5101: Advanced Software Paradigms at the
+Kazakh-British Technical University.
 
 Resources
 ---------
 
-* BCoE video archives -
-  [video lectures](https://oc-engage.engr.msstate.edu/engage/ui/index.html)
-* Webex - from
-  [Canvas](https://canvas.msstate.edu/courses/186065/external_tools/137), click
-  on "Completed" to see all recordings.
-* MS Teams -
-  [discussion and announcements](https://teams.microsoft.com/l/team/19%3Ail-cegmZtS7hdmoIfXU-norcg-6rejJbvgs60YZ3MAA1%40thread.tacv2/conversations?groupId=434e4ca5-f6fb-434c-bf3f-8ff55bcb5667&tenantId=ed51dbb0-af86-45a2-9c97-73fb3935df17)
-* Canvas - [assignments and grades](https://canvas.msstate.edu/courses/186065)
+* Video lectures
+  * MSU:
+    [Webex from Canvas](https://canvas.msstate.edu/courses/186065/external_tools/137)
+    (click on "Completed" to see all recordings),
+    [BCoE video archives](https://oc-engage.engr.msstate.edu/engage/ui/index.html)
+  * KBTU:
+    [Teams channel](https://teams.cloud.microsoft/l/team/19%3AoVpQkRyr0Z9OJie3OzLQPj5el2xg86ogZcT95Rve3Hs1%40thread.tacv2/conversations?groupId=&tenantId=57081b5e-e66a-4993-8eaf-15b0b309293f)
+* Discussion and announcements - MS Teams for
+  [MSU](https://teams.microsoft.com/l/team/19%3Ail-cegmZtS7hdmoIfXU-norcg-6rejJbvgs60YZ3MAA1%40thread.tacv2/conversations?groupId=434e4ca5-f6fb-434c-bf3f-8ff55bcb5667&tenantId=ed51dbb0-af86-45a2-9c97-73fb3935df17),
+  [KBTU](https://teams.cloud.microsoft/l/team/19%3A1zAx6-5JAiMa-lWMwfGS_gCGKl2WS72-A-RtNFHAXkg1%40thread.tacv2/conversations?groupId=4e917b3b-d914-4d2b-807e-c8029802603f&tenantId=57081b5e-e66a-4993-8eaf-15b0b309293f).
+* Assignments and grades - MSU:
+  [Canvas](https://canvas.msstate.edu/courses/186065), KBTU:
+  [PGE](https://pge.kbtu.kz).
 * GitHub -
   [Literate Programming book](https://github.com/bjones1/literate-programming-book),
   including the syllabus, slides, etc.
 * The CodeChat Editor -
   [issue tracker](https://github.com/bjones1/CodeChat_Editor/issues),
-  [VSCode extension](https://marketplace.visualstudio.com/items?itemName=CodeChat.codechat-editor-client)
+  [VSCode extension](https://marketplace.visualstudio.com/items?itemName=CodeChat.codechat-editor-client).
 
 Disclaimer
 ----------
