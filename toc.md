@@ -1,7 +1,7 @@
 1. Week 0: [Introduction](README.md)
    1. Class notes: [MSU](class_notes-MSU.md), [KBTU](class_notes-KBTU.md)
    2. [Introduction slides](course_materials/course_introduction.pptx)
-   3. [Syllabus](course_materials/Syllabus-ECE_4793-6793_and_CSE_4353-6353-2026_Fall-Applications_of_Literate_Programming_in_Software_Development.pdf)
+   3. Syllabus: [MSU](course_materials/Syllabus-ECE_4793-6793_and_CSE_4353-6353-2026_Fall-Applications_of_Literate_Programming_in_Software_Development.pdf), [KBTU](course_materials/CSDA_5101_Syllabus-Advanced_Software_Paradigms-Fall_2026.pdf)
    4. Exercise: [What your prompt didn't say](exercises/spec-quality/handout.md)
    5. [warmup\_truncate.py](exercises/spec-quality/warmup_truncate.py)
    6. [my\_truncate.py](exercises/spec-quality/my_truncate.py)
