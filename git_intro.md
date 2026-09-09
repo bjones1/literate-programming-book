@@ -1,12 +1,17 @@
 Introduction to Git
 ===================
 
-If you don't have an account on github.com, create one. Send me your github
-userid.
+If you don't have an account on [GitHub](https://github.com/), create one. Send
+me your GitHub userid. Then, clone the
+[e-book](https://github.com/bjones1/literate-programming-book).
 
-First, clone https://github.com/bjones1/literate-programming-book.
+Summary
+-------
 
-Git tracks changes to files over time in discrete units called commits.
+A Git repository tracks changes to files over time in discrete units called
+commits.
+
+![A graph of the literate-programming-fall-2024 repository](course_materials/git_graph.png)
 
 * The staging area (or index) selects which changes to files to store in a
   commit.
@@ -31,7 +36,10 @@ Remote actions:
 
 Practice:
 
-* Clone https://github.com/bjones1/literate-programming-fall-2024.
+* Clone
+  [https://github.com/bjones1/literate-programming-fall-2024](https://github.com/bjones1/literate-programming-fall-2024).
+* Browse to 
+  [https://github.com/bjones1/literate-programming-github-fall-2026](https://github.com/bjones1/literate-programming-github-fall-2026).
 
 Lots of resources online! A [tutorial](https://learngitbranching.js.org), many
 videos.

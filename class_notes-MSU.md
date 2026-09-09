@@ -1,13 +1,43 @@
 Class notes (MSU)
 =================
 
+Wednesday, 2026-Sep-09
+----------------------
+
+> "Technology and coding are always evolving, so the implementation is not
+> nearly as important as the reasoning behind it." - Justin Gray
+
+1. Homework is graded.
+2. [Homework](https://canvas.msstate.edu/courses/186065/assignments) - due
+   Sunday!
+3. Be concise; LLMs aren't by default.
+4. [Introduction to Git](git_intro.md) and GitHub.
+
+### In-class exercises
+
+1. Paste an image of the e-book repo, showing today's commits, in the chat
+   (Webex for in-person/sync; Teams for async).
+2. Paste an image from the e-book repo in the chat of:
+   1. A change to a file in a commit.
+   2. A file in a commit.
+   3. A commit.
+   4. A local branch (create if necessary).
+   5. A remote branch.
+   6. The Changes part of the VSCode Git GUI, showing a changed file and a
+      staged file.
+3. Paste an image of a failed push to
+   the [https://github.com/bjones1/literate-programming-github-fall-2026](https://github.com/bjones1/literate-programming-github-fall-2026)
+   in the chat.
+4. Send a PR with an example commit to the same repo. Your PR must be titled
+   `<your netid>: in-class exercise`.
+
 Friday, 2026-Sep-04
 -------------------
 
 1. Start using Capture! Follow the
    [setup guide](course_materials/capture-token-setup-guide.html) then message
    me on Teams.
-2. The origins of literate programming:
+2. The origins of literate programming: (TODO: add a summary image for each)
    1. Knuth introduced the idea of writing for a person. Literate source code is
       ordered topically; weave typesets it as HTML/PDF, while while reorders it
       to conform to compiler requirements. Used TeX along with somewhat cryptic
@@ -22,15 +52,14 @@ Friday, 2026-Sep-04
       executed. These cannot be used to write larger programs; code blocks
       cannot be interrupted with documentation between statements. Widely
       adopted.
-   4. The CodeChat family. Markup in comments
+   4. The CodeChat family. Markup in comments.
 3. [Introduction to Git](git_intro.md).
-
 
 Wednesday, 2026-Sep-02
 ----------------------
 
 > The idea is that you do not document programs (after the fact), but write
-> documents that contain the programs.
+> documents that contain the programs. —John Max Skaller
 
 1. Questions? [Schedule a meeting](https://bjones.youcanbook.me).
 
