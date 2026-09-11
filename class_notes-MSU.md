@@ -1,4 +1,4 @@
-Class notes (MSU)
+Class notes (MSU) Hello From Jacob
 =================
 
 Wednesday, 2026-Sep-09
