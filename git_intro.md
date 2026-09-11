@@ -11,7 +11,7 @@ Summary
 A Git repository tracks changes to files over time in discrete units called
 commits.
 
-![A graph of the literate-programming-fall-2024 repository](course_materials/git_graph.png)
+![A graph of the literate-programming-fall-2024 repository](course_materials/git_graph_annotated.png)
 
 * The staging area (or index) selects which changes to files to store in a
   commit.
@@ -38,7 +38,7 @@ Practice:
 
 * Clone
   [https://github.com/bjones1/literate-programming-fall-2024](https://github.com/bjones1/literate-programming-fall-2024).
-* Browse to 
+* Browse to
   [https://github.com/bjones1/literate-programming-github-fall-2026](https://github.com/bjones1/literate-programming-github-fall-2026).
 
 Lots of resources online! A [tutorial](https://learngitbranching.js.org), many

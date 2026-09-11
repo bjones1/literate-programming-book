@@ -1,22 +1,45 @@
 Class notes (MSU)
 =================
 
+Friday, 2026-Sep-11
+-------------------
+
+1. [AI Efficiency Could Cost Us the Next Generation of Experts](https://spectrum.ieee.org/ai-engineer-skills)
+2. [OpenAI – Hugging Face Incident Technical Report](https://cdn.openai.com/pdf/67869394-cb91-4c12-888c-5cbd85c7814c/OpenAI-Hugging-Face%20Incident-Technical-Report.pdf)
+3. [Homework](https://canvas.msstate.edu/courses/186065/assignments) - due
+   Sunday!
+4. Using LLMs with Git.
+5. Review of Git and the VSCode Git GUI.
+
+### In-class exercises
+
+1. Longest-running LLM query?
+2. Browse
+   to [https://github.com/bjones1/literate-programming-github-fall-2026](https://github.com/bjones1/literate-programming-github-fall-2026).
+3. Paste an image of a failed push to the
+   [https://github.com/bjones1/literate-programming-github-fall-2026](https://github.com/bjones1/literate-programming-github-fall-2026)
+   in the chat.
+4. Send a PR with an example commit to the same repo. Your PR must be titled
+   `<your netid>: in-class exercise`.
+
 Wednesday, 2026-Sep-09
 ----------------------
 
 > "Technology and coding are always evolving, so the implementation is not
 > nearly as important as the reasoning behind it." - Justin Gray
 
-1. Homework is graded.
-2. [Homework](https://canvas.msstate.edu/courses/186065/assignments) - due
+1. [AI coding article](https://spectrum.ieee.org/ai-code-review-software-engineers) -
+   spec writing is central. See "AI Agents in Code Review Workflows" section.
+2. Homework is graded.
+3. [Homework](https://canvas.msstate.edu/courses/186065/assignments) - due
    Sunday!
-3. Be concise; LLMs aren't by default.
-4. [Introduction to Git](git_intro.md) and GitHub.
+4. Be concise; LLMs aren't by default.
+5. [Introduction to Git](git_intro.md) and GitHub.
 
 ### In-class exercises
 
-1. Paste an image of the e-book repo, showing today's commits, in the chat
-   (Webex for in-person/sync; Teams for async).
+1. Paste an image of the e-book repo, showing today's commits, in the Teams
+   chat.
 2. Paste an image from the e-book repo in the chat of:
    1. A change to a file in a commit.
    2. A file in a commit.
@@ -25,11 +48,6 @@ Wednesday, 2026-Sep-09
    5. A remote branch.
    6. The Changes part of the VSCode Git GUI, showing a changed file and a
       staged file.
-3. Paste an image of a failed push to
-   the [https://github.com/bjones1/literate-programming-github-fall-2026](https://github.com/bjones1/literate-programming-github-fall-2026)
-   in the chat.
-4. Send a PR with an example commit to the same repo. Your PR must be titled
-   `<your netid>: in-class exercise`.
 
 Friday, 2026-Sep-04
 -------------------
