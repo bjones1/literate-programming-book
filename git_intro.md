@@ -9,9 +9,9 @@ Summary
 -------
 
 A Git repository tracks changes to files over time in discrete units called
-commits.
+commits.<sup>[1](#fGU2e6HP9t)</sup>
 
-![A graph of the literate-programming-fall-2024 repository](course_materials/git_graph_annotated.png)
+![An annotated graph of the literate-programming-fall-2024 repository, showing a commit, files in a commit, a local and remote branch, and the HEAD.](course_materials/git_graph_annotated.png)
 
 * The staging area (or index) selects which changes to files to store in a
   commit.
@@ -43,3 +43,15 @@ Practice:
 
 Lots of resources online! A [tutorial](https://learngitbranching.js.org), many
 videos.
+
+### Footnotes
+
+1. <a id="fGU2e6HP9t"></a>Prompt to used create this image:
+   > The image @course\_materials/git\_graph.png shows a screenshot of the
+   > VSCode Git GUI. Add annotations to this image to show:
+   >
+   > 1. A commit
+   > 2. Files in a commit.
+   > 3. A local branch.
+   > 4. A remote branch.
+   > 5. The HEAD.

@@ -1,6 +1,22 @@
 Class notes (MSU)
 =================
 
+Monday, 2026-Sep-14
+-------------------
+
+1. [Homework](https://canvas.msstate.edu/courses/186065/assignments) - due
+   Sunday!
+
+### In-class exercises
+
+1. Browse to
+   [https://github.com/bjones1/literate-programming-github-fall-2026](https://github.com/bjones1/literate-programming-github-fall-2026).
+2. Paste an image of a failed push to the
+   [https://github.com/bjones1/literate-programming-github-fall-2026](https://github.com/bjones1/literate-programming-github-fall-2026)
+   in the chat.
+3. Send a PR with an example commit to the same repo. Your PR must be titled
+   `<your netid>: in-class exercise`.
+
 Friday, 2026-Sep-11
 -------------------
 
@@ -14,13 +30,6 @@ Friday, 2026-Sep-11
 ### In-class exercises
 
 1. Longest-running LLM query?
-2. Browse
-   to [https://github.com/bjones1/literate-programming-github-fall-2026](https://github.com/bjones1/literate-programming-github-fall-2026).
-3. Paste an image of a failed push to the
-   [https://github.com/bjones1/literate-programming-github-fall-2026](https://github.com/bjones1/literate-programming-github-fall-2026)
-   in the chat.
-4. Send a PR with an example commit to the same repo. Your PR must be titled
-   `<your netid>: in-class exercise`.
 
 Wednesday, 2026-Sep-09
 ----------------------
