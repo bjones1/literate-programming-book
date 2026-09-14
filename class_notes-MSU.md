@@ -6,6 +6,15 @@ Monday, 2026-Sep-14
 
 1. [Homework](https://canvas.msstate.edu/courses/186065/assignments) - due
    Sunday!
+2. Ensure you're running the
+   [latest version of the CodeChat Editor](https://github.com/bjones1/CodeChat_Editor/releases).
+3. Become familiar with [CommonMark](https://commonmark.org/help/), which is
+   used by the CodeChat Editor to format comments. The CodeChat Editor also
+   supports many
+   [GitHub extensions](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
+   to CommonMark.
+4. Exercises using GitHub: browse to
+   [https://github.com/bjones1/literate-programming-github-fall-2026](https://github.com/bjones1/literate-programming-github-fall-2026).
 
 ### In-class exercises
 
@@ -111,18 +120,29 @@ Monday, 2026-Aug-31
 -------------------
 
 1. [Resources](README.md)
+
 2. Questions? [Schedule a meeting](https://bjones.youcanbook.me).
+
 3. [Homework](https://canvas.msstate.edu/courses/186065/assignments) - due
    Sunday!
+
 4. Updated class schedule (see table of contents).
+
 5. Quote:
+
    > "The model's job is to produce something plausible. Your job is to make
    > sure only one thing is plausible."
+
 6. Writing must be specific.
+
 7. Always employ LLM review (code, specs, etc.).
+
 8. Keep specs close to code (literate programming, using the CodeChat Editor).
+
 9. Drive LLMs from specs in code/docs, not from prompts.
+
 10. Ensure cognitive engagement.
+
 11. Today's topic: the [origins of literate programming](origins.md).
 
 Friday, 2026-Aug-28
