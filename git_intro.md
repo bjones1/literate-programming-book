@@ -80,8 +80,7 @@ familiar with steps 3-6 as well:
     src="course_materials/git-workflow.png"
   >
   <figcaption>
-    Open-source workflow, adapted from
-    <a href="https://herbmiller.me/learning-a-pr-process/">Herb Miller</a>.
+    Open-source workflow, adapted from <a href="https://herbmiller.me/learning-a-pr-process/">Herb Miller</a>.
   </figcaption>
 </figure>
 
@@ -104,13 +103,14 @@ GitHub, which works just as well.
 Forking happens on GitHub's servers, so this step is done in the browser:
 
 1. Browse to the repo, e.g.
-   [https://github.com/bjones1/literate-programming-book](https://github.com/bjones1/literate-programming-book).
+   [https://github.com/bjones1/literate-programming-github-fall-2026](https://github.com/bjones1/literate-programming-github-fall-2026).
 2. Click **Fork** near the top right of the page, then **Create fork**. The
    defaults are fine.
 3. GitHub takes you to your copy, at
-   `https://github.com/`*your-userid*`/literate-programming-book`. The heading
-   says "forked from bjones1/literate-programming-book" -- check for this, since
-   it's how you know you're looking at your fork instead of the original.
+   `https://github.com/`*your-userid*`/literate-programming-github-fall-2026`.
+   The heading says "forked from bjones1/literate-programming-book" -- check for
+   this, since it's how you know you're looking at your fork instead of the
+   original.
 
 ### 3\. Clone your fork
 
@@ -121,9 +121,9 @@ Back in VSCode, with no folder open (**File > Close Folder** if necessary):
    press <kbd>Ctrl+Shift+P</kbd> (<kbd>Cmd+Shift+P</kbd> on a Mac) to open the
    Command Palette and run **Git: Clone**.
 2. Choose **Clone from GitHub**, then type
-   *your-userid*`/literate-programming-book` and pick your fork from the list.
-   Alternatively, paste the URL copied from the green **Code** button on your
-   fork's GitHub page.
+   *your-userid*`/literate-programming-github-fall-2026` and pick your fork from
+   the list. Alternatively, paste the URL copied from the green **Code** button
+   on your fork's GitHub page.
 3. Pick the folder that will *contain* your clone; VSCode creates a subfolder
    named after the repo inside it. Avoid folders synced by OneDrive, Dropbox,
    etc., which corrupt repos.
@@ -137,9 +137,9 @@ as you edit files.
 Cloning also saves the address it cloned from, so you don't have to retype it
 every time you push or fetch. A saved address like this is called a **remote**,
 and Git names this first one `origin` by convention -- it's just a nickname for
-`https://github.com/`*your-userid*`/literate-programming-book.git`. Since you
-cloned your fork, `origin` *is* your fork: it's where **Sync Changes** sends
-your commits, and it's the one remote you have permission to push to.
+`https://github.com/`*your-userid*`/literate-programming-github-fall-2026.git`.
+Since you cloned your fork, `origin` *is* your fork: it's where **Sync Changes**
+sends your commits, and it's the one remote you have permission to push to.
 
 ### 4\. Add the upstream repo as a remote
 
@@ -148,12 +148,12 @@ your clone about the upstream repo so you can pull class updates:
 
 1. Command Palette > **Git: Add Remote...**
 2. Name it `upstream`, and give it the URL of the repo you forked:
-   `https://github.com/bjones1/literate-programming-book.git`.
+   `https://github.com/bjones1/literate-programming-github-fall-2026`.
 
 Your clone now has two remotes: `origin` (your fork, which you can push to) and
 `upstream` (mine, which you can only read).
 
-To pick up my changes later, first check that you're on the `main` branch: the
+To pick up class changes later, first check that you're on the `main` branch: the
 status bar at the bottom left names the branch you're on, and clicking it lets
 you switch. A merge lands in whatever branch you're standing on, so if the
 status bar says anything but `main`, switch before you go on. Then: Command

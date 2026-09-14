@@ -13,7 +13,8 @@ Monday, 2026-Sep-14
    supports many
    [GitHub extensions](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
    to CommonMark.
-4. Exercises using GitHub: browse to
+4. Fast enterprises.
+5. Exercises using GitHub: browse to
    [https://github.com/bjones1/literate-programming-github-fall-2026](https://github.com/bjones1/literate-programming-github-fall-2026).
 
 ### In-class exercises
@@ -23,7 +24,8 @@ Monday, 2026-Sep-14
 2. Paste an image of a failed push to the
    [https://github.com/bjones1/literate-programming-github-fall-2026](https://github.com/bjones1/literate-programming-github-fall-2026)
    in the chat.
-3. Send a PR with an example commit to the same repo. Your PR must be titled
+3. Show a screenshot of `git remote -v`.
+4. Send a PR with an example commit to the same repo. Your PR must be titled
    `<your netid>: in-class exercise`.
 
 Friday, 2026-Sep-11
