@@ -20,8 +20,9 @@ commits.<sup>[1](#fGU2e6HP9t)</sup>
 * A commit records these changes to a group of files to the local repository (or
   repo). It's a snapshot of your files.
 * A repository is a graph of commits; they can be local or remote.
-* A branch refers to a commit and all its children in the repository.
-* The head refers to the currently active commit.
+* A branch names a commit; the branch's history is that commit and everything
+  it descends from.
+* The HEAD refers to the currently active commit.
 
 Local actions:
 
@@ -32,7 +33,7 @@ Local actions:
 
 Remote actions:
 
-* Clone (copy) commits a remote repo to a new local repo.
+* Clone (copy) commits from a remote repo to a new local repo.
 * Push commits from the local repo to a remote repo.
 * Fetch commits from the remote repo to the local repo (opposite of push).
 
@@ -46,28 +47,15 @@ Practice:
 Lots of resources online! A [tutorial](https://learngitbranching.js.org), many
 videos.
 
-### Footnotes
-
-1. <a id="fGU2e6HP9t"></a>Prompt to used create this image:
-
-   > The image @course\_materials/git\_graph.png shows a screenshot of the
-   > VSCode Git GUI. Add annotations to this image to show:
-   >
-   > 1. A commit
-   > 2. Files in a commit.
-   > 3. A local branch.
-   > 4. A remote branch.
-   > 5. The HEAD.
-
 Forking and cloning with the VSCode Git GUI
 -------------------------------------------
 
 This section was written by Claude, with edits by
 [bjones1](https://github.com/bjones1/).<sup>[2](#fKz9Qm4Xr2)</sup>
 
-This is the [first two steps](https://herbmiller.me/learning-a-pr-process/) of
-the standard method for open-source software development; from last week, you're
-familiar with steps 3-6 as well:
+This section focuses on steps 1, 2, and 7 of the
+[standard method](https://herbmiller.me/learning-a-pr-process/) for open-source
+software development; from last week, you're familiar with steps 3-6 as well:
 
 <figure>
   <img
@@ -90,7 +78,7 @@ your work back to the upstream repo, you'll open a pull request. A **clone** is
 a copy of a repo on your computer, where you'll actually do the work. So, the
 usual sequence is: fork on GitHub, then clone your fork to your computer.
 
-### 1\. Sign in to GitHub from VSCode
+### Sign in to GitHub from VSCode
 
 Click the Accounts icon (the person at the bottom of the Activity Bar on the far
 left of the window), then **Sign in with GitHub**. VSCode opens a browser
@@ -98,7 +86,7 @@ window; approve the request there, then let the browser hand you back to VSCode.
 If you skip this step, VSCode will ask you to sign in the first time it needs
 GitHub, which works just as well.
 
-### 2\. Fork the repo
+### Fork the repo
 
 Forking happens on GitHub's servers, so this step is done in the browser:
 
@@ -108,11 +96,11 @@ Forking happens on GitHub's servers, so this step is done in the browser:
    defaults are fine.
 3. GitHub takes you to your copy, at
    `https://github.com/`*your-userid*`/literate-programming-github-fall-2026`.
-   The heading says "forked from bjones1/literate-programming-book" -- check for
-   this, since it's how you know you're looking at your fork instead of the
-   original.
+   The heading says "forked from
+   bjones1/literate-programming-github-fall-2026" -- check for this, since it's
+   how you know you're looking at your fork instead of the original.
 
-### 3\. Clone your fork
+### Clone your fork
 
 Back in VSCode, with no folder open (**File > Close Folder** if necessary):
 
@@ -126,7 +114,7 @@ Back in VSCode, with no folder open (**File > Close Folder** if necessary):
    on your fork's GitHub page.
 3. Pick the folder that will *contain* your clone; VSCode creates a subfolder
    named after the repo inside it. Avoid folders synced by OneDrive, Dropbox,
-   etc., which corrupt repos.
+   etc., which can corrupt repos.
 4. When VSCode asks "Would you like to open the cloned repository?", click
    **Open**.
 
@@ -141,7 +129,7 @@ and Git names this first one `origin` by convention -- it's just a nickname for
 Since you cloned your fork, `origin` *is* your fork: it's where **Sync Changes**
 sends your commits, and it's the one remote you have permission to push to.
 
-### 4\. Add the upstream repo as a remote
+### Add the upstream repo as a remote
 
 Your fork is a snapshot; it doesn't update itself when I add material. Teach
 your clone about the upstream repo so you can pull class updates:
@@ -151,7 +139,9 @@ your clone about the upstream repo so you can pull class updates:
    `https://github.com/bjones1/literate-programming-github-fall-2026`.
 
 Your clone now has two remotes: `origin` (your fork, which you can push to) and
-`upstream` (mine, which you can only read).
+`upstream` (mine, which you can only read). To see them at any time, open a
+terminal (**Terminal > New Terminal**) and run `git remote -v`; it prints each
+remote's nickname and URL, one line for fetching and one for pushing.
 
 To pick up class changes later, first check that you're on the `main` branch: the
 status bar at the bottom left names the branch you're on, and clicking it lets
@@ -161,16 +151,69 @@ Palette > **Git: Fetch From All Remotes**, followed by **Git: Merge...**, and
 choose `upstream/main`. Push the result to your fork with **Sync Changes** in
 the Source Control view.
 
+GitHub can do part of this for you: on your fork's page, click **Sync fork**,
+then **Update branch**. That updates your fork on GitHub only, so you still need
+**Sync Changes** in VSCode afterwards to bring the new commits down to your
+clone.
+
+### Open a pull request
+
+A **pull request** (PR) asks the owner of the upstream repo to merge your
+commits into it. It's step 7 of the workflow above, and it's how your work gets
+back to the repo you forked, since you can't push there yourself.
+
+Do the work on a branch of its own, not on `main`: Command Palette >
+**Git: Create Branch...**, then give it a short name describing the work, like
+`add-truncate-exercise`. Commit your changes there, then click **Publish
+Branch** in the Source Control view (it reads **Sync Changes** once the branch
+exists on GitHub) to push the branch to your fork.
+
+Now open the PR in the browser. Right after a push, your fork's GitHub page
+shows a **Compare & pull request** button; click it. If that button is gone,
+click **Contribute > Open pull request** instead.
+
+Before clicking **Create pull request**, check the four fields at the top of the
+page, since GitHub doesn't always guess them correctly:
+
+* **base repository** -- the upstream repo (`bjones1/...`), *not* your fork.
+* **base** -- the branch to merge your work into, usually `main`.
+* **head repository** -- your fork.
+* **compare** -- the branch you just pushed.
+
+Title the PR with what it does; when an assignment specifies a title, use
+exactly that. Say what you changed and why in the body, then click **Create
+pull request**.
+
+The PR stays attached to your branch after you open it. If I ask for changes,
+commit them on the same branch and push again -- the PR picks them up
+automatically. Don't open a second PR.
+
+VSCode can do all of this without the browser if you install the
+[GitHub Pull Requests](https://marketplace.visualstudio.com/items?itemName=GitHub.vscode-pull-request-github)
+extension: Command Palette > **GitHub Pull Requests: Create Pull Request**,
+which asks for the same four fields in a panel inside the editor.
+
 ### If you cloned the upstream repo by mistake
 
 Cloning my repo directly works fine until you try to push, at which point GitHub
 refuses -- you don't have write access. VSCode notices and offers to create a
 fork for you. Click **Create Fork**; VSCode creates the fork on GitHub, adds it
-to your clone as a remote, and pushes your branch there. Check the result under
-the Source Control view's **...** menu > **Remote**, which lists the remotes
-your clone knows about.
+to your clone as a remote, and pushes your branch there. Check the result with
+`git remote -v`: you should see your new fork listed alongside the repo you
+originally cloned.
 
 ### Footnotes
+
+1. <a id="fGU2e6HP9t"></a>Prompt used to create this image:
+
+   > The image @course\_materials/git\_graph.png shows a screenshot of the
+   > VSCode Git GUI. Add annotations to this image to show:
+   >
+   > 1. A commit
+   > 2. Files in a commit.
+   > 3. A local branch.
+   > 4. A remote branch.
+   > 5. The HEAD.
 
 2. <a id="fKz9Qm4Xr2"></a>Claude (Claude Opus 5, run from Claude Code) wrote
    this section, from the prompt:
