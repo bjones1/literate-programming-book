@@ -6,7 +6,7 @@
 #
 # Run this from the directory containing ``pyproject.toml``::
 #
-#   poetry run python tests/pre_commit_check.py
+#   uv run python tests/pre_commit_check.py
 #
 #
 # Imports
@@ -35,12 +35,10 @@ def checks() -> None:
     # and the tool configuration files live.
     with pushd(os.path.join(os.path.dirname(__file__), "..")):
         xqt(
-            # fmt: off
-            "black --check .",
-            "flake8",
-            "mypy --install-types --non-interactive",
+            "ruff format --check .",
+            "ruff check .",
+            "ty check",
             "pytest",
-            # fmt: on
         )
 
 

@@ -4,7 +4,7 @@ Tools
 Python Implementation
 ---------------------
 
-* For Python, use Poetry for package management.
+* For Python, use uv for package management.
 * Add standard test/lint tools (see
   [https://github.com/bjones1/CodeChat\_system/blob/master/CodeChat\_Server/tests/pre\_commit\_check.py](https://github.com/bjones1/CodeChat_system/blob/master/CodeChat_Server/tests/pre_commit_check.py)
   and config files at

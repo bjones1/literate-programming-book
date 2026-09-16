@@ -58,7 +58,7 @@ try:
 except ModuleNotFoundError as exc:  # pragma: no cover - setup guidance only.
     sys.exit(
         f"Missing dependency {exc.name!r}. Install this project's dependencies "
-        "first:\n    poetry install"
+        "first:\n    uv sync"
     )
 
 
@@ -175,8 +175,7 @@ class Graph:
                 delay = int(response.headers.get("Retry-After", 2**attempt))
                 if self.verbose:
                     print(
-                        f"  throttled ({response.status_code}); "
-                        f"retrying in {delay}s",
+                        f"  throttled ({response.status_code}); retrying in {delay}s",
                         file=sys.stderr,
                     )
                 time.sleep(delay)

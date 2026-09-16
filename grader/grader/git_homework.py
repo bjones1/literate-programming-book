@@ -58,7 +58,7 @@ try:
 except ModuleNotFoundError as exc:  # pragma: no cover - setup guidance only.
     sys.exit(
         f"Missing dependency {exc.name!r}. Install this project's dependencies "
-        "first:\n    poetry install"
+        "first:\n    uv sync"
     )
 
 
@@ -617,9 +617,11 @@ app = typer.Typer(
 )
 
 
-@app.command(epilog="""Example: git-grade --out grades.csv -- which clones the class
+@app.command(
+    epilog="""Example: git-grade --out grades.csv -- which clones the class
 repository, grades everyone who worked in it since the start date, and writes a
-CSV of netid, grade, and feedback.""")
+CSV of netid, grade, and feedback."""
+)
 def grade(
     repo: Annotated[
         str, typer.Option(help="Class repository to grade: a URL or a path.")

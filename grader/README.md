@@ -12,11 +12,14 @@ Setup
 -----
 
 ```console
-$ poetry install
+$ uv sync
 ```
 
-That creates `.venv/` in this directory (see [poetry.toml](poetry.toml)) and
-installs both the runtime dependencies and the check tools.
+That creates `.venv/` in this directory and installs both the runtime
+dependencies and the check tools, at the versions pinned in
+[uv.lock](uv.lock). Install [uv](https://docs.astral.sh/uv/) itself first if
+you have not already; it will fetch a suitable Python for you, so that is the
+only prerequisite.
 
 Exporting Teams chats
 ---------------------
@@ -38,7 +41,7 @@ Installing the project provides a `teams-export` command (note that the backtick
 escapes newlines in PowerShell; use `\` in MacOS/Linux):
 
 ```console
-PS> poetry run teams-export `
+PS> uv run teams-export `
     --team "CSDA 5101 - Advanced Software Paradigms - 2026 Fall" `
     --channel General --start 2026-09-06 --end 2026-09-13 `
     --out fall2026-week2
@@ -54,7 +57,7 @@ pass a full timestamp instead: `--end 2026-09-14T09:30`.
 
 ### Options worth knowing
 
-Run `poetry run teams-export -h` for the full list; the command line is
+Run `uv run teams-export -h` for the full list; the command line is
 [Typer](https://typer.tiangolo.com/), built from the annotations on `export` in
 [teams\_export.py](grader/teams_export.py), so the help text and the
 signature cannot drift apart.
@@ -72,7 +75,7 @@ Bad options are caught before sign-in, so a typo costs nothing, and they exit 2
 with the offending option named:
 
 ```console
-$ poetry run teams-export --team ... --start 2026-09-14 --end 2026-09-01
+$ uv run teams-export --team ... --start 2026-09-14 --end 2026-09-01
 Invalid value for --end: 2026-09-01 falls before --start (2026-09-14).
 ```
 
@@ -91,7 +94,7 @@ message `<your netid>: merge branch with main`. It needs no sign-in — the clas
 repository is public, and the tool clones it itself.
 
 ```console
-PS> poetry run git-grade --out grades.csv
+PS> uv run git-grade --out grades.csv
 ```
 
 That writes one row per student — `netid`, `grade`, and `feedback`, the feedback
@@ -120,7 +123,7 @@ So a term is graded by naming its dates, and a student who joined the class
 late or dropped it needs no editing anywhere:
 
 ```console
-PS> poetry run git-grade --since 2026-08-01 --until 2026-12-15 --out grades.csv
+PS> uv run git-grade --since 2026-08-01 --until 2026-12-15 --out grades.csv
 ```
 
 Two things follow from reading the roster out of the repository rather than
@@ -137,12 +140,12 @@ them by. Name them with `--netids` to grade them anyway — they score 0%, with
 the rubric explaining why:
 
 ```console
-PS> poetry run git-grade --netids dbg103,drj228 --out grades.csv
+PS> uv run git-grade --netids dbg103,drj228 --out grades.csv
 ```
 
 ### Options worth knowing
 
-Run `poetry run git-grade -h` for the full list.
+Run `uv run git-grade -h` for the full list.
 
 | Option      | Effect                                                                                                      |
 | ----------- | ----------------------------------------------------------------------------------------------------------- |
@@ -158,7 +161,7 @@ Both dates are whole days in UTC, and both ends are checked before the clone, so
 a window which runs backwards costs nothing:
 
 ```console
-$ poetry run git-grade --since 2026-09-14 --until 2026-09-01
+$ uv run git-grade --since 2026-09-14 --until 2026-09-01
 Invalid value for --until: 2026-09-01 falls before --since (2026-09-14).
 ```
 
@@ -205,14 +208,8 @@ Checks
 Before submitting a pull request, run every check at once:
 
 ```console
-$ poetry run python tests/pre_commit_check.py
+$ uv run python tests/pre_commit_check.py
 ```
-
-That is black, flake8, mypy, and pytest, configured as in
-[CodeChat\_Server](https://github.com/bjones1/CodeChat_system/tree/master/CodeChat_Server)
-— see [pyproject.toml](pyproject.toml) (black and pytest), [.flake8](.flake8),
-and [mypy.ini](mypy.ini). Run them individually as `poetry run black .`, `poetry
-run flake8`, `poetry run mypy`, `poetry run pytest`.
 
 The tests are entirely offline. For the exporter: timestamp and date-range
 handling, name resolution, thread flattening against a stubbed Graph client,
@@ -229,9 +226,9 @@ of that repository. For coverage, configured by
 [.coveragerc](.coveragerc):
 
 ```console
-$ poetry run coverage run -m pytest
-$ poetry run coverage combine
-$ poetry run coverage report
+$ uv run coverage run -m pytest
+$ uv run coverage combine
+$ uv run coverage report
 ```
 
 The gap in coverage is deliberate: sign-in, the Graph HTTP client, and the body

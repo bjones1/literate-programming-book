@@ -47,7 +47,7 @@ def xqt(
         executable = "/bin/bash" if is_linux or is_darwin else None
         try:
             cp = subprocess.run(
-                _, shell=True, executable=executable, check=True, **kwargs  # type: ignore
+                _, shell=True, executable=executable, check=True, **kwargs
             )
         except subprocess.CalledProcessError as e:
             flush_print(

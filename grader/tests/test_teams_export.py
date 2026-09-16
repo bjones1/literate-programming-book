@@ -3,7 +3,7 @@
 # ***********************************************
 # These exercise everything except the network: timestamp and date-range
 # handling, name resolution, thread flattening (against a stubbed Graph), and
-# the two output formats. Run them with ``poetry run pytest``.
+# the two output formats. Run them with ``uv run pytest``.
 #
 #
 # Imports
@@ -289,13 +289,18 @@ def test_cli_rejects_reversed_range() -> None:
 def test_cli_rejects_unknown_time_zone() -> None:
     result = CliRunner().invoke(
         te.app,
-        # fmt: off
         [
-            "--team", "X", "--channel", "Y",
-            "--start", "2026-09-01", "--end", "2026-09-14",
-            "--tz", "Mars/Olympus",
+            "--team",
+            "X",
+            "--channel",
+            "Y",
+            "--start",
+            "2026-09-01",
+            "--end",
+            "2026-09-14",
+            "--tz",
+            "Mars/Olympus",
         ],
-        # fmt: on
     )
     assert result.exit_code == 2
     assert "Unknown time zone" in _said(result)

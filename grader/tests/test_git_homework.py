@@ -4,7 +4,7 @@
 # These build a small class repository with git itself -- one branch per
 # student, and the merges they made -- then grade it, so the rubric is checked
 # against real commits rather than against a stub. Nothing here touches the
-# network. Run them with ``poetry run pytest``.
+# network. Run them with ``uv run pytest``.
 #
 #
 # Imports

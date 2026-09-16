@@ -56,9 +56,6 @@
     5. Packaging and checks
        1. [\_\_init\_\_.py](grader/grader/__init__.py)
        2. [pyproject.toml](grader/pyproject.toml)
-       3. [poetry.toml](grader/poetry.toml)
-       4. [pre\_commit\_check.py](grader/tests/pre_commit_check.py)
-       5. [ci\_utils.py](grader/tests/ci_utils.py)
-       6. [Code coverage config](grader/.coveragerc)
-       7. [Flake8 config](grader/.flake8)
-       8. [mypy config](grader/mypy.ini)
+       3. [pre\_commit\_check.py](grader/tests/pre_commit_check.py)
+       4. [ci\_utils.py](grader/tests/ci_utils.py)
+       5. [Code coverage config](grader/.coveragerc)
