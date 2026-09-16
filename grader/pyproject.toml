@@ -1,0 +1,90 @@
+# .. Copyright (C) 2026 Bryan A. Jones.
+#
+#   This file is part of the literate programming book.
+#
+#   This program is free software: you can redistribute it and/or modify it
+#   under the terms of the GNU General Public License as published by the Free
+#   Software Foundation, either version 3 of the License, or (at your option)
+#   any later version.
+#
+#   This program is distributed in the hope that it will be useful, but
+#   WITHOUT ANY WARRANTY; without even the implied warranty of
+#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
+#   Public License for more details.
+#
+#   You should have received a copy of the GNU General Public License along
+#   with this program. If not, see <http://www.gnu.org/licenses/>.
+#
+# ***********************************************************
+# |docname| - Packaging, formatting, and test configuration
+# ***********************************************************
+#
+# Poetry
+# ======
+[project]
+name = "grader"
+version = "0.1.0"
+description = "Export a Microsoft Teams channel's chat history for grading."
+authors = [{ name = "Bryan A. Jones", email = "bjones460@gmail.com" }]
+license = "GPL-3.0-or-later"
+readme = "README.md"
+requires-python = ">=3.11,<4.0"
+dependencies = [
+    # Microsoft's own authentication library. It implements the device code
+    # flow and, just as importantly, handles refresh-token rotation, so that
+    # you sign in once rather than once per run.
+    "msal (>=1.31,<2.0)",
+    "requests (>=2.32,<3.0)",
+    # The command-line interface. Typer builds it from the type annotations on
+    # `export <grader/teams_export.py>`_, and brings Rich along for the
+    # help and error formatting.
+    "typer (>=0.12,<1.0)",
+    # Windows ships no system time zone database, so ``zoneinfo`` -- used by
+    # ``--tz`` -- needs this. Installed only where it is needed.
+    "tzdata (>=2025.2) ; sys_platform == 'win32'",
+]
+
+# Installing this project provides each tool as a command.
+[project.scripts]
+teams-export = "grader.teams_export:main"
+git-grade = "grader.git_homework:main"
+
+[tool.poetry]
+packages = [{ include = "grader" }]
+
+# The checks run by `pre_commit_check.py <tests/pre_commit_check.py>`_, plus
+# the type stubs mypy needs for third-party libraries.
+[tool.poetry.group.dev.dependencies]
+black = ">=24.0"
+coverage = ">=7.0"
+flake8 = ">=7.0"
+mypy = ">=1.10"
+pytest = ">=8.0"
+types-requests = ">=2.32"
+
+[build-system]
+requires = ["poetry-core>=2.0"]
+build-backend = "poetry.core.masonry.api"
+
+
+# Black
+# =====
+[tool.black]
+# Pin this rather than letting Black infer a range from ``requires-python``: an
+# inferred target newer than the interpreter running Black makes its AST
+# equivalence check fail.
+target-version = ["py311"]
+
+# Per the `docs <https://black.readthedocs.io/en/stable/installation_and_usage.html#command-line-options>`_, this is a regex.
+exclude = '''/
+    # Default values for Black.
+    \.eggs|\.git|\.hg|\.mypy_cache|\.nox|\.tox|\.venv|\.svn|_build|buck-out|build|dist
+/'''
+
+
+# pytest
+# ======
+[tool.pytest.ini_options]
+testpaths = [
+    "tests",
+]

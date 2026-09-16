@@ -1,0 +1,7 @@
+; ***********************************
+; |docname| - Configure code coverage
+; ***********************************
+[run]
+source=grader
+; _`parallel=True` is required for `code_coverage` to work correctly.
+parallel=True

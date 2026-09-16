@@ -23,4 +23,16 @@
 __pycache__/
 *.py[cod]
 
+# `grader` -- its virtual environment, its mirror clone of the class
+# repository, and its output. Exported chats contain student names and
+# everything students wrote, and the grades are grades; keep both out of git.
+grader/.venv/
+grader/.mypy_cache/
+grader/.pytest_cache/
+grader/.coverage
+grader/.coverage.*
+grader/.grader-cache/
+grader/*.csv
+grader/*.json
+
 # CodeChat Editor lexer: python.

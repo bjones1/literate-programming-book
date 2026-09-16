@@ -1,5 +1,5 @@
-Introduction to Git
-===================
+Introduction to Git and GitHub
+==============================
 
 If you don't have an account on [GitHub](https://github.com/), create one. Send
 me your GitHub userid. Then, fork and clone the
@@ -20,8 +20,8 @@ commits.<sup>[1](#fGU2e6HP9t)</sup>
 * A commit records these changes to a group of files to the local repository (or
   repo). It's a snapshot of your files.
 * A repository is a graph of commits; they can be local or remote.
-* A branch names a commit; the branch's history is that commit and everything
-  it descends from.
+* A branch names a commit; the branch's history is that commit and everything it
+  descends from.
 * The HEAD refers to the currently active commit.
 
 Local actions:
@@ -143,9 +143,9 @@ Your clone now has two remotes: `origin` (your fork, which you can push to) and
 terminal (**Terminal > New Terminal**) and run `git remote -v`; it prints each
 remote's nickname and URL, one line for fetching and one for pushing.
 
-To pick up class changes later, first check that you're on the `main` branch: the
-status bar at the bottom left names the branch you're on, and clicking it lets
-you switch. A merge lands in whatever branch you're standing on, so if the
+To pick up class changes later, first check that you're on the `main` branch:
+the status bar at the bottom left names the branch you're on, and clicking it
+lets you switch. A merge lands in whatever branch you're standing on, so if the
 status bar says anything but `main`, switch before you go on. Then: Command
 Palette > **Git: Fetch From All Remotes**, followed by **Git: Merge...**, and
 choose `upstream/main`. Push the result to your fork with **Sync Changes** in
@@ -162,8 +162,8 @@ A **pull request** (PR) asks the owner of the upstream repo to merge your
 commits into it. It's step 7 of the workflow above, and it's how your work gets
 back to the repo you forked, since you can't push there yourself.
 
-Do the work on a branch of its own, not on `main`: Command Palette >
-**Git: Create Branch...**, then give it a short name describing the work, like
+Do the work on a branch of its own, not on `main`: Command Palette > **Git:
+Create Branch...**, then give it a short name describing the work, like
 `add-truncate-exercise`. Commit your changes there, then click **Publish
 Branch** in the Source Control view (it reads **Sync Changes** once the branch
 exists on GitHub) to push the branch to your fork.
@@ -181,8 +181,8 @@ page, since GitHub doesn't always guess them correctly:
 * **compare** -- the branch you just pushed.
 
 Title the PR with what it does; when an assignment specifies a title, use
-exactly that. Say what you changed and why in the body, then click **Create
-pull request**.
+exactly that. Say what you changed and why in the body, then click **Create pull
+request**.
 
 The PR stays attached to your branch after you open it. If I ask for changes,
 commit them on the same branch and push again -- the PR picks them up
