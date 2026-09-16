@@ -1,5 +1,16 @@
-Class notes (MSU)
-=================
+MSU class notes
+===============
+
+Friday, 2026-Sep-18
+-------------------
+
+1. [Homework](https://canvas.msstate.edu/courses/186065/assignments) - due
+   Sunday!
+2. Enable Capture when using the CodeChat Editor.
+3. Install the
+   [VSCode Live Share](https://marketplace.visualstudio.com/items?itemName=MS-vsliveshare.vsliveshare)
+   extension.
+4. New CodeChat Editor alpha features.
 
 Wednesday, 2026-Sep-16
 ----------------------
@@ -13,9 +24,17 @@ Wednesday, 2026-Sep-16
 1. [Homework](https://canvas.msstate.edu/courses/186065/assignments) - due
    Sunday!
 2. Enable Capture when using the CodeChat Editor.
-3. Creating a new CodeChat Editor project.
-4. New CodeChat Editor alpha features.
-5. Creating simple utilities.
+3. Creating simple utilities. See the
+   [class repo](https://github.com/bjones1/literate-programming-fall-2024).
+   Ideas:
+   1. Tetris, maybe with Git
+   2. Pong, with ?
+   3. Hints utility for CLI Git
+      1. If files are changes, wait bit, then pop up a note: need to stage?
+      2. Have highlighted/hyperlinked items with links to definitions. Hover
+         summary, click for deep info.
+   4. Game day parking, game day tailgating? Open spots, where people are, etc.
+4. Creating a new CodeChat Editor project.
 
 Monday, 2026-Sep-14
 -------------------
