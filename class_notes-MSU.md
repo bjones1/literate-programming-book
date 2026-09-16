@@ -4,11 +4,18 @@ Class notes (MSU)
 Wednesday, 2026-Sep-16
 ----------------------
 
-> LLMs are excellent instruments and unreliable diagnosticians. Use them for the instrument work — writing the utility, running the sweep, formatting the analysis — and keep the diagnostic judgment for yourself. -- Evan Chan, [Making io_uring Actually Fast: I/O Threads, Chunking, and the Memory Story Nobody Talks About](https://www.conviva.ai/resource/making-io_uring-actually-fast-i-o-threads-chunking-and-the-memory-story-nobody-talks-about/); see section "Debugging with an LLM in the loop."
+> LLMs are excellent instruments and unreliable diagnosticians. Use them for the
+> instrument work — writing the utility, running the sweep, formatting the
+> analysis — and keep the diagnostic judgment for yourself. -- Evan Chan,
+> [Making io\_uring Actually Fast: I/O Threads, Chunking, and the Memory Story Nobody Talks About](https://www.conviva.ai/resource/making-io_uring-actually-fast-i-o-threads-chunking-and-the-memory-story-nobody-talks-about/);
+> see section "Debugging with an LLM in the loop."
 
 1. [Homework](https://canvas.msstate.edu/courses/186065/assignments) - due
    Sunday!
 2. Enable Capture when using the CodeChat Editor.
+3. Creating a new CodeChat Editor project.
+4. New CodeChat Editor alpha features.
+5. Creating simple utilities.
 
 Monday, 2026-Sep-14
 -------------------

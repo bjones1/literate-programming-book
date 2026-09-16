@@ -15,3 +15,5 @@ exclude =
     dist
     .tox
     .venv
+
+# CodeChat Editor lexer: python.

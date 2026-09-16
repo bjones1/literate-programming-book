@@ -1,17 +1,16 @@
 Tools
-===========
+=====
 
 Python Implementation
 ---------------------
 
 * For Python, use Poetry for package management.
 * Add standard test/lint tools (see
-  https://github.com/bjones1/CodeChat\_system/blob/master/CodeChat\_Server/tests/pre\_commit\_check.py
+  [https://github.com/bjones1/CodeChat\_system/blob/master/CodeChat\_Server/tests/pre\_commit\_check.py](https://github.com/bjones1/CodeChat_system/blob/master/CodeChat_Server/tests/pre_commit_check.py)
   and config files at
-  https://github.com/bjones1/CodeChat\_system/tree/master/CodeChat\_Server).
-* Use https://github.com/fastapi/typer for the CLI.
-
-
+  [https://github.com/bjones1/CodeChat\_system/tree/master/CodeChat\_Server](https://github.com/bjones1/CodeChat_system/tree/master/CodeChat_Server)).
+* Use [https://github.com/fastapi/typer](https://github.com/fastapi/typer) for
+  the CLI.
 
 Chat grader
 -----------
@@ -29,12 +28,13 @@ Git homework grader
 
 Create a grading tool which grades the following homework assignment:
 
-> In the [class](https://github.com/bjones1/literate-programming-fall-2024/) repository:
+> In the [class](https://github.com/bjones1/literate-programming-fall-2024/)
+> repository:
 >
 > 1. Create a branch whose name is your netid. Commit two files to it.
-> 2. Merge someone else's branch into the main branch. The commit message must be: "<your netid>: merge branch with main".
+> 2. Merge someone else's branch into the main branch. The commit message must
+>    be: ": merge branch with main".
 > 3. Push all your changes to the repository.
-
 
 A netid is the unique username assigned to every student. Do not keep a roster:
 given a start and an end date, grade every netid the repository itself shows
@@ -47,9 +47,11 @@ all and would otherwise have no row.
 
 The grading rubric is:
 
-____/30 points -- Branch created with your netid. Commit hash: _________
-____/30 points (15 points per file) -- Two files committed to this branch. Commit hash(es): _________, _________
-____/40 points -- At least one merge commit exists with the correct commit message. Commit hash: _________
+\_\_\_\_/30 points -- Branch created with your netid. Commit hash:
+\_\_\_\_\_\_\_\_\_ \_\_\_\_/30 points (15 points per file) -- Two files
+committed to this branch. Commit hash(es): \_\_\_\_\_\_\_\_\_,
+\_\_\_\_\_\_\_\_\_ \_\_\_\_/40 points -- At least one merge commit exists with
+the correct commit message. Commit hash: \_\_\_\_\_\_\_\_\_
 
 These lines are also the feedback text, so they stay short; the rules for
 applying them follow. All branch names and commit messages are compared ignoring
@@ -62,15 +64,15 @@ case and surrounding whitespace.
    commits along the branch's own first parent, made this year, and written by
    the student -- who is taken to be the author of the branch's most recent
    ordinary commit, since a commit records a person's name rather than their
-   netid. Work merged *in* arrives as a second parent and so does not count,
-   and neither does the history the branch was cut from, which may well include
-   a classmate's commit straight to `main`. "Not reachable from `main`" will
-   not serve here: a student who merges their branch into `main`, as step 2
-   asks them to, has put every one of their commits on `main`. Score 15 points
-   per file, to a maximum of 30, no matter how many the branch adds. Report the
-   hash of the commit which added each file, in the order added, so a single
-   commit adding both files is reported twice. Files that are modified,
-   renamed, or deleted do not count.
+   netid. Work merged *in* arrives as a second parent and so does not count, and
+   neither does the history the branch was cut from, which may well include a
+   classmate's commit straight to `main`. "Not reachable from `main`" will not
+   serve here: a student who merges their branch into `main`, as step 2 asks
+   them to, has put every one of their commits on `main`. Score 15 points per
+   file, to a maximum of 30, no matter how many the branch adds. Report the hash
+   of the commit which added each file, in the order added, so a single commit
+   adding both files is reported twice. Files that are modified, renamed, or
+   deleted do not count.
 3. *Merge.* A commit with two or more parents, reachable from `main`, whose
    *first* message line is `<netid>: merge branch with main` -- only the first
    line, since Git appends its own body text to a merge message. The merge must
@@ -87,17 +89,18 @@ case and surrounding whitespace.
 The class repository carries branches and commits from previous years of this
 course, and some netids recur between years; this is what the start date is for,
 and it defaults to 2026-Aug-01. Nothing committed outside the date range counts,
-toward a grade or toward being graded at all. Step 3 of the assignment earns no points of its own, since work
-which was never pushed is invisible to the grader and so scores zero already.
+toward a grade or toward being graded at all. Step 3 of the assignment earns no
+points of its own, since work which was never pushed is invisible to the grader
+and so scores zero already.
 
 The tool should output a simple CSV file with three columns: netid, grade, and
-feedback. Write one row per netid found, in alphabetical order. The grade is the point total written as
-a percentage, from `0%` to `100%`. The feedback is the three rubric lines, one
-per line, with the underlines filled in with the points earned and with commit
-hashes abbreviated to eight characters; a criterion which is not met earns 0
-points and reads `not found` where its hashes would go. The feedback therefore
-contains newlines, and must be quoted as RFC 4180 requires. One row, with its
-feedback shown unquoted:
+feedback. Write one row per netid found, in alphabetical order. The grade is the
+point total written as a percentage, from `0%` to `100%`. The feedback is the
+three rubric lines, one per line, with the underlines filled in with the points
+earned and with commit hashes abbreviated to eight characters; a criterion which
+is not met earns 0 points and reads `not found` where its hashes would go. The
+feedback therefore contains newlines, and must be quoted as RFC 4180 requires.
+One row, with its feedback shown unquoted:
 
 ```
 ewj55,100%,30/30 points -- Branch created with your netid. Commit hash: a01d9899
@@ -105,10 +108,10 @@ ewj55,100%,30/30 points -- Branch created with your netid. Commit hash: a01d9899
            40/40 points -- At least one merge commit exists with the correct commit message. Commit hash: f6fd3bcc
 ```
 
-Implement this as a second command in the `grader` package, following the
-Python conventions above. The class repository is public, so no authentication
-is needed: clone it once with `git clone --mirror` and answer every question
-from that local clone rather than from the GitHub API, which keeps the run
+Implement this as a second command in the `grader` package, following the Python
+conventions above. The class repository is public, so no authentication is
+needed: clone it once with `git clone --mirror` and answer every question from
+that local clone rather than from the GitHub API, which keeps the run
 reproducible and cheap across the repository's many branches. Write the CSV into
-the `grader` directory, whose `.gitignore` entry already keeps `*.csv` --
-here, student grades -- out of the repository.
+the `grader` directory, whose `.gitignore` entry already keeps `*.csv` -- here,
+student grades -- out of the repository.

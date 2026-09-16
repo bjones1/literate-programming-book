@@ -5,3 +5,5 @@
 source=grader
 ; _`parallel=True` is required for `code_coverage` to work correctly.
 parallel=True
+
+# CodeChat Editor lexer: python.

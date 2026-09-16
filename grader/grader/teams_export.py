@@ -402,24 +402,24 @@ def export(
         str, typer.Option(help="Team display name or ID.", show_default=False)
     ],
     channel: Annotated[
-        str, typer.Option(help="Channel display name or ID.", show_default=False)
-    ],
+        str, typer.Option(help="Channel display name or ID.")
+    ] = "General",
     start: Annotated[
-        str,
+        Optional[str],
         typer.Option(
             help="First day, YYYY-MM-DD, inclusive. A full ISO 8601 timestamp "
             "slices more finely.",
-            show_default=False,
+            show_default="one week ago",
         ),
-    ],
+    ] = None,
     end: Annotated[
-        str,
+        Optional[str],
         typer.Option(
             help="Last day, YYYY-MM-DD, inclusive. A full ISO 8601 timestamp "
             "slices more finely.",
-            show_default=False,
+            show_default="now",
         ),
-    ],
+    ] = None,
     out: Annotated[
         Path,
         typer.Option(help="Output path; '.json' and '.csv' are appended."),
@@ -482,6 +482,14 @@ def export(
             f"Unknown time zone {tz!r}. Use an IANA name, e.g. America/Chicago.",
             param_hint="--tz",
         )
+    # The default range is the week ending now. Both defaults are full
+    # timestamps, so `parse_boundary` takes them literally rather than widening
+    # them to whole local days.
+    now = datetime.now(zone)
+    if start is None:
+        start = (now - timedelta(days=7)).isoformat()
+    if end is None:
+        end = now.isoformat()
     first = parse_boundary(start, zone, end_of_day=False)
     last = parse_boundary(end, zone, end_of_day=True)
     if last < first:

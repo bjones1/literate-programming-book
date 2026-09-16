@@ -1,7 +1,11 @@
 1. Week 0: [Introduction](README.md)
    1. Class notes: [MSU](class_notes-MSU.md), [KBTU](class_notes-KBTU.md)
-   2. [Introduction slides](course_materials/course_introduction.pptx)
-   3. Syllabus: [MSU](course_materials/Syllabus-ECE_4793-6793_and_CSE_4353-6353-2026_Fall-Applications_of_Literate_Programming_in_Software_Development.pdf), [KBTU](course_materials/CSDA_5101_Syllabus-Advanced_Software_Paradigms-Fall_2026.pdf)
+   2. Introduction slides:
+      [MSU](course_materials/course_introduction-MSU.pptx),
+      [KBTU](course_materials/course_introduction-KBTU.pptx)
+   3. Syllabus:
+      [MSU](course_materials/Syllabus-ECE_4793-6793_and_CSE_4353-6353-2026_Fall-Applications_of_Literate_Programming_in_Software_Development.pdf),
+      [KBTU](course_materials/CSDA_5101_Syllabus-Advanced_Software_Paradigms-Fall_2026.pdf)
    4. Exercise: [What your prompt didn't say](exercises/spec-quality/handout.md)
    5. [warmup\_truncate.py](exercises/spec-quality/warmup_truncate.py)
    6. [my\_truncate.py](exercises/spec-quality/my_truncate.py)
@@ -39,3 +43,22 @@
     1. [Table of contents](toc.md)
     2. [License](LICENSE.md)
     3. [Ignores](.gitignore)
+13. Tools
+    1. [Specification](chat_grader.md)
+    2. [Grading tools README](grader/README.md)
+    3. Git homework grader
+       1. [git\_homework.py](grader/grader/git_homework.py)
+       2. [test\_git\_homework.py](grader/tests/test_git_homework.py)
+    4. Teams chat downloader
+       1. [teams\_export.py](grader/grader/teams_export.py)
+       2. [test\_teams\_export.py](grader/tests/test_teams_export.py)
+       3. [Capture token setup guide](course_materials/capture-token-setup-guide.html)
+    5. Packaging and checks
+       1. [\_\_init\_\_.py](grader/grader/__init__.py)
+       2. [pyproject.toml](grader/pyproject.toml)
+       3. [poetry.toml](grader/poetry.toml)
+       4. [pre\_commit\_check.py](grader/tests/pre_commit_check.py)
+       5. [ci\_utils.py](grader/tests/ci_utils.py)
+       6. [Code coverage config](grader/.coveragerc)
+       7. [Flake8 config](grader/.flake8)
+       8. [mypy config](grader/mypy.ini)
