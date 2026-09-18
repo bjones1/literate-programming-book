@@ -30,10 +30,15 @@ license = "GPL-3.0-or-later"
 readme = "README.md"
 requires-python = ">=3.11,<4.0"
 dependencies = [
-    # Microsoft's own authentication library. It implements the device code
-    # flow and, just as importantly, handles refresh-token rotation, so that
-    # you sign in once rather than once per run.
+    # Microsoft's own authentication library. It runs the interactive sign-in
+    # and, just as importantly, handles refresh-token rotation, so that you
+    # sign in once rather than once per run.
     "msal (>=1.31,<2.0)",
+    # The ``broker`` extra adds Web Account Manager support, which is what lets
+    # the sign-in go through the account Windows already holds rather than
+    # through a browser. The exporter falls back to the browser without it, so
+    # this is installed only where a broker exists to use.
+    "msal[broker] (>=1.31,<2.0) ; sys_platform == 'win32'",
     "requests (>=2.32,<3.0)",
     # The command-line interface. Typer builds it from the type annotations on
     # `export <grader/teams_export.py>`_, and brings Rich along for the

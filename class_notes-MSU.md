@@ -5,12 +5,16 @@ Friday, 2026-Sep-18
 -------------------
 
 1. [Homework](https://canvas.msstate.edu/courses/186065/assignments) - due
-   Sunday!
+   Sunday! See the [pull requests](https://github.com/bjones1/literate-programming-github-fall-2026/pulls) (PRs).
 2. Enable Capture when using the CodeChat Editor.
-3. Install the
+3. Git tracks files, not directories.
+4. Install the
    [VSCode Live Share](https://marketplace.visualstudio.com/items?itemName=MS-vsliveshare.vsliveshare)
    extension.
-4. New CodeChat Editor alpha features.
+5. CodeChat Editor [manual](course_materials/CodeChat-Editor-manual.md).
+6. Spec design for
+   [git-hint](https://github.com/bjones1/literate-programming-fall-2024), on the
+   `git-tool` branch.
 
 Wednesday, 2026-Sep-16
 ----------------------
@@ -35,6 +39,10 @@ Wednesday, 2026-Sep-16
          summary, click for deep info.
    4. Game day parking, game day tailgating? Open spots, where people are, etc.
 4. Creating a new CodeChat Editor project.
+
+### In-class exercises
+
+1. Ideas for projects.
 
 Monday, 2026-Sep-14
 -------------------
@@ -168,7 +176,7 @@ Monday, 2026-Aug-31
 5. Quote:
 
    > "The model's job is to produce something plausible. Your job is to make
-   > sure only one thing is plausible."
+   > sure only one thing is plausible." -- Claude
 
 6. Writing must be specific.
 

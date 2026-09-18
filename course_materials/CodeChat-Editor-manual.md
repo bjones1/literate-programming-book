@@ -1,0 +1,290 @@
+Welcome to the CodeChat Editor
+==============================
+
+The CodeChat Editor is a GUI-based programmer's word processor /
+[Jupyter](https://jupyter.org/) for software developers. This document describes
+its basic features and use. In contrast, the [style guide](style_guide.cpp)
+provides strategies for effectively employing the CodeChat Editor to improve the
+software development process.
+
+<p>
+  <iframe
+    width="560"
+    height="315"
+    src="https://www.youtube.com/embed/videoseries?si=QNrYCiTLVCpxpAbD&amp;list=PLOJAqFa3UI2FJncc-OBRPhh17NJXQP6ve"
+    allowfullscreen="allowfullscreen"
+    frameborder="0"
+  ></iframe>
+</p>
+
+Full manual
+-----------
+
+Read the
+[manual rendered using the CodeChat Editor](https://codechat-editor.onrender.com/fw/fsb/opt/render/project/src/README.md),
+since this documentation doesn't correctly render on GitHub.
+
+Installation
+------------
+
+Install the
+[CodeChat Editor extension for Visual Studio code](extensions/VSCode/README.md).
+
+Accessibility
+-------------
+
+When using the CodeChat Editor Client, the accessibility features change
+depending on context (code block or dock block). In a code block, press Esc then
+press tab/shift-tab to navigate. In a doc block, tab alone navigates; to view
+all doc block keyboard shortcuts press Alt+0 (Windows, Linux) or ⌥0 (MacOS).
+
+Research capture
+----------------
+
+The VS Code extension can record dissertation study capture events when a
+participant explicitly opts in. A participant first registers in the capture
+portal, which emails a capture token. In VS Code, run **Manage CodeChat Editor
+Capture** or **CodeChat Editor: Enter Capture Token** from the command palette,
+paste the token, then turn on consent and recording from the same capture
+manager.
+
+For detailed student/tester setup steps, see the
+[CodeChat Capture Token Setup Guide](capture-token-setup-guide.html).
+
+Structure
+---------
+
+The CodeChat Editor divides source code into code blocks and documentation (doc)
+blocks. These blocks are separated by newlines; the image below shows the
+[style guide](style_guide.cpp) on the left in the Visual Studio Code (VSCode)
+text editor, while the right pane shows the same text from style guide in the
+CodeChat Editor (using the VSCode extension). Specifically, this screenshot
+shows:
+
+* ❶: a doc block. Doc blocks must have one space after the comment delimiter.
+* ❷: a code block. Comments on the same line as code are not interpreted as doc
+  blocks.
+* ❸: varying indents before a doc block.
+* ❹: [Markdown](https://commonmark.org/) in a doc block; see a
+  [brief overview of Markdown](https://commonmark.org/help/).
+
+![Image showing code blocks and doc blocks in Visual Studio Code](code-blocks-doc-blocks.png)
+
+See the [style guide](style_guide.cpp) for more examples.
+
+Editing
+-------
+
+Edits may be made either in the IDE hosting the CodeChat Editor, or within the
+CodeChat Editor window itself. Edits made in one place are transferred to the
+other after a short delay.
+
+Navigation
+----------
+
+Switching documents in the IDE likewise switches the document shown in the
+CodeChat Editor. Likewise, following hyperlinks in the CodeChat Editor to a
+local file loads that file in the IDE, as well as showing it in the Editor.
+
+<h2 id="cc-DscjSxRZHF">Projects</h2>
+
+The CodeChat Editor can either display a single file, or a project. In a
+project, the table of contents is displayed on the left, while a file within the
+project is displayed on the right. To create a project, simply place a file
+named `toc.md` at the root of your project [\[2\]](#notes); its contents define
+the table of contents.
+
+References to other files
+-------------------------
+
+The CodeChat Editor supports hyperlinks to any recognized file type; to refer to
+another source file, simply insert a hyperlink to it. For example,
+
+| Source                               | Rendered                       |
+| ------------------------------------ | ------------------------------ |
+| `[style_guide.cpp](style_guide.cpp)` | [Style guide](style_guide.cpp) |
+| `[LICENSE.md](LICENSE.md)`           | [License](LICENSE.md)          |
+
+<h3 id="cc-TRCKclsxwW">Cross-references</h3>
+
+Any HTML element with an id can be the target of either a hyperlink or a
+cross-reference. If the id resides in a file within a [project](#cc-DscjSxRZHF),
+then any file in that same project can refer to that id using a hyperlink or
+cross-reference. For example:
+
+| Source                              | Rendered                          |
+| ----------------------------------- | --------------------------------- |
+| `[Style guide](#cc-nNZ6Gs2uWD)`     | [Style guide](#cc-nNZ6Gs2uWD)     |
+| `<xref ref="cc-nNZ6Gs2uWD"></xref>` | <xref ref="cc-nNZ6Gs2uWD"></xref> |
+
+Alpha feature: first view the [style guide](style_guide.cpp) to make the link
+above work. Opening the link doesn't (yet) work.
+
+In projects, each id must be unique throughout the entire project. To simplify
+the creation of unique ids, items assigned an `id="*"` with be replaced with a
+unique id, such as `id=cc-DscjSxRZHF`. This autogenerated id isn't automatically
+saved; you must make an edit to its containing file in the Client to save the
+resulting id.
+
+<h3 id="cc-swJ6a-FiK3">Gathering fragments</h3>
+
+Often, closely-related routines must be scattered across the source tree. For
+example, a client's HTTP request and the corresponding server-side endpoint
+which responds to that request are usually placed in separate files, even though
+these are tightly coupled. The CodeChat Editor therefore supports gathering
+these scattered fragments into one central location to better explain the code.
+To do so:
+
+1. In a doc block preceding a code fragment to gather, add a `<fragment
+   id="some_unique_id"></fragment>`. Do this for each fragment to gather. By
+   default, a fragment includes the doc block it was placed in along with the
+   next code/doc block. To include additional content, add the `following`
+   attribute: `<fragment id="some_unique_id"
+   following="number_of_following_code/doc_blocks_to_include"></fragment>`. For
+   example, the starting ID for the websocket connection between the CodeChat
+   Server (written in Rust) and the CodeChat Client (written in TypeScript) both
+   have `<fragment>` tags.
+2. In a doc block or a Markdown file, place an HTML element with both an id and
+   a `data-gather` attribute, such as `<h4 id="another_unique_id"
+   data-gather="some_unique_id1 some_unique_id2 ...">Gathered code</h4>`. Below
+   the the result of a gather tag for these fragments:
+
+<h4 data-gather="cc-LWJSMQJzLt cc-Utv4vgn1Kk" id="cc-4YrLCPA4-S">Truncation with tests</h4>
+
+Alpha feature: first view
+[my\_truncate.py](../exercises/spec-quality/my_truncate.py) and
+[test\_truncate.py](../exercises/spec-quality/test_truncate.py). Opening the
+link doesn't (yet) work.
+
+Images
+------
+
+Likewise, the path to local images is relative to the current file's location
+(see the preceding diagram for the location of `monitor.png`). For example
+[\[1\]](#notes),
+
+| Source                         | Rendered                     |
+| ------------------------------ | ---------------------------- |
+| `![Monitor icon](monitor.png)` | ![Monitor icon](monitor.png) |
+
+The CodeChat Editor disallows drag-and-drop of images, the result is a mess --
+the image data is embedded directly in the source file. Avoid this; instead,
+place images in a separate file, then reference them as shown above.
+
+Mathematics
+-----------
+
+The CodeChat Editor uses [MathJax](https://www.mathjax.org/) to support typeset
+mathematics. Place the delimiters `$` immediately before and after in-line
+mathematics; place `$$` immediately before and after displayed mathematics. For
+example,
+
+| Source                                     | Rendered                                 |
+| ------------------------------------------ | ---------------------------------------- |
+| `$x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$` | $x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$ |
+| `$$a^2$$`                                  | $$a^2$$                                  |
+
+See [Latex Mathematics](https://en.wikibooks.org/wiki/LaTeX/Mathematics#Symbols)
+for the syntax used to write mathematics expressions.
+
+Diagrams
+--------
+
+### Mermaid
+
+The CodeChat Editor supports diagrams created by
+[Mermaid](https://mermaid.js.org/). For example,
+
+| Source                                                                                     | Rendered                                                             |
+| ------------------------------------------------------------------------------------------ | -------------------------------------------------------------------- |
+| <pre><code class="language-markdown">\`\`\`mermaid graph TD; A --> B; \`\`\` </code></pre> | <pre><code class="language-mermaid">graph TD; A --> B; </code></pre> |
+
+### Graphviz
+
+The CodeChat Editor supports diagrams created by
+[Graphviz](https://graphviz.org/). For example,
+
+| Source                                                                                      | Rendered                                                              |
+| ------------------------------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| <pre><code class="language-markdown">\`\`\`graphviz digraph { A -> B } \`\`\` </code></pre> | <pre><code class="language-graphviz">digraph { A -> B } </code></pre> |
+
+Several on-line tools, such as [Edotor](https://edotor.net/), provide a focused
+editing experience.
+
+### PlantUML
+
+[PlantUML](https://plantuml.com/) transforms a hyperlink to a user-defined
+diagram directly to an SVG; for example,
+
+| Source                                                                                                                    | Rendered                                                                                                               |
+| ------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `![Sample PlantUML diagram](https://www.plantuml.com/plantuml/svg/ SoWkIImgAStDuNBAJrBGjLDmpCbCJbMmKiX8pSd9vt98pKi1IW80)` | ![Sample PlantUML diagram](https://www.plantuml.com/plantuml/svg/SoWkIImgAStDuNBAJrBGjLDmpCbCJbMmKiX8pSd9vt98pKi1IW80) |
+
+To edit these diagrams, paste the URL into the
+[PlantUML web server](https://www.plantuml.com/plantuml/uml), click Decode URL,
+edit, then copy and paste the SVG URL back to this file.
+
+### Drawing programs
+
+Images files produced by drawing programs can be included, as long as they can
+be saved in a web-compatible format (PNG, SVG, JPG, GIF, etc.).
+
+## <a id="supported-languages"></a>Supported languages
+
+* C/C++
+* C#
+* CSS
+* Go
+* HTML
+* Java/Kotlin
+* JavaScript/ECMAScript and TypeScript
+* JSON with comments ([JSON5](https://json5.org/))
+* Markdown
+* MATLAB
+* Python
+* Rust
+* Shell scripts (`.sh`)
+* SQL
+* Swift
+* TOML
+* VHDL
+* Verilog/SystemVerilog
+* Vlang
+* YAML
+
+Issues and feature requests
+---------------------------
+
+Please report issues and provide suggestions for improvement using the
+[Github page for this project](https://github.com/bjones1/CodeChat_Editor).
+Contributions to the code are welcome and encouraged!
+
+License
+-------
+
+Copyright (C) 2025 Bryan A. Jones.
+
+This file is part of the CodeChat Editor.
+
+The CodeChat Editor is free software: you can redistribute it and/or modify it
+under the terms of the GNU General Public License as published by the Free
+Software Foundation, either version 3 of the License, or (at your option) any
+later version.
+
+The CodeChat Editor is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
+details.
+
+You should have received a [copy](LICENSE.html) of the GNU General Public
+License along with the CodeChat Editor. If not, see
+[https://www.gnu.org/licenses/](https://www.gnu.org/licenses/).
+
+## <a id="notes"></a>Notes
+
+1. The image used comes from
+   [Monitor icons created by prettycons - Flaticon](https://www.flaticon.com/free-icons/monitor "monitor icons").
+2. Note that the filename for the table of contents is lowercase; while the
+   acronym is TOC, requiring upper-case naming can cause confusion when moving
+   files between case-insensitive filesystems (Windows) and case-sensitive
+   filesystems (Linux/OS X).

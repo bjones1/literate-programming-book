@@ -3,9 +3,9 @@
 # This file is part of the Literate Programming Book.
 #
 # The Literate Programming Book is free software: you can redistribute it and/or
-# modify it under the terms of the GNU General Public License as published by the
-# Free Software Foundation, either version 3 of the License, or (at your option)
-# any later version.
+# modify it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or (at your
+# option) any later version.
 #
 # The Literate Programming Book is distributed in the hope that it will be
 # useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -13,12 +13,14 @@
 # Public License for more details.
 #
 # You should have received a [copy](../../LICENSE.md) of the GNU General Public
-# License along with the Literate Programming Book. If not,
-# see [https://www.gnu.org/licenses/](https://www.gnu.org/licenses/).
-#
+# License along with the Literate Programming Book. If not, see
+# [https://www.gnu.org/licenses/](https://www.gnu.org/licenses/).
+
 # `my_truncate.py` - holds LLM-generated code for the
 # [warmup\_truncate.py](warmup_truncate.py) test bench
 # ====================================================
+#
+# <fragment id="cc-LWJSMQJzLt"></fragment>
 #
 # Paste the LLM's answer here, replacing everything below.
 #
@@ -30,7 +32,9 @@
 # Your function must be named `truncate`. If the LLM named it something else,
 # add an alias at the bottom of the file:
 #
-#       truncate = shorten_string
+# ```
+#   truncate = shorten_string
+# ```
 #
 # Code
 # ----

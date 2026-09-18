@@ -14,6 +14,7 @@
 # ----------------
 import csv
 import json
+import threading
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, Iterator, List, Optional
@@ -243,6 +244,193 @@ def test_outputs(tmp_path: Path) -> None:
     archive = json.loads(json_path.read_text(encoding="utf-8"))
     assert archive["exported"] == {"team": "T"}
     assert [m["id"] for m in archive["messages"]] == ["a", "b"]
+
+
+# Sign-in
+# =======
+# The sign-in itself needs a live tenant, but the choice of *how* to sign in --
+# broker first, browser when the broker is missing or says no -- is ordinary
+# logic, and this is where a tenant that blocks one method gets handled.
+class FakeApp:
+    # Stands in for `msal.PublicClientApplication`. `interactive` is what
+    # `acquire_token_interactive` should do: raise it, or return it.
+    def __init__(self, interactive: Any) -> None:
+        self.interactive = interactive
+        self.calls = 0
+
+    def get_accounts(self) -> List[Dict[str, Any]]:
+        return []
+
+    def acquire_token_silent(self, scopes: Any, account: Any) -> None:
+        return None
+
+    def acquire_token_interactive(self, scopes: Any, **kwargs: Any) -> Any:
+        self.calls += 1
+        if isinstance(self.interactive, Exception):
+            raise self.interactive
+        return self.interactive
+
+
+def test_sign_in_swallows_broker_failures() -> None:
+    # A broker that throws is a reason to try the browser, not to stop...
+    assert te.sign_in(FakeApp(RuntimeError("no broker")), broker=True) is None
+    # ...as is one that answers, but without a token.
+    refused = {"error": "broker_error", "error_description": "not compliant"}
+    assert te.sign_in(FakeApp(refused), broker=True) is None
+    # The browser has nothing to fall back *to*, so its failures propagate.
+    with pytest.raises(RuntimeError):
+        te.sign_in(FakeApp(RuntimeError("no browser")), broker=False)
+
+
+def test_acquire_token_falls_back_to_the_browser(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    asked: List[bool] = []
+
+    def fake_build(client_id: str, tenant: str, cache: Any, broker: bool) -> FakeApp:
+        asked.append(broker)
+        return FakeApp(RuntimeError("declined") if broker else {"access_token": "tok"})
+
+    # A broker is only ever asked for on Windows and macOS, so these tests say
+    # which platform they are describing rather than inheriting the host's.
+    monkeypatch.setattr(te.sys, "platform", "win32")
+    monkeypatch.setattr(te, "build_app", fake_build)
+    token = te.acquire_token("cid", "organizations", tmp_path / "cache.json", True)
+    assert token == "tok"
+    # Brokered first, then unbrokered.
+    assert asked == [True, False]
+
+
+def test_acquire_token_without_the_broker_extra(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    # Where `msal[broker]` is not installed, MSAL refuses to build the client
+    # at all, and the sign-in must still go through.
+    asked: List[bool] = []
+
+    def fake_build(client_id: str, tenant: str, cache: Any, broker: bool) -> FakeApp:
+        asked.append(broker)
+        if broker:
+            raise ImportError('pip install "msal[broker]"')
+        return FakeApp({"access_token": "tok"})
+
+    monkeypatch.setattr(te.sys, "platform", "darwin")
+    monkeypatch.setattr(te, "build_app", fake_build)
+    path = tmp_path / "cache.json"
+    assert te.acquire_token("cid", "organizations", path, True) == "tok"
+    assert asked == [True, False]
+
+
+def test_acquire_token_does_not_ask_for_an_impossible_broker(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    # MSAL's `enable_broker_on_windows` is ANDed with the platform, so on Linux
+    # it builds an unbrokered client and says nothing. Asking anyway would make
+    # `broker` a lie: the browser would be announced as the account manager,
+    # and a user who cancelled it would get a second browser rather than an
+    # error.
+    asked: List[bool] = []
+
+    def fake_build(client_id: str, tenant: str, cache: Any, broker: bool) -> FakeApp:
+        asked.append(broker)
+        return FakeApp({"access_token": "tok"})
+
+    monkeypatch.setattr(te.sys, "platform", "linux")
+    monkeypatch.setattr(te, "build_app", fake_build)
+    path = tmp_path / "cache.json"
+    assert te.acquire_token("cid", "organizations", path, True) == "tok"
+    # One client, unbrokered, and so one sign-in.
+    assert asked == [False]
+
+
+def test_acquire_token_reports_a_browser_that_will_not_open(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    # Nothing is left to fall back to, but that is a message, not a traceback.
+    monkeypatch.setattr(te.sys, "platform", "linux")
+    monkeypatch.setattr(
+        te,
+        "build_app",
+        lambda client_id, tenant, cache, broker: FakeApp(RuntimeError("no browser")),
+    )
+    with pytest.raises(SystemExit) as caught:
+        te.acquire_token("cid", "organizations", tmp_path / "cache.json")
+    assert "no browser" in str(caught.value)
+
+
+# The failure that motivated the timeout: a broker that neither returns nor
+# raises. `FakeApp` cannot express it, since it always does one or the other.
+class HangingApp:
+    """A broker that answers only when told to, which -- in these tests -- is
+    never. `released` lets the test unblock it, so that no abandoned thread
+    outlives the run."""
+
+    def __init__(self) -> None:
+        self.released = threading.Event()
+        self.entered = threading.Event()
+
+    def get_accounts(self) -> List[Dict[str, Any]]:
+        return []
+
+    def acquire_token_silent(self, scopes: Any, account: Any) -> None:
+        return None
+
+    def acquire_token_interactive(self, scopes: Any, **kwargs: Any) -> Any:
+        self.entered.set()
+        self.released.wait(30)
+        return {"access_token": "too late"}
+
+
+def test_sign_in_abandons_a_broker_that_never_answers() -> None:
+    # The whole point: no exception and no result, so the fallback has to be
+    # driven by the clock rather than by anything the broker says.
+    app = HangingApp()
+    try:
+        assert te.sign_in(app, broker=True, timeout=0.1) is None
+        assert app.entered.wait(5), "the sign-in never reached the broker"
+    finally:
+        app.released.set()
+
+
+def test_acquire_token_falls_back_when_the_broker_hangs(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    hanging = HangingApp()
+    apps: List[Any] = []
+
+    def fake_build(client_id: str, tenant: str, cache: Any, broker: bool) -> Any:
+        apps.append(hanging if broker else FakeApp({"access_token": "tok"}))
+        return apps[-1]
+
+    monkeypatch.setattr(te.sys, "platform", "win32")
+    monkeypatch.setattr(te, "build_app", fake_build)
+    monkeypatch.setattr(te, "BROKER_TIMEOUT", 0.1)
+    try:
+        token = te.acquire_token("cid", "organizations", tmp_path / "c.json", True)
+        assert token == "tok"
+    finally:
+        hanging.released.set()
+
+
+def test_call_within_carries_the_outcome_back() -> None:
+    assert te.call_within(lambda: 42, 5) == (True, 42)
+    finished, outcome = te.call_within(lambda: 1 / 0, 5)
+    assert finished and isinstance(outcome, ZeroDivisionError)
+
+
+def test_acquire_token_reports_a_failed_sign_in(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    monkeypatch.setattr(
+        te,
+        "build_app",
+        lambda client_id, tenant, cache, broker: FakeApp(
+            {"error": "access_denied", "error_description": "policy says no"}
+        ),
+    )
+    with pytest.raises(SystemExit) as caught:
+        te.acquire_token("cid", "organizations", tmp_path / "cache.json", broker=False)
+    assert "policy says no" in str(caught.value)
 
 
 # Command line

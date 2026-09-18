@@ -21,6 +21,7 @@ Resources
   [KBTU](https://teams.cloud.microsoft/l/team/19%3A1zAx6-5JAiMa-lWMwfGS_gCGKl2WS72-A-RtNFHAXkg1%40thread.tacv2/conversations?groupId=4e917b3b-d914-4d2b-807e-c8029802603f&tenantId=57081b5e-e66a-4993-8eaf-15b0b309293f).
 * Assignments and grades - MSU:
   [Canvas](https://canvas.msstate.edu/courses/186065), KBTU:
+  [Teams](https://teams.cloud.microsoft/l/team/19%3A1zAx6-5JAiMa-lWMwfGS_gCGKl2WS72-A-RtNFHAXkg1%40thread.tacv2/conversations?groupId=4e917b3b-d914-4d2b-807e-c8029802603f&tenantId=57081b5e-e66a-4993-8eaf-15b0b309293f),
   [PGE](https://pge.kbtu.kz).
 * GitHub -
   [Literate Programming book](https://github.com/bjones1/literate-programming-book),

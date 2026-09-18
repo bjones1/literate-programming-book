@@ -32,10 +32,9 @@ date range, it pulls one Microsoft Teams channel's history and writes
 * `chats.csv` — three columns, `timestamp`, `user`, `html`, which step 3 appends
   its grading-criterion columns to.
 
-No Azure app registration is needed. The exporter signs in *as you* using the
-OAuth device code flow against Microsoft's own pre-registered "Microsoft Graph
-Command Line Tools" client, so it can read exactly the channels you can already
-read in Teams — no more.
+No Azure app registration is needed. The exporter signs in *as you* against
+Microsoft's own pre-registered "Microsoft Graph Command Line Tools" client, so
+it can read exactly the channels you can already read in Teams — no more.
 
 Installing the project provides a `teams-export` command (note that the backtick
 escapes newlines in PowerShell; use `\` in MacOS/Linux):
@@ -47,10 +46,31 @@ PS> uv run teams-export `
     --out fall2026-week2
 ```
 
-The first run prints a code and a URL; open the URL, enter the code, and sign in
-with your university account. The sign-in is cached in
-`%USERPROFILE%\.teams_export_token.json`, so later runs are silent. Delete that
-file to sign out.
+The first run signs you in interactively: it opens your browser, and takes the
+answer back on a loopback address that only this process is listening on. The
+sign-in is cached in `%USERPROFILE%\.teams_export_token.json`, so later runs
+are silent; delete that file to sign out.
+
+`--broker` asks Windows' own account manager (Web Account Manager) first
+instead, which on a machine where it works means picking your account from a
+dialog and nothing more. **It does not work against MSU's tenant**, which is
+federated: the account manager's silent attempt fails on WS-Trust, and the
+interactive attempt it falls back to then hangs with its window never shown,
+returning neither an answer nor an error. That is why it is off by default, and
+why a brokered attempt that has said nothing for 20 seconds is abandoned in
+favour of the browser rather than waited on. Try it if you like — on a tenant
+that suits it, it is the better sign-in — but the browser is the path that
+works here.
+
+Note also that a brokered sign-in is *not* kept in the cache file: the account
+belongs to Windows, which will hand out another token without asking you
+anything, so deleting the file after one looks like nothing happened. To sign
+out there, remove the work or school account under Windows' account settings.
+
+Note that the exporter deliberately does *not* use the OAuth device code flow,
+in which you type a code into a browser on some other device: that indirection
+is what makes device code phishable, and many tenants — MSU's among them — now
+block it by Conditional Access policy.
 
 `--start` and `--end` are both inclusive whole local days. To slice more finely,
 pass a full timestamp instead: `--end 2026-09-14T09:30`.
@@ -70,6 +90,8 @@ signature cannot drift apart.
 | `--include-deleted`    | Include deleted messages, whose bodies are usually empty anyway.                                                       |
 | `-v`                   | Report paging progress and throttling on stderr.                                                                       |
 | `--tenant`             | Sign in to a specific tenant rather than `organizations`. Use your tenant ID or domain if you belong to more than one. |
+| `--broker`             | Try Windows' account manager before the browser. Off by default; it hangs for 20s against a federated tenant such as MSU's, then falls back anyway. |
+| `--client-id`          | Sign in as a public client of your own, for a tenant that blocks Microsoft's Graph CLI client. See *Permissions*, below.                            |
 
 Bad options are caught before sign-in, so a typo costs nothing, and they exit 2
 with the offending option named:
@@ -231,9 +253,12 @@ $ uv run coverage combine
 $ uv run coverage report
 ```
 
-The gap in coverage is deliberate: sign-in, the Graph HTTP client, and the body
-of `export` past validation all require a live tenant, so they are exercised by
-running the tool rather than by the test suite. The homework grader has no such
+The gap in coverage is deliberate: the sign-in itself, the Graph HTTP client,
+and the body of `export` past validation all require a live tenant, so they are
+exercised by running the tool rather than by the test suite. The *choice* of
+sign-in method — browser by default; broker first when asked, then the browser
+when the broker is absent, says no, or says nothing at all — is tested, since
+that is logic rather than network. The homework grader has no such
 gap — it needs nothing but git.
 
 Notes and limits
@@ -243,6 +268,13 @@ Notes and limits
   `ChannelMessage.Read.All`. Some tenants disable user consent, in which case an
   administrator must grant it once for the Graph CLI client, or you must
   register your own public client and pass `--client-id`.
+* **Brokered sign-in** (`--broker`) needs the `msal[broker]` extra, which this
+  project installs on Windows only. None of the ways it can fail are fatal: a
+  broker that is missing, that fails to start, that refuses the request, or
+  that simply never answers all fall back to the browser. The last of those is
+  why the attempt is on a 20-second clock — a broker that hangs does so
+  forever, below a wait that MSAL gives neither a deadline nor a way to
+  cancel, so the only remedy is to stop waiting and leave the attempt behind.
 * **Private and shared channels** live on different Graph endpoints than
   standard channels. This script handles standard channels; a private channel
   will fail at the message listing step.
