@@ -1,5 +1,5 @@
 KBTU class notes
-====================
+================
 
 Saturday, 2026-Sep-19
 ---------------------
@@ -15,12 +15,14 @@ Saturday, 2026-Sep-19
 5. Review: [what your prompt didn't say](exercises/spec-quality/handout.md).
 6. Question: "What if we just ask another LLM to answer these question and by
    using this script ask our initial LLM, what is the productivity of it?"
-7. Introduction to the CodeChat Editor. Become familiar with
+7. [AI Efficiency Could Cost Us the Next Generation of Experts](https://spectrum.ieee.org/ai-engineer-skills)
+8. [OpenAI – Hugging Face Incident Technical Report](https://cdn.openai.com/pdf/67869394-cb91-4c12-888c-5cbd85c7814c/OpenAI-Hugging-Face%20Incident-Technical-Report.pdf)
+9. Introduction to the CodeChat Editor. Become familiar with
    [CommonMark](https://commonmark.org/help/), which is used by the CodeChat
    Editor to format comments. The CodeChat Editor also supports many
    [GitHub extensions](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
    to CommonMark.
-8. [Writing a spec and tests](exercises/spec-design.md).
+10. [Writing a spec and tests](exercises/spec-design.md).
 
 Monday, 2026-Sep-07
 -------------------
