@@ -1,4 +1,4 @@
-eamsKBTU class notes
+KBTU class notes
 ====================
 
 Saturday, 2026-Sep-19
