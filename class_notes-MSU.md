@@ -6,9 +6,9 @@ Monday, 2026-Sep-21
 
 1. [Homework](https://canvas.msstate.edu/courses/186065/assignments) - due
    Sunday!
-2. Dev notes -- htmd project.
+2. Dev notes -- [htmd](https://github.com/letmutex/htmd) project.
 3. Enable Capture when using the CodeChat Editor.
-4. Discussion -- what is the approprite use of AI when developing open-source
+4. Discussion -- what is the appropriate use of AI when developing open-source
    software?
    1. Not allowed --
       [Zig](https://ziglang.org/code-of-conduct/#strict-no-llm-no-ai-policy)
@@ -20,7 +20,7 @@ Monday, 2026-Sep-21
       ([policy](https://forge.rust-lang.org/policies/llm-usage.html))
    4. Just a tool --
       [Linux](https://lore.kernel.org/linux-media/CAHk-=wi4zC+Ze8e+p3tMv8TtG_80KzsZ1syL9anBtmEh5Z40vg@mail.gmail.com/)
-5. CodeChat Editor [manual](course_materials/CodeChat-Editor-manual.md). To
+5. CodeChat Editor [manual](course_materials/CodeChat-Editor-manual.md). To
    create a CodeChat Editor project, simply add a `toc.md`.
 6. Spec design for
    [git-hint](https://github.com/bjones1/literate-programming-fall-2024), on the
