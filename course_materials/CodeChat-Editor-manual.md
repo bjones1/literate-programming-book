@@ -149,7 +149,9 @@ To do so:
    data-gather="some_unique_id1 some_unique_id2 ...">Gathered code</h4>`. Below
    the the result of a gather tag for these fragments:
 
-<h4 data-gather="cc-LWJSMQJzLt cc-Utv4vgn1Kk" id="cc-4YrLCPA4-S">Truncation with tests</h4>
+<h4 data-gather="cc-LWJSMQJzLt cc-Utv4vgn1Kk" id="cc-4YrLCPA4-S">
+  Truncation with tests
+</h4>
 
 Alpha feature: first view
 [my\_truncate.py](../exercises/spec-quality/my_truncate.py) and

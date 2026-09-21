@@ -1,11 +1,43 @@
 MSU class notes
 ===============
 
+Monday, 2026-Sep-21
+-------------------
+
+1. [Homework](https://canvas.msstate.edu/courses/186065/assignments) - due
+   Sunday!
+2. Dev notes -- htmd project.
+3. Enable Capture when using the CodeChat Editor.
+4. Discussion -- what is the approprite use of AI when developing open-source
+   software?
+   1. Not allowed --
+      [Zig](https://ziglang.org/code-of-conduct/#strict-no-llm-no-ai-policy)
+   2. Human review --
+      [LLVM](https://discourse.llvm.org/t/rfc-llvm-ai-tool-policy-human-in-the-loop/89159#p-355841-llvm-ai-tool-use-policy-1)
+      (require human review)
+   3. Higher standard - Rust
+      ([explanation](https://blog.rust-lang.org/inside-rust/2026/08/05/rust-langrust-is-adopting-an-llm-policy/)),
+      ([policy](https://forge.rust-lang.org/policies/llm-usage.html))
+   4. Just a tool --
+      [Linux](https://lore.kernel.org/linux-media/CAHk-=wi4zC+Ze8e+p3tMv8TtG_80KzsZ1syL9anBtmEh5Z40vg@mail.gmail.com/)
+5. CodeChat Editor [manual](course_materials/CodeChat-Editor-manual.md). To
+   create a CodeChat Editor project, simply add a `toc.md`.
+6. Spec design for
+   [git-hint](https://github.com/bjones1/literate-programming-fall-2024), on the
+   `git-tool` branch.
+   1. Brainstorm several hints in each category.
+   2. Generalize these to principles.
+   3. Develop an overall architecture.
+   4. Derive a detailed specification.
+   5. Include test cases to explore corner cases.
+
 Friday, 2026-Sep-18
 -------------------
 
 1. [Homework](https://canvas.msstate.edu/courses/186065/assignments) - due
-   Sunday! See the [pull requests](https://github.com/bjones1/literate-programming-github-fall-2026/pulls) (PRs).
+   Sunday! See the
+   [pull requests](https://github.com/bjones1/literate-programming-github-fall-2026/pulls)
+   (PRs).
 2. Enable Capture when using the CodeChat Editor.
 3. Git tracks files, not directories.
 4. Install the
