@@ -4,13 +4,39 @@ MSU class notes
 Week 5
 ------
 
+### Friday, 2026-Sep-25
+
+> AI can help you express your opinion. It shouldn’t manufacture one for you. -
+>  [Brian Jenney](https://spectrum.ieee.org/top-engineering-skills)
+
+1. [Homework](https://canvas.msstate.edu/courses/186065/assignments) - due
+   Sunday!
+2. Dev notes -- writing a specification gives you undo/redo and
+   [deeper insight](https://github.com/letmutex/htmd/issues/126). Chat doesn't.
+3. [3 Skills That Will Matter More in the Age of AI](https://spectrum.ieee.org/top-engineering-skills)
+4. Enable Capture when using the CodeChat Editor.
+5. Spec design for
+   [git-hint](https://github.com/bjones1/literate-programming-fall-2024), on the
+   `git-tool` branch
+   1. Review current input.
+   2. Testing.
+6. Spec design for converting HTML to
+   [CommonMark](https://spec.commonmark.org/0.31.2/) ([demo](https://spec.commonmark.org/dingus/)).
+   1. Assume you have context: a tree of parsed HTML, the current tag name, its
+      attributes, and its cotent.
+   2. Construct a state machine composed of CommonMark states.
+      ([draw.io](https://draw.io/),
+      [Mermaid](https://www.mermaidonline.live/editor)
+      ([state diagram docs](https://mermaid.ai/open-source/syntax/stateDiagram.html)), [GraphViz](https://dreampuf.github.io/GraphvizOnline/),
+      ([FSM docs](https://graphviz.org/Gallery/directed/fsm.html)), etc.)
+
 ### Wednesday, 2026-Sep-23
 
 1. [Homework](https://canvas.msstate.edu/courses/186065/assignments) - due
    Sunday!
 2. Dev notes -- [pnpm issue triage](https://github.com/pnpm/pnpm/issues).
 3. Enable Capture when using the CodeChat Editor.
-6. Spec design for
+4. Spec design for
    [git-hint](https://github.com/bjones1/literate-programming-fall-2024), on the
    `git-tool` branch.
 
