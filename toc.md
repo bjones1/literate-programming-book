@@ -52,7 +52,7 @@
     4. Teams chat downloader
        1. [teams\_export.py](grader/grader/teams_export.py)
        2. [test\_teams\_export.py](grader/tests/test_teams_export.py)
-       3. [Capture token setup guide](course_materials/capture-token-setup-guide.html)
+       3. Capture token setup guide [MSU](course_materials/capture-token-setup-guide-MSU.html), [KBTU](course_materials/capture-token-setup-guide-KBTU.html)
     5. Packaging and checks
        1. [\_\_init\_\_.py](grader/grader/__init__.py)
        2. [pyproject.toml](grader/pyproject.toml)

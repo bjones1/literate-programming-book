@@ -49,7 +49,7 @@ paste the token, then turn on consent and recording from the same capture
 manager.
 
 For detailed student/tester setup steps, see the
-[CodeChat Capture Token Setup Guide](capture-token-setup-guide.html).
+[CodeChat Capture Token Setup Guide](capture-token-setup-guide-MSU.html).
 
 Structure
 ---------

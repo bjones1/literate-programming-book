@@ -189,7 +189,7 @@ Week 2
 ### Friday, 2026-Sep-04
 
 1. Start using Capture! Follow the
-   [setup guide](course_materials/capture-token-setup-guide.html) then message
+   [setup guide](course_materials/capture-token-setup-guide-MSU.html) then message
    me on Teams.
 2. The origins of literate programming: (TODO: add a summary image for each)
    1. Knuth introduced the idea of writing for a person. Literate source code is
@@ -224,7 +224,7 @@ Week 2
    ![Screenshot of Visual Studio Code with the Extensions panel open and the CodeChat Editor extension selected, which shows the currently installed version in the lower left-hand corner](course_materials/CodeChat_Editor_v0.2.2.png)
 
 4. Start using Capture! Follow the
-   [setup guide](course_materials/capture-token-setup-guide.html) then message
+   [setup guide](course_materials/capture-token-setup-guide-MSU.html) then message
    me on Teams.
 
 5. Field notes -
