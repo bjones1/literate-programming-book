@@ -5,7 +5,8 @@ Week 4: Saturday, 2026-Sep-26
 -----------------------------
 
 > The idea is that you do not document programs (after the fact), but write
-> documents that contain the programs. —John Max Skaller
+> documents that contain the programs.
+> —[John Max Skaller](https://gnosis.cx/publish/programming/charming_python_8.html)
 
 1. Homework is due next Friday; see Assignments in the
    [course team](https://teams.cloud.microsoft/l/team/19%3A1zAx6-5JAiMa-lWMwfGS_gCGKl2WS72-A-RtNFHAXkg1%40thread.tacv2/conversations?groupId=4e917b3b-d914-4d2b-807e-c8029802603f&tenantId=57081b5e-e66a-4993-8eaf-15b0b309293f).
@@ -21,8 +22,7 @@ Week 4: Saturday, 2026-Sep-26
    1. [AI coding article](https://spectrum.ieee.org/ai-code-review-software-engineers) -
       spec writing is central. See "AI Agents in Code Review Workflows" section.
    2. [AI Efficiency Could Cost Us the Next Generation of Experts](https://spectrum.ieee.org/ai-engineer-skills)
-8. Dev notes -
-   [htmd](https://github.com/letmutex/htmd/pulls?q=is%3Apr+is%3Aclosed),
+8. Dev notes - [htmd](https://github.com/letmutex/htmd/pull/78),
    review/implementation in htmd.
 9. [Writing tests](exercises/spec-design.md) to accompany a specification.
 10. The [origins of literate programming](origins.md).

@@ -1,13 +1,25 @@
 MSU class notes
 ===============
 
+Week 6
+------
+
+### Monday, 2026-Sep-28
+
+1. [Homework](https://canvas.msstate.edu/courses/186065/assignments) - due
+   Sunday! Will be released after today's class.
+2. Enable Capture when using the CodeChat Editor.
+3. Spec design for
+   [git-hint](https://github.com/bjones1/literate-programming-fall-2024), on the
+   `git-tool` branch.
+
 Week 5
 ------
 
 ### Friday, 2026-Sep-25
 
 > AI can help you express your opinion. It shouldn’t manufacture one for you. -
->  [Brian Jenney](https://spectrum.ieee.org/top-engineering-skills)
+> [Brian Jenney](https://spectrum.ieee.org/top-engineering-skills)
 
 1. [Homework](https://canvas.msstate.edu/courses/186065/assignments) - due
    Sunday!
@@ -189,8 +201,8 @@ Week 2
 ### Friday, 2026-Sep-04
 
 1. Start using Capture! Follow the
-   [setup guide](course_materials/capture-token-setup-guide-MSU.html) then message
-   me on Teams.
+   [setup guide](course_materials/capture-token-setup-guide-MSU.html) then
+   message me on Teams.
 2. The origins of literate programming: (TODO: add a summary image for each)
    1. Knuth introduced the idea of writing for a person. Literate source code is
       ordered topically; weave typesets it as HTML/PDF, while while reorders it
@@ -224,8 +236,8 @@ Week 2
    ![Screenshot of Visual Studio Code with the Extensions panel open and the CodeChat Editor extension selected, which shows the currently installed version in the lower left-hand corner](course_materials/CodeChat_Editor_v0.2.2.png)
 
 4. Start using Capture! Follow the
-   [setup guide](course_materials/capture-token-setup-guide-MSU.html) then message
-   me on Teams.
+   [setup guide](course_materials/capture-token-setup-guide-MSU.html) then
+   message me on Teams.
 
 5. Field notes -
    [htmd](https://github.com/letmutex/htmd/pulls?q=is%3Apr+is%3Aclosed),
