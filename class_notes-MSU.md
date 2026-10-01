@@ -18,8 +18,8 @@ Week 5
 
 ### Friday, 2026-Sep-25
 
-> AI can help you express your opinion. It shouldn’t manufacture one for you. -
-> [Brian Jenney](https://spectrum.ieee.org/top-engineering-skills)
+> "AI can help you express your opinion. It shouldn’t manufacture one for you."
+> -- [Brian Jenney](https://spectrum.ieee.org/top-engineering-skills)
 
 1. [Homework](https://canvas.msstate.edu/courses/186065/assignments) - due
    Sunday!
@@ -102,10 +102,10 @@ Week 4
 
 ### Wednesday, 2026-Sep-16
 
-> LLMs are excellent instruments and unreliable diagnosticians. Use them for the
-> instrument work — writing the utility, running the sweep, formatting the
-> analysis — and keep the diagnostic judgment for yourself. -- Evan Chan,
-> [Making io\_uring Actually Fast: I/O Threads, Chunking, and the Memory Story Nobody Talks About](https://www.conviva.ai/resource/making-io_uring-actually-fast-i-o-threads-chunking-and-the-memory-story-nobody-talks-about/);
+> "LLMs are excellent instruments and unreliable diagnosticians. Use them for
+> the instrument work — writing the utility, running the sweep, formatting the
+> analysis — and keep the diagnostic judgment for yourself." --
+> [Evan Chan](https://www.conviva.ai/resource/making-io_uring-actually-fast-i-o-threads-chunking-and-the-memory-story-nobody-talks-about/);
 > see section "Debugging with an LLM in the loop."
 
 1. [Homework](https://canvas.msstate.edu/courses/186065/assignments) - due
@@ -223,8 +223,8 @@ Week 2
 
 ### Wednesday, 2026-Sep-02
 
-> The idea is that you do not document programs (after the fact), but write
-> documents that contain the programs. —John Max Skaller
+> "The idea is that you do not document programs (after the fact), but write
+> documents that contain the programs." —John Max Skaller
 
 1. Questions? [Schedule a meeting](https://bjones.youcanbook.me).
 
