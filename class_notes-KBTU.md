@@ -1,11 +1,40 @@
 KBTU class notes
 ================
 
+Week 5: Saturday, 2026-Oct-03
+-----------------------------
+
+> "Technology and coding are always evolving, so the implementation is not
+> nearly as important as the reasoning behind it." - Justin Gray
+
+1. Attendance is taken online during the first 10 minutes of each class session.
+   Mark yourself as present!
+2. Homework is due next Friday; see Assignments in the
+   [course team](https://teams.cloud.microsoft/l/team/19%3A1zAx6-5JAiMa-lWMwfGS_gCGKl2WS72-A-RtNFHAXkg1%40thread.tacv2/conversations?groupId=4e917b3b-d914-4d2b-807e-c8029802603f&tenantId=57081b5e-e66a-4993-8eaf-15b0b309293f).
+3. Questions? Message me on Teams / meet on Teams.
+4. Github / Git setup:
+   1. Create an account on [GitHub](https://github.com/) using your KBTU e-mail.
+   2. Add your name and KBTU e-mail to the
+      [class list](https://kbtuedu.sharepoint.com/:x:/r/sites/CSDA5101-AdvancedSoftwareParadigms-2026Fall/Shared%20Documents/General/github%20email%20addresses.xlsx?d=w7a632d55de12415abda784409f8fca08&csf=1&web=1&e=t3GYW1).
+   3. [Install and configure Git](https://code.visualstudio.com/docs/sourcecontrol/overview#_prerequisites).
+   4. Clone the
+      [e-book](https://github.com/bjones1/literate-programming-book) -- see
+      [Clone repositories](https://code.visualstudio.com/docs/sourcecontrol/repos-remotes#_clone-repositories)
+      for step-by-step directions.
+5. Enable Capture when using the CodeChat Editor.
+6. Articles:
+   1. [AI Efficiency Could Cost Us the Next Generation of Experts](https://spectrum.ieee.org/ai-engineer-skills)
+   2. [Making io\_uring Actually Fast: I/O Threads, Chunking, and the Memory Story Nobody Talks About](https://www.conviva.ai/resource/making-io_uring-actually-fast-i-o-threads-chunking-and-the-memory-story-nobody-talks-about/);
+      see section "Debugging with an LLM in the loop."
+7. Dev notes - the
+   [CodeChat Editor cache](https://github.com/bjones1/CodeChat_Editor/blob/main/server/src/processing/cache-spec.md).
+8. [Introduction to Git](git_intro.md) and GitHub.
+
 Week 4: Saturday, 2026-Sep-26
 -----------------------------
 
-> The idea is that you do not document programs (after the fact), but write
-> documents that contain the programs.
+> "The idea is that you do not document programs (after the fact), but write
+> documents that contain the programs."
 > —[John Max Skaller](https://gnosis.cx/publish/programming/charming_python_8.html)
 
 1. Homework is due next Friday; see Assignments in the
@@ -26,7 +55,6 @@ Week 4: Saturday, 2026-Sep-26
    review/implementation in htmd.
 9. [Writing tests](exercises/spec-design.md) to accompany a specification.
 10. The [origins of literate programming](origins.md).
-11. [Introduction to Git](git_intro.md) and GitHub.
 
 Week 3: Saturday, 2026-Sep-19
 -----------------------------
