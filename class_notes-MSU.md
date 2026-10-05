@@ -1,6 +1,18 @@
 MSU class notes
 ===============
 
+Week 7
+------
+
+### Monday, 2026-Oct-05
+
+1. [Homework](https://canvas.msstate.edu/courses/186065/assignments) - due
+   Sunday! Will be released after today's class.
+2. Enable Capture when using the CodeChat Editor.
+3. Spec design for
+   [git-hint](https://github.com/bjones1/literate-programming-fall-2024), on the
+   `git-tool` branch.
+
 Week 6
 ------
 
