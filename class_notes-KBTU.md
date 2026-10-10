@@ -19,7 +19,10 @@ Week 6: Saturday, 2026-Oct-10
    3. Restart extensions.
    4. Open the CodeChat Editor.
 5. Enable Capture when using the CodeChat Editor.
-6. Dev notes:
+6. Articles
+   1. [3 Skills That Will Matter More in the Age of AI](https://spectrum.ieee.org/top-engineering-skills)
+   2. [Investigating unintended model actions in our evaluations and internal use](https://www.anthropic.com/research/investigating-unintended-model-actions)
+7. Dev notes:
    recent [CodeChat Editor](https://github.com/bjones1/CodeChat_Editor)
    features.
    1. Clone this repo.
@@ -28,14 +31,18 @@ Week 6: Saturday, 2026-Oct-10
       2. Gathering fragments
    3. Look at the cache spec under Server / processing.rs section on Cache
       design.
-7. CodeChat Editor features:
+8. CodeChat Editor features: clone [htmd](https://github.com/letmutex/htmd).
    1. Creating a project.
    2. Adding entries to the table of contents.
    3. Adding a unique ID to headings.
    4. Cross-references.
    5. Creating fragments with a unique ID.
    6. Gathering fragments.
-8. Developing a specification.
+9. GitHub use -- collaborative software development
+   1. Clone the
+      [collaborative class repo](https://github.com/bjones1/literate-programming-github-2026).
+   2. See the [GitHub notes](git_intro.md).
+10. Developing a specification.
 
 Week 5: Saturday, 2026-Oct-03
 -----------------------------
