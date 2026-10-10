@@ -1,6 +1,42 @@
 KBTU class notes
 ================
 
+Week 6: Saturday, 2026-Oct-10
+-----------------------------
+
+> "AI can help you express your opinion. It shouldn’t manufacture one for
+> you." -- [Brian Jenney](https://spectrum.ieee.org/top-engineering-skills)
+
+1. Attendance is taken online during the first 10 minutes of each class session.
+   Mark yourself as present!
+2. Homework is due next Friday; see Assignments in the
+   [course team](https://teams.cloud.microsoft/l/team/19%3A1zAx6-5JAiMa-lWMwfGS_gCGKl2WS72-A-RtNFHAXkg1%40thread.tacv2/conversations?groupId=4e917b3b-d914-4d2b-807e-c8029802603f&tenantId=57081b5e-e66a-4993-8eaf-15b0b309293f).
+3. Questions? Message me on Teams / meet on Teams.
+4. Ensure you're running the newly-released CodeChat Editor 0.3.0.
+   1. Check and
+      update:<br>![Image showing the open Extensions panel with the CodeChat Editor selected; the \"Update to v0.2.0\" text and older version text showing \"Version 0.2.4\" signals the need for an update.](course_materials/CodeChat_Editor_upgrade.png)
+   2. Close the CodeChat Editor if it's open.
+   3. Restart extensions.
+   4. Open the CodeChat Editor.
+5. Enable Capture when using the CodeChat Editor.
+6. Dev notes:
+   recent [CodeChat Editor](https://github.com/bjones1/CodeChat_Editor)
+   features.
+   1. Clone this repo.
+   2. View the following sections of CodeChat Editor manual (`README.md`):
+      1. Cross-references
+      2. Gathering fragments
+   3. Look at the cache spec under Server / processing.rs section on Cache
+      design.
+7. CodeChat Editor features:
+   1. Creating a project.
+   2. Adding entries to the table of contents.
+   3. Adding a unique ID to headings.
+   4. Cross-references.
+   5. Creating fragments with a unique ID.
+   6. Gathering fragments.
+8. Developing a specification.
+
 Week 5: Saturday, 2026-Oct-03
 -----------------------------
 
