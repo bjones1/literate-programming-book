@@ -33,15 +33,15 @@ Week 9
    2. GitHub-flavored markdown [spec](https://github.github.com/gfm/)
    3. Pulldown-cmark
       [specs](https://pulldown-cmark.github.io/pulldown-cmark/specs.html),
-      [docs](https://docs.rs/pulldown-cmark/0.13.4/pulldown_cmark/index.html), [options](https://docs.rs/pulldown-cmark/0.13.4/pulldown_cmark/struct.Options.html),
+      [docs](https://docs.rs/pulldown-cmark/0.13.4/pulldown_cmark/index.html), [options](https://docs.rs/pulldown-cmark/0.13.4/pulldown_cmark/struct.Options.html),
       and [demo](https://markdown.fastlylabs.com/):
-      1. Footnotes
-      2. Strikethrough
-      3. Task lists
-      4. Smart punctuation
-      5. Heading attributes
-      6. Definition list
-      7. Superscript
+      1. Footnotes (sbe80)
+      2. Strikethrough (drj228)
+      3. Task lists (raf322)
+      4. Smart punctuation (ams2083)
+      5. Heading attributes (jhg246)
+      6. Definition list (jit45)
+      7. Superscript (ewj55)
       8. Subscript
 
 Week 8
