@@ -1,6 +1,49 @@
 MSU class notes
 ===============
 
+Week 9
+------
+
+### Monday, 2026-Oct-19
+
+1. [Homework](https://canvas.msstate.edu/courses/186065/assignments) - due
+   Sunday! Week 1 of class projects.
+
+2. Enable Capture when using the CodeChat Editor.
+
+3. Discuss `git-hints` results.
+
+4. Schedule
+
+   | Week | Date   | Task          |
+   | ---- | ------ | ------------- |
+   | 9    | Oct 19 | Project 1     |
+   | 10   | Oct 26 | Project 1     |
+   | 11   | Nov 02 | Project 2     |
+   | 12   | Nov 09 | Project 2     |
+   | 13   | Nov 16 | Final Project |
+   | 14   | Nov 23 | Final Project |
+   | 15   | Nov 30 | Final Project |
+
+5. Projects: add capabilities to [htmd](https://github.com/letmutex/htmd).
+   Resources:
+
+   1. CommonMark [spec](https://spec.commonmark.org/0.31.2/) and
+      [demo](https://spec.commonmark.org/dingus/)
+   2. GitHub-flavored markdown [spec](https://github.github.com/gfm/)
+   3. Pulldown-cmark
+      [specs](https://pulldown-cmark.github.io/pulldown-cmark/specs.html),
+      [docs](https://docs.rs/pulldown-cmark/0.13.4/pulldown_cmark/index.html), [options](https://docs.rs/pulldown-cmark/0.13.4/pulldown_cmark/struct.Options.html),
+      and [demo](https://markdown.fastlylabs.com/):
+      1. Footnotes
+      2. Strikethrough
+      3. Task lists
+      4. Smart punctuation
+      5. Heading attributes
+      6. Definition list
+      7. Superscript
+      8. Subscript
+
 Week 8
 ------
 
