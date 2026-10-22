@@ -20,10 +20,10 @@
 # ============================================================
 #
 # This implements the "Git homework grader" section of `chat_grader.md`: given
-# a range of dates, find every netid which worked in the class repository
+# a range of dates, find every userid which worked in the class repository
 # during it and decide, for each, whether the student
 #
-# 1.  created a branch named after their netid,
+# 1.  created a branch named after their userid,
 # 2.  committed two files to it, and
 # 3.  merged someone else's branch into `main` with the required commit
 #     message,
@@ -31,7 +31,8 @@
 # then write one CSV row per student holding the grade and the filled-in
 # rubric, which is the feedback. There is no roster: the students are whoever
 # the repository says they are between those dates, so grading a term takes its
-# dates and nothing else.
+# dates and nothing else. The dates decide only who is graded, not what they
+# score: once found, a student is graded on everything they pushed.
 #
 # Every question is answered from a mirror clone of the class repository, made
 # once and thereafter kept current, so a run costs one network round trip no
@@ -66,18 +67,11 @@ except ModuleNotFoundError as exc:  # pragma: no cover - setup guidance only.
 # -------------
 #
 # The repository the homework is done in.
-DEFAULT_REPO = "https://github.com/bjones1/literate-programming-fall-2024"
+DEFAULT_REPO = "https://github.com/bjones1/literate-programming-git-2026"
 
-# The window of time whose work is graded, and so also what decides which
-# netids are graded at all.
-#
-# The class repository carries branches and commits from previous years of this
-# course, and some netids recur between years, so the start date is what keeps
-# one year out of another's grades. Nothing committed before it counts.
-DEFAULT_SINCE = "2026-08-01"
-
-# The last day which counts, inclusive. Empty means the window has no end:
-# grade everything committed since the start date.
+# The window of time which decides who is graded has no default start: a term
+# is graded by naming it. Its last day, inclusive, may be left empty, meaning
+# the window has no end: grade everyone who worked since the start date.
 DEFAULT_UNTIL = ""
 
 # One day. `--until` names a whole day, which counts in full; the window
@@ -88,7 +82,7 @@ DAY = timedelta(days=1)
 # filled in, the feedback a student reads, so they are kept short; the rules
 # for applying them live in the functions below.
 RUBRIC = (
-    "{points}/30 points -- Branch created with your netid. Commit hash: {hashes}",
+    "{points}/30 points -- Branch created with your userid. Commit hash: {hashes}",
     "{points}/30 points (15 points per file) -- Two files committed to this "
     "branch. Commit hash(es): {hashes}",
     "{points}/40 points -- At least one merge commit exists with the correct "
@@ -96,11 +90,11 @@ RUBRIC = (
 )
 
 # The merge message the third rubric line asks for. It is matched against what
-# a student wrote, and read backwards to recover the netid which wrote it.
-MERGE_SUBJECT = "{netid}: merge branch with main"
+# a student wrote, and read backwards to recover the userid which wrote it.
+MERGE_SUBJECT = "{userid}: merge branch with main"
 
 # Branch names which belong to the repository rather than to a student. No
-# netid is read from one.
+# userid is read from one.
 MAIN_NAMES = ("main", "master")
 
 # How many blanks each rubric line has to fill, and what each line is worth.
@@ -200,13 +194,15 @@ def mirror(url: str, path: Path, verbose: bool = False) -> Repo:
 # ----------------------
 @dataclass(frozen=True)
 class Window:
-    """The stretch of time whose work counts: from `start`, inclusive, to
-    `end`, exclusive, or with no end at all when `end` is `None`.
+    """The stretch of time which decides who is graded: from `start`,
+    inclusive, to `end`, exclusive, or with no end at all when `end` is
+    `None`.
 
-    The window decides two things at once. It tells this year's work from the
-    years the class repository also holds -- which is what it was first for --
-    and, since the netids are read from the repository rather than from a
-    roster, it also decides who is graded.
+    Since the userids are read from the repository rather than from a roster,
+    the window is what says who they are: everyone with a branch tip or a
+    rubric merge inside it. It says nothing about what they score -- a student,
+    once found, is graded on everything they pushed -- save that the year it
+    opens in is the year whose commits count as theirs.
     """
 
     start: datetime
@@ -328,8 +324,9 @@ def branch_commits(repo: Repo, branch: Branch) -> list[Commit]:
     return found
 
 
-def own_commits(repo: Repo, branch: Branch, window: Window) -> set[str]:
-    """The commits on `branch` which are this student's own work.
+def own_commits(repo: Repo, branch: Branch, year: int) -> set[str]:
+    """The commits on `branch` which are this student's own work, made in
+    `year` or since.
 
     Neither "the commits `main` cannot reach" nor "the commits not on `main`'s
     first-parent chain" will do here. A student who has merged their branch
@@ -341,20 +338,16 @@ def own_commits(repo: Repo, branch: Branch, window: Window) -> set[str]:
     So take the commits along this branch's first parent which were made this
     year and which the student wrote. Who that is comes from the branch
     itself -- the author of its most recent ordinary commit -- since a commit
-    records a person's name and address rather than their netid. The history
+    records a person's name and address rather than their userid. The history
     a branch starts from is then someone else's by construction, whether it
     belongs to the instructor, to last year's class, or to the classmate who
     happened to commit to `main` just before this branch was cut.
     """
-    # Stop at the first commit older than the window rather than skipping over
+    # Stop at the first commit made before this year rather than skipping over
     # it: what lies beyond is the history this branch was cut from, and a
-    # branch left over from a previous year reaches it immediately. The
-    # window's other end needs no mention here -- this branch's tip falls
-    # inside it, and the commits behind the tip are older still.
+    # branch left over from a previous year reaches it immediately.
     recent = list(
-        takewhile(
-            lambda commit: commit.when >= window.start, branch_commits(repo, branch)
-        )
+        takewhile(lambda commit: commit.when.year >= year, branch_commits(repo, branch))
     )
     student = next((commit.author for commit in recent if not commit.merge), None)
     if student is None:
@@ -402,7 +395,7 @@ def files_added(repo: Repo, commits: set[str]) -> list[tuple[str, str]]:
 class Grade:
     """One student's row of the output CSV."""
 
-    netid: str
+    userid: str
     grade: str
     feedback: str
 
@@ -419,14 +412,12 @@ def fill(points: Sequence[int], hashes: Sequence[Sequence[str]]) -> str:
     return "\n".join(lines)
 
 
-def find_branch(
-    all_branches: Sequence[Branch], netid: str, window: Window
-) -> Optional[Branch]:
-    """The student's homework branch: one named exactly their netid, ignoring
-    case, whose tip was committed inside the window. ``jit45`` counts;
-    ``jit45-2`` and ``bensBranch`` do not."""
+def find_branch(all_branches: Sequence[Branch], userid: str) -> Optional[Branch]:
+    """The student's homework branch: one named exactly their userid, ignoring
+    case. ``jit45`` counts; ``jit45-2`` and ``bensBranch`` do not. When it was
+    pushed does not matter, since the window decides only who is graded."""
     for branch in all_branches:
-        if branch.name.casefold() == netid.casefold() and window.holds(branch.when):
+        if branch.name.casefold() == userid.casefold():
             return branch
     return None
 
@@ -437,8 +428,8 @@ def is_own_work(
     """Is `commit` this student's own work rather than a classmate's?
 
     Decided by reachability rather than by authorship, since a commit records
-    a person's name and not their netid. The commit is the student's own only
-    when their netid branch can reach it and no other student's netid branch
+    a person's name and not their userid. The commit is the student's own only
+    when their userid branch can reach it and no other student's userid branch
     can: a classmate's branch which this student has already merged into their
     own is still the classmate's.
     """
@@ -449,19 +440,19 @@ def is_own_work(
 
 def find_merge(
     repo: Repo,
-    netid: str,
+    userid: str,
     all_merges: Sequence[Merge],
     own: Optional[Branch],
     others: Sequence[Branch],
-    window: Window,
 ) -> Optional[Merge]:
     """The earliest merge commit which satisfies the third rubric line: a merge
-    reachable from `main`, made inside the window, whose message's first line
-    is ``<netid>: merge branch with main`` ignoring case and surrounding
-    whitespace, and which brings in work that is not the student's own."""
-    wanted = MERGE_SUBJECT.format(netid=netid).casefold()
+    reachable from `main` whose message's first line is ``<userid>: merge
+    branch with main`` ignoring case and surrounding whitespace, and which
+    brings in work that is not the student's own. When it was made does not
+    matter, since the window decides only who is graded."""
+    wanted = MERGE_SUBJECT.format(userid=userid).casefold()
     for merge in all_merges:
-        if not window.holds(merge.when) or merge.subject.casefold() != wanted:
+        if merge.subject.casefold() != wanted:
             continue
         # Parent one is `main` as it stood; the rest are what the merge
         # brought in. What matters is the work which arrives, not the branch
@@ -476,20 +467,20 @@ def find_merge(
     return None
 
 
-def netid_of(subject: str) -> Optional[str]:
-    """The netid a merge's message names, or `None` if that message is not the
+def userid_of(subject: str) -> Optional[str]:
+    """The userid a merge's message names, or `None` if that message is not the
     one the rubric asks for.
 
     Read so that a student who merged but never pushed a branch is still
     graded: without this they would have no row at all, since every other trace
     of them is a branch name. Anything but a single word before the colon is
-    somebody's ordinary merge message rather than a netid.
+    somebody's ordinary merge message rather than a userid.
     """
-    tail = MERGE_SUBJECT.format(netid="")
+    tail = MERGE_SUBJECT.format(userid="")
     if not subject.casefold().endswith(tail.casefold()):
         return None
-    netid = subject[: len(subject) - len(tail)].strip()
-    return netid if netid.split() == [netid] else None
+    userid = subject[: len(subject) - len(tail)].strip()
+    return userid if userid.split() == [userid] else None
 
 
 def roster(
@@ -498,46 +489,53 @@ def roster(
     window: Window,
     extra: Sequence[str] = (),
 ) -> list[str]:
-    """Every netid to grade, in alphabetical order.
+    """Every userid to grade, in alphabetical order.
 
     A student is whoever left work in the window: a branch whose tip was
     committed inside it, or a rubric merge made inside it, which names its
-    netid in so many words. That is the whole roster -- the repository's own
+    userid in so many words. That is the whole roster -- the repository's own
     branches aside -- so a term is graded by naming its dates, and a student
     who was added to the class late or dropped it needs no editing here.
 
-    `extra` names netids by hand, for a student who left nothing at all behind
-    and would otherwise have no row to grade.
+    `extra` names userids by hand, for a student who left nothing at all behind
+    -- or nothing inside the window -- and would otherwise have no row to
+    grade.
 
-    Netids are matched ignoring case throughout, so a netid spelled two ways is
-    one student, reported under the spelling met first.
+    Userids are matched ignoring case throughout, so a userid spelled two ways
+    is one student, reported under the spelling met first.
     """
     found: dict[str, str] = {}
     for branch in all_branches:
         if branch.name.casefold() not in MAIN_NAMES and window.holds(branch.when):
             found.setdefault(branch.name.casefold(), branch.name)
     for merge in all_merges:
-        netid = netid_of(merge.subject) if window.holds(merge.when) else None
-        if netid:
-            found.setdefault(netid.casefold(), netid)
-    for netid in extra:
-        found.setdefault(netid.casefold(), netid)
+        userid = userid_of(merge.subject) if window.holds(merge.when) else None
+        if userid:
+            found.setdefault(userid.casefold(), userid)
+    for userid in extra:
+        found.setdefault(userid.casefold(), userid)
     return [found[key] for key in sorted(found)]
 
 
 def grade_one(
     repo: Repo,
-    netid: str,
-    roster_branches: dict[str, Optional[Branch]],
+    userid: str,
+    all_branches: Sequence[Branch],
     all_merges: Sequence[Merge],
-    window: Window,
+    year: int,
 ) -> Grade:
-    """Apply all three rubric lines to one student."""
-    own = roster_branches[netid]
+    """Apply all three rubric lines to one student, counting only commits made
+    in `year` or since as their own files."""
+    own = find_branch(all_branches, userid)
+    # Every classmate's branch, which is what tells this student's work from
+    # theirs: every branch but this student's own and the repository's. Nothing
+    # says which branch names are userids, so each is taken to be one -- just
+    # as `roster` takes it -- and the window has no say, since a classmate who
+    # pushed before it opened is a classmate still.
     others = [
         branch
-        for other, branch in roster_branches.items()
-        if other != netid and branch is not None
+        for branch in all_branches
+        if branch.name.casefold() not in (userid.casefold(), *MAIN_NAMES)
     ]
 
     # 1. The branch. Its tip is the hash reported, since git has no commit
@@ -547,11 +545,11 @@ def grade_one(
     # 2. The files. Without a branch, there is nothing to look at.
     files = []
     if own:
-        files = files_added(repo, own_commits(repo, own, window))[:FILES_WANTED]
+        files = files_added(repo, own_commits(repo, own, year))[:FILES_WANTED]
     file_hashes = [hash_ for _, hash_ in files]
 
     # 3. The merge.
-    merge = find_merge(repo, netid, all_merges, own, others, window)
+    merge = find_merge(repo, userid, all_merges, own, others)
     merge_hashes = [merge.hash] if merge else []
 
     points = [
@@ -560,39 +558,41 @@ def grade_one(
         MERGE_POINTS if merge else 0,
     ]
     hashes = [branch_hashes, file_hashes, merge_hashes]
-    return Grade(netid, f"{sum(points)}%", fill(points, hashes))
+    return Grade(userid, f"{sum(points)}%", fill(points, hashes))
 
 
 def grade_all(repo: Repo, window: Window, extra: Sequence[str] = ()) -> list[Grade]:
     """Grade everyone the repository shows working in the window, plus anyone
-    named in `extra`, in alphabetical order."""
+    named in `extra`, in alphabetical order.
+
+    The window chooses the rows and nothing more: each student is graded on
+    everything they pushed, wherever it falls. The one date the rubric asks
+    after is the year, since only commits made this year are a student's own
+    files -- and this year is the one the window opens in, so that grading a
+    term gives the same answer whenever it is run."""
     main = main_branch(repo)
     all_branches = branches(repo)
     all_merges = merges(repo, main)
-    netids = roster(all_branches, all_merges, window, extra)
-    # Which branch belongs to whom is settled once, for everyone: it is what
-    # tells one student's work from a classmate's below.
-    roster_branches = {
-        netid: find_branch(all_branches, netid, window) for netid in netids
-    }
+    userids = roster(all_branches, all_merges, window, extra)
+    year = window.start.year
     return [
-        grade_one(repo, netid, roster_branches, all_merges, window) for netid in netids
+        grade_one(repo, userid, all_branches, all_merges, year) for userid in userids
     ]
 
 
 # Output
 # ------
 def write_csv(path: Path, grades: Sequence[Grade]) -> None:
-    """Write the three-column CSV: netid, grade, and feedback. The feedback
+    """Write the three-column CSV: userid, grade, and feedback. The feedback
     holds the three rubric lines, so it spans three lines of its own, and the
     csv module quotes it as RFC 4180 requires."""
     # ``utf-8-sig`` so that Excel recognizes the encoding on a double-click,
     # and ``newline=""`` so that the csv module controls line endings itself.
     with path.open("w", encoding="utf-8-sig", newline="") as handle:
         writer = csv.writer(handle)
-        writer.writerow(["netid", "grade", "feedback"])
+        writer.writerow(["userid", "grade", "feedback"])
         for row in grades:
-            writer.writerow([row.netid, row.grade, row.feedback])
+            writer.writerow([row.userid, row.grade, row.feedback])
 
 
 # Command line
@@ -618,34 +618,37 @@ app = typer.Typer(
 
 
 @app.command(
-    epilog="""Example: git-grade --out grades.csv -- which clones the class
-repository, grades everyone who worked in it since the start date, and writes a
-CSV of netid, grade, and feedback."""
+    epilog="""Example: git-grade --since 2026-10-01 --out grades.csv -- which
+clones the class repository, grades everyone who worked in it since that date,
+and writes a CSV of userid, grade, and feedback."""
 )
 def grade(
-    repo: Annotated[
-        str, typer.Option(help="Class repository to grade: a URL or a path.")
-    ] = DEFAULT_REPO,
+    # Required, so it comes first: a parameter with no default cannot follow
+    # one with a default.
     since: Annotated[
         str,
         typer.Option(
-            help="Grade work committed on or after this date, YYYY-MM-DD. The "
-            "class repository holds previous years of this course."
+            help="Grade everyone who worked on or after this date, YYYY-MM-DD. "
+            "Required. Only commits made in its year or later count as a "
+            "student's own files."
         ),
-    ] = DEFAULT_SINCE,
+    ],
     until: Annotated[
         str,
         typer.Option(
-            help="Grade work committed on or before this date, YYYY-MM-DD, a "
-            "whole day which counts in full. Empty means no end date."
+            help="Grade everyone who worked on or before this date, YYYY-MM-DD, "
+            "a whole day which counts in full. Empty means no end date."
         ),
     ] = DEFAULT_UNTIL,
-    netids: Annotated[
+    repo: Annotated[
+        str, typer.Option(help="Class repository to grade: a URL or a path.")
+    ] = DEFAULT_REPO,
+    userids: Annotated[
         str,
         typer.Option(
-            help="Netids to grade in addition to those found in the "
+            help="Userids to grade in addition to those found in the "
             "repository, comma-separated. Use this for a student who left "
-            "nothing behind and would otherwise have no row."
+            "nothing between the dates and would otherwise have no row."
         ),
     ] = "",
     out: Annotated[Path, typer.Option(help="Where to write the CSV.")] = Path(
@@ -660,17 +663,18 @@ def grade(
 ) -> None:
     """Grade the Git branch-and-merge homework in the class repository.
 
-    Who is graded comes from the repository itself: every netid which pushed a
-    branch or made a merge between --since and --until.
+    Who is graded comes from the repository itself: every userid which pushed a
+    branch or made a merge between --since and --until. What they score does
+    not: each is graded on everything they pushed.
     """
     # Validate the options against each other before cloning, so that a typo
     # costs nothing. `BadParameter` names the offending option and prints the
     # usage line, which a bare message would not.
-    extra = [netid.strip() for netid in netids.split(",") if netid.strip()]
-    repeated = sorted({netid for netid in extra if extra.count(netid) > 1})
+    extra = [userid.strip() for userid in userids.split(",") if userid.strip()]
+    repeated = sorted({userid for userid in extra if extra.count(userid) > 1})
     if repeated:
         raise typer.BadParameter(
-            f"Repeated netid(s): {', '.join(repeated)}.", param_hint="--netids"
+            f"Repeated userid(s): {', '.join(repeated)}.", param_hint="--userids"
         )
     start = read_date(since, "--since")
     # The day `--until` names counts in full, so the window ends when it does.
@@ -692,8 +696,11 @@ def grade(
     typer.echo(
         f"Graded {len(grades)} student(s) in {repo} {window.describe()}:", err=True
     )
+    # A userid is an e-mail address's local part, which can run long, so the
+    # column is as wide as the longest of them.
+    width = max(len(row.userid) for row in grades)
     for row in grades:
-        typer.echo(f"  {row.netid:<10} {row.grade:>4}", err=True)
+        typer.echo(f"  {row.userid:<{width}} {row.grade:>4}", err=True)
     typer.echo(f"  {out}", err=True)
 
 

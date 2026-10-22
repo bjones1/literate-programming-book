@@ -110,21 +110,23 @@ Grading Git homework
 --------------------
 
 `git-grade` grades the assignment specified in
-[chat\_grader.md](../chat_grader.md): a branch named for your netid, two files
+[chat\_grader.md](../chat_grader.md): a branch named for your userid, two files
 committed to it, and a merge of someone else's branch into `main` carrying the
-message `<your netid>: merge branch with main`. It needs no sign-in — the class
-repository is public, and the tool clones it itself.
+message `<your userid>: merge branch with main`. A userid is a student's KBTU
+e-mail address without its `@kbtu.kz` suffix, so `b.jones@kbtu.kz` is `b.jones`.
+It needs no sign-in — the class repository is public, and the tool clones it
+itself.
 
 ```console
-PS> uv run git-grade --out grades.csv
+PS> uv run git-grade --since 2026-10-01 --out grades.csv
 ```
 
-That writes one row per student — `netid`, `grade`, and `feedback`, the feedback
-being the rubric's three lines with their blanks filled in — and prints each
-grade on stderr as it goes. One row, with its feedback shown unquoted:
+That writes one row per student — `userid`, `grade`, and `feedback`, the
+feedback being the rubric's three lines with their blanks filled in — and prints
+each grade on stderr as it goes. One row, with its feedback shown unquoted:
 
 ```
-ewj55,100%,30/30 points -- Branch created with your netid. Commit hash: a01d9899
+ewj55,100%,30/30 points -- Branch created with your userid. Commit hash: a01d9899
            30/30 points (15 points per file) -- Two files committed to this branch. Commit hash(es): a01d9899, a01d9899
            40/40 points -- At least one merge commit exists with the correct commit message. Commit hash: f6fd3bcc
 ```
@@ -137,47 +139,58 @@ Excel, Canvas, and Python's `csv` module all read it back as one field.
 There is no roster to keep. The students are whoever the repository shows
 working between `--since` and `--until`: everyone who pushed a branch whose
 last commit falls in that window, plus everyone a merge in it names in its
-`<netid>: merge branch with main` message, which is the only trace of a student
+`<userid>: merge branch with main` message, which is the only trace of a student
 who merged without ever pushing a branch of their own. Rows come out in
 alphabetical order.
 
-So a term is graded by naming its dates, and a student who joined the class
-late or dropped it needs no editing anywhere:
+So a term is graded by naming its dates — `--since` is required, and leaving
+off `--until` means "up to now" — and a student who joined the class late or
+dropped it needs no editing anywhere:
 
 ```console
-PS> uv run git-grade --since 2026-08-01 --until 2026-12-15 --out grades.csv
+PS> uv run git-grade --since 2026-10-01 --until 2026-10-10 --out grades.csv
 ```
+
+The dates decide *who* is graded, and nothing else. Once found, a student is
+graded on everything they pushed, whenever they pushed it, so a merge made the
+day after `--until` still earns its line. The one date the rubric asks after is
+the year: only commits made this year count as a student's own files, and "this
+year" is the year `--since` falls in.
 
 Two things follow from reading the roster out of the repository rather than
 being told it.
 
-*A branch which is not a netid still gets a row.* Nothing in a class repository
-says which branch names are netids, so `jit45-2`, `my-branch`, and the
+*A branch which is not a userid still gets a row.* Nothing in a class repository
+says which branch names are userids, so `jit45-2`, `my-branch`, and the
 instructor's own branch are all graded as if they were students. Delete those
 rows; that is cheaper than maintaining a roster, and it is how you notice a
-student who pushed a branch under the wrong name.
+student who pushed a branch under the wrong name — `d.smith` for `d_smith`,
+say, which leaves a row for each. A rubric merge does the same when its userid
+is wrong, including when it keeps the assignment's angle brackets: `<d_smith>:
+merge branch with main` names `<d_smith>`, not `d_smith`.
 
 *A student who left nothing behind has no row*, since there is nothing to find
-them by. Name them with `--netids` to grade them anyway — they score 0%, with
-the rubric explaining why:
+them by. Name them with `--userids` to grade them anyway — they score 0%, with
+the rubric explaining why. The same goes for a student whose work all falls
+outside the dates, who is then graded on that work in full:
 
 ```console
-PS> uv run git-grade --netids dbg103,drj228 --out grades.csv
+PS> uv run git-grade --since 2026-10-01 --userids b.jones,a_student --out grades.csv
 ```
 
 ### Options worth knowing
 
 Run `uv run git-grade -h` for the full list.
 
-| Option      | Effect                                                                                                      |
-| ----------- | ----------------------------------------------------------------------------------------------------------- |
-| `--repo`    | What to grade. Defaults to the class repository; a local path works too, which is how the tests drive it.   |
-| `--since`   | Grade work committed on or after this date. Defaults to `2026-08-01`, which keeps previous years out.        |
-| `--until`   | Grade work committed on or before this date, a whole day which counts in full. Defaults to no end date.      |
-| `--netids`  | Netids to grade *in addition to* those found, comma-separated. For students who left nothing behind.         |
-| `--out`     | Where to write the CSV. Defaults to `grades.csv`.                                                           |
-| `--cache`   | Where the mirror clone lives between runs. Defaults to `.grader-cache`.                                     |
-| `-v`        | Print each git command as it runs.                                                                          |
+| Option      | Effect                                                                                                             |
+| ----------- | ------------------------------------------------------------------------------------------------------------------ |
+| `--since`   | Required. Grade everyone who worked on or after this date. Its year is the one whose commits count as files.      |
+| `--until`   | Grade everyone who worked on or before this date, a whole day which counts in full. Defaults to no end date.      |
+| `--userids` | Userids to grade *in addition to* those found, comma-separated. For students who left nothing between the dates. |
+| `--repo`    | What to grade. Defaults to the class repository; a local path works too, which is how the tests drive it.          |
+| `--out`     | Where to write the CSV. Defaults to `grades.csv`.                                                                  |
+| `--cache`   | Where the mirror clone lives between runs. Defaults to `.grader-cache`.                                            |
+| `-v`        | Print each git command as it runs.                                                                                 |
 
 Both dates are whole days in UTC, and both ends are checked before the clone, so
 a window which runs backwards costs nothing:
@@ -195,13 +208,12 @@ round trip however many students are graded. Delete `--cache` to start over.
 Each line of the rubric needs a rule, and two of the three are less obvious than
 they look.
 
-*The branch* must be named exactly the netid, ignoring case, and its tip must
-fall inside the window: `jit45` counts toward `jit45`, `jit45-2` does not. The
-hash reported is the branch tip, since git has no commit which "creates" a
-branch.
+*The branch* must be named exactly the userid, ignoring case: `jit45` counts
+toward `jit45`, `jit45-2` does not. The hash reported is the branch tip, since
+git has no commit which "creates" a branch.
 
 *The two files* are the ones added by the student's own commits: those along
-their branch's own first parent, made since `--since`, and written by whoever
+their branch's own first parent, made this year, and written by whoever
 wrote the branch's most recent ordinary commit. Each of those conditions earns
 its keep against the real repository. "Files not reachable from `main`" would
 score zero for every student who did step 2, since merging your branch into
@@ -213,13 +225,14 @@ their branch was cut. Files that are modified, renamed, or deleted do not count
 this line.
 
 *The merge* must be a merge commit reachable from `main` whose message's first
-line, ignoring case and surrounding whitespace, is `<netid>: merge branch with
+line, ignoring case and surrounding whitespace, is `<userid>: merge branch with
 main`, and which brings in someone else's work. Who a merge belongs to comes
 from that message rather than from its author, since a commit records a person's
-name and not their netid. "Someone else's" is decided by reachability, and by
+name and not their userid. "Someone else's" is decided by reachability, and by
 the commits the merge puts on `main` rather than by the branch it names: a
 commit is the student's own only when their branch can reach it and no other
-student's branch can. So a classmate's branch which this student had already
+student's branch can — every branch but `main` being some student's, whenever
+it was pushed. So a classmate's branch which this student had already
 merged into their own still counts as the classmate's, whether the student then
 merges that branch into `main` or merges their own branch carrying it. A merge
 of a branch holding nothing but the student's own commits earns nothing.
@@ -240,8 +253,8 @@ its three cases all fail during option validation, which happens before sign-in,
 so they never reach the network. For the homework grader, there is no stub at
 all: the tests build a small class repository with git itself — one branch per
 student, a bystander's commit straight to `main`, a branch left over from last
-year, a student known only by the merge they made, and the merges the students
-made — then grade it and check the rubric against real commits. Each of the
+year, a student known only by the merge they made, a userid with a dot in it,
+and the merges the students made — then grade it and check the rubric against real commits. Each of the
 judgment calls described above has a student in that repository whose grade
 depends on it, and the roster the tests check is the one the tool reads back out
 of that repository. For coverage, configured by
@@ -294,11 +307,11 @@ Notes and limits
 * **Unpushed work is invisible.** Step 3 of the assignment carries no points of
   its own for exactly this reason: what was never pushed cannot be graded, and
   so scores zero on every line. It is also why a student who pushed nothing has
-  no row at all until `--netids` names them.
+  no row at all until `--userids` names them.
 * **A branch is placed by its tip.** A student whose branch was last committed
-  to outside the window is neither graded nor found, even if the commits behind
-  that tip fall inside it. Widen the window rather than narrowing it if a grade
-  or a student goes missing.
+  to outside the window is not found, even if the commits behind that tip fall
+  inside it — though once named with `--userids`, they are graded on all of it.
+  Widen the window rather than narrowing it if a student goes missing.
 * **Student data.** Exports contain student names and everything they wrote, and
   `grades.csv` contains grades. The repository's `.gitignore` keeps `.csv` and
   `.json` files, and the mirror clone, out of git; keep it that way.
