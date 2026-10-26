@@ -11,7 +11,7 @@ LLM use
 
 3. Avoid long conversations with the LLM. This reduces reproducibility (see
    item 11) and leads
-   to [context rot](https://www.salesforce.com/artificial-intelligence/ai-context/context-rot/).
+   to [context rot](https://www.salesforce.com/artificial-intelligence/ai-context/context-rot/).
 
 4. Repeatedly review your specification using an LLM until reviews produce
    trivial or contradictory items. After each review, revise the specification
@@ -44,7 +44,7 @@ LLM use
     1. Instruct the LLM to place the resulting view in a Markdown-formatted file
        named (for example) `review.md`.
     2. Take the text of an LLM review and copy it. Create a new, empty file
-       called `review.md`, open it in the CodeChat Editor, then paste the review
+       called `review.md`, open it in the CodeChat Editor, then paste the review
        into the CodeChat Editor Client (the rendered, editable view of the
        file).
 

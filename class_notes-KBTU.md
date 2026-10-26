@@ -5,8 +5,7 @@ Week 7: Saturday, 2026-Oct-24
 -----------------------------
 
 1. Attendance is taken online during the first 10 minutes of each class session.
-   Mark yourself as present! <strong>Attendances requires
-   participation.</strong>
+   Mark yourself as present! **Attendance requires participation.**
 
 2. Homework is due next Friday; see Assignments in the
    [course team](https://teams.cloud.microsoft/l/team/19%3A1zAx6-5JAiMa-lWMwfGS_gCGKl2WS72-A-RtNFHAXkg1%40thread.tacv2/conversations?groupId=4e917b3b-d914-4d2b-807e-c8029802603f\&tenantId=57081b5e-e66a-4993-8eaf-15b0b309293f).
@@ -31,13 +30,16 @@ Week 7: Saturday, 2026-Oct-24
 
 6. Available projects:
 
-   1. [git-hints](https://github.com/bjones1/literate-programming-fall-2024).
+   1. [git-hints](https://github.com/bjones1/literate-programming-fall-2024/tree/git-tool)
+      (see the `git-tool` branch in that repository).
    2. Standardize testing of [htmd](https://github.com/letmutex/htmd) based on
-      round-trip stablility/idempotency.
+      round-trip stability/idempotency (fork
+      [my repo](https://github.com/bjones1/htmd), not upstream).
    3. Add a fuzzer for [htmd](https://github.com/letmutex/htmd) based on
-      round-trip stablility/idempotency.
+      round-trip stability/idempotency.
    4. [dprint-plugin-markdown](https://github.com/dprint/dprint-plugin-markdown)
-      support for:
+      (fork [my repo](https://github.com/bjones1/dprint-plugin-markdown.git),
+      not upstream) support for:
       1. Footnotes
       2. Strikethrough
       3. Task lists
@@ -46,9 +48,9 @@ Week 7: Saturday, 2026-Oct-24
       6. Definition list
       7. Superscript
       8. Subscript
-      9. A `<br>` starts a new line.
+      9. A `<br>` starts a new line
       10. [YAML frontmatter support](https://github.com/dprint/dprint-plugin-markdown/issues/162)
-      11. [Support indentation with tabs](https://github.com/dprint/dprint-plugin-markdown/issues/242) (see
+      11. [Support indentation with tabs](https://github.com/dprint/dprint-plugin-markdown/issues/242) (see
           [Tabs](https://spec.commonmark.org/0.31.2/#tabs) in the CommonMark
           spec and an
           [existing PR](https://github.com/dprint/dprint-plugin-markdown/pull/253))
@@ -58,7 +60,7 @@ Week 7: Saturday, 2026-Oct-24
 
    1. dprint [manual](https://dprint.dev/) and
       [Markdown section](https://dprint.dev/plugins/markdown/) of the manual
-   2. CommonMark [spec](https://spec.commonmark.org/0.31.2/) and
+   2. CommonMark [spec](https://spec.commonmark.org/0.31.2/) and
       [demo](https://spec.commonmark.org/dingus/)
    3. GitHub-flavored markdown [spec](https://github.github.com/gfm/)
    4. Pulldown-cmark
@@ -86,7 +88,7 @@ Week 6: Saturday, 2026-Oct-17
 Week 5: Saturday, 2026-Oct-10
 -----------------------------
 
-> "AI can help you express your opinion. It shouldn’t manufacture one for
+> "AI can help you express your opinion. It shouldn't manufacture one for
 > you." -- [Brian Jenney](https://spectrum.ieee.org/top-engineering-skills)
 
 1. Attendance is taken online during the first 10 minutes of each class session.
@@ -94,9 +96,9 @@ Week 5: Saturday, 2026-Oct-10
 2. Homework is due next Friday; see Assignments in the
    [course team](https://teams.cloud.microsoft/l/team/19%3A1zAx6-5JAiMa-lWMwfGS_gCGKl2WS72-A-RtNFHAXkg1%40thread.tacv2/conversations?groupId=4e917b3b-d914-4d2b-807e-c8029802603f\&tenantId=57081b5e-e66a-4993-8eaf-15b0b309293f).
 3. Questions? Message me on Teams / meet on Teams.
-4. Ensure you're running the newly-released CodeChat Editor 0.3.0.
+4. Ensure you're running the newly released CodeChat Editor 0.3.0.
    1. Check and
-      update:<br>![Image showing the open Extensions panel with the CodeChat Editor selected; the "Update to v0.2.0" text and older version text showing "Version 0.2.4" signals the need for an update.](course_materials/CodeChat_Editor_upgrade.png)
+      update:<br>![Image showing the open Extensions panel with the CodeChat Editor selected; the "Update to v0.3.0" text and older version text showing "Version 0.2.6" signals the need for an update.](course_materials/CodeChat_Editor_upgrade.png)
    2. Close the CodeChat Editor if it's open.
    3. Restart extensions.
    4. Open the CodeChat Editor.
@@ -110,7 +112,7 @@ Week 5: Saturday, 2026-Oct-10
    2. View the following sections of CodeChat Editor manual (`README.md`):
       1. Cross-references
       2. Gathering fragments
-   3. Look at the cache spec under Server / processing.rs section on Cache
+   3. Look at the [CodeChat Editor cache spec](https://github.com/bjones1/CodeChat_Editor/blob/main/server/src/processing/cache-spec.md) under Server / processing.rs section on Cache
       design.
 8. CodeChat Editor features: clone [htmd](https://github.com/letmutex/htmd).
    1. Creating a project.
@@ -129,14 +131,14 @@ Week 4: Saturday, 2026-Oct-03
 -----------------------------
 
 > "Technology and coding are always evolving, so the implementation is not
-> nearly as important as the reasoning behind it." - Justin Gray
+> nearly as important as the reasoning behind it." -- Justin Gray
 
 1. Attendance is taken online during the first 10 minutes of each class session.
    Mark yourself as present!
 2. Homework is due next Friday; see Assignments in the
    [course team](https://teams.cloud.microsoft/l/team/19%3A1zAx6-5JAiMa-lWMwfGS_gCGKl2WS72-A-RtNFHAXkg1%40thread.tacv2/conversations?groupId=4e917b3b-d914-4d2b-807e-c8029802603f\&tenantId=57081b5e-e66a-4993-8eaf-15b0b309293f).
 3. Questions? Message me on Teams / meet on Teams.
-4. Github / Git setup:
+4. GitHub / Git setup:
    1. Create an account on [GitHub](https://github.com/) using your KBTU e-mail.
    2. Add your name and KBTU e-mail to the
       [class list](https://kbtuedu.sharepoint.com/:x:/r/sites/CSDA5101-AdvancedSoftwareParadigms-2026Fall/Shared%20Documents/General/github%20email%20addresses.xlsx?d=w7a632d55de12415abda784409f8fca08\&csf=1\&web=1\&e=t3GYW1).
@@ -158,8 +160,8 @@ Week 3: Saturday, 2026-Sep-26
 -----------------------------
 
 > "The idea is that you do not document programs (after the fact), but write
-> documents that contain the programs."
-> —[John Max Skaller](https://gnosis.cx/publish/programming/charming_python_8.html)
+> documents that contain the programs." --
+> [John Max Skaller](https://gnosis.cx/publish/programming/charming_python_8.html)
 
 1. Homework is due next Friday; see Assignments in the
    [course team](https://teams.cloud.microsoft/l/team/19%3A1zAx6-5JAiMa-lWMwfGS_gCGKl2WS72-A-RtNFHAXkg1%40thread.tacv2/conversations?groupId=4e917b3b-d914-4d2b-807e-c8029802603f\&tenantId=57081b5e-e66a-4993-8eaf-15b0b309293f).
@@ -168,7 +170,7 @@ Week 3: Saturday, 2026-Sep-26
 3. Questions? Message me on Teams / meet on Teams.
 4. [Resources](README.md).
 5. Download the [e-book](https://github.com/bjones1/literate-programming-book).
-6. Start using [Capture](http://3.146.138.182/capture-registration/)! Follow the
+6. Start using [Capture](https://3.146.138.182/capture-registration/)! Follow the
    [setup guide](course_materials/capture-token-setup-guide-KBTU.html). Use a
    class code of `ECE9990`.
 7. Articles:
@@ -209,7 +211,3 @@ Week 1: Monday, 2026-Sep-07
 1. Introductions.
 2. Syllabus review.
 3. What your prompt didn't say.
-
-### In-class exercises
-
-1. A screenshot

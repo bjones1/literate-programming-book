@@ -1,6 +1,18 @@
 MSU class notes
 ===============
 
+Week 10
+-------
+
+### Monday, 2026-Oct-26
+
+1. [Homework](https://canvas.msstate.edu/courses/186065/assignments) - due
+   Sunday! Week 2 of class projects.
+
+2. Enable Capture when using the CodeChat Editor.
+
+3. Discuss [LLM use](LLM-use.md).
+
 Week 9
 ------
 
@@ -33,7 +45,8 @@ Week 9
    2. GitHub-flavored markdown [spec](https://github.github.com/gfm/)
    3. Pulldown-cmark
       [specs](https://pulldown-cmark.github.io/pulldown-cmark/specs.html),
-      [docs](https://docs.rs/pulldown-cmark/0.13.4/pulldown_cmark/index.html), [options](https://docs.rs/pulldown-cmark/0.13.4/pulldown_cmark/struct.Options.html),
+      [docs](https://docs.rs/pulldown-cmark/0.13.4/pulldown_cmark/index.html),
+      [options](https://docs.rs/pulldown-cmark/0.13.4/pulldown_cmark/struct.Options.html),
       and [demo](https://markdown.fastlylabs.com/):
       1. Footnotes (sbe80)
       2. Strikethrough (drj228)
@@ -75,7 +88,7 @@ Week 8
 3. Article:
    [Investigating unintended model actions in our evaluations and internal use](https://www.anthropic.com/research/investigating-unintended-model-actions).
 4. Spec design for
-   [git-hint](https://github.com/bjones1/literate-programming-fall-2024), on the
+   [git-hints](https://github.com/bjones1/literate-programming-fall-2024), on the
    `git-tool` branch.
 5. Dev notes: recent
    [CodeChat Editor](https://github.com/bjones1/CodeChat_Editor) features.
@@ -102,7 +115,7 @@ Week 7
    Sunday! Will be released after today's class.
 2. Enable Capture when using the CodeChat Editor.
 3. Spec design for
-   [git-hint](https://github.com/bjones1/literate-programming-fall-2024), on the
+   [git-hints](https://github.com/bjones1/literate-programming-fall-2024), on the
    `git-tool` branch.
 
 Week 6
@@ -114,7 +127,7 @@ Week 6
    Sunday! Will be released after today's class.
 2. Enable Capture when using the CodeChat Editor.
 3. Spec design for
-   [git-hint](https://github.com/bjones1/literate-programming-fall-2024), on the
+   [git-hints](https://github.com/bjones1/literate-programming-fall-2024), on the
    `git-tool` branch.
 
 Week 5
@@ -132,7 +145,7 @@ Week 5
 3. [3 Skills That Will Matter More in the Age of AI](https://spectrum.ieee.org/top-engineering-skills)
 4. Enable Capture when using the CodeChat Editor.
 5. Spec design for
-   [git-hint](https://github.com/bjones1/literate-programming-fall-2024), on the
+   [git-hints](https://github.com/bjones1/literate-programming-fall-2024), on the
    `git-tool` branch
    1. Review current input.
    2. Testing.
@@ -145,7 +158,7 @@ Week 5
       ([draw.io](https://draw.io/),
       [Mermaid](https://www.mermaidonline.live/editor)
       ([state diagram docs](https://mermaid.ai/open-source/syntax/stateDiagram.html)),
-      [GraphViz](https://dreampuf.github.io/GraphvizOnline/),
+      [GraphViz](https://dreampuf.github.io/GraphvizOnline/)
       ([FSM docs](https://graphviz.org/Gallery/directed/fsm.html)), etc.)
 
 ### Wednesday, 2026-Sep-23
@@ -155,7 +168,7 @@ Week 5
 2. Dev notes -- [pnpm issue triage](https://github.com/pnpm/pnpm/issues).
 3. Enable Capture when using the CodeChat Editor.
 4. Spec design for
-   [git-hint](https://github.com/bjones1/literate-programming-fall-2024), on the
+   [git-hints](https://github.com/bjones1/literate-programming-fall-2024), on the
    `git-tool` branch.
 
 ### Monday, 2026-Sep-21
@@ -172,14 +185,14 @@ Week 5
       [LLVM](https://discourse.llvm.org/t/rfc-llvm-ai-tool-policy-human-in-the-loop/89159#p-355841-llvm-ai-tool-use-policy-1)
       (require human review)
    3. Higher standard - Rust
-      ([explanation](https://blog.rust-lang.org/inside-rust/2026/08/05/rust-langrust-is-adopting-an-llm-policy/)),
-      ([policy](https://forge.rust-lang.org/policies/llm-usage.html))
+      ([explanation](https://blog.rust-lang.org/inside-rust/2026/08/05/rust-langrust-is-adopting-an-llm-policy/),
+      [policy](https://forge.rust-lang.org/policies/llm-usage.html))
    4. Just a tool --
       [Linux](https://lore.kernel.org/linux-media/CAHk-=wi4zC+Ze8e+p3tMv8TtG_80KzsZ1syL9anBtmEh5Z40vg@mail.gmail.com/)
 5. CodeChat Editor [manual](course_materials/CodeChat-Editor-manual.md). To
    create a CodeChat Editor project, simply add a `toc.md`.
 6. Spec design for
-   [git-hint](https://github.com/bjones1/literate-programming-fall-2024), on the
+   [git-hints](https://github.com/bjones1/literate-programming-fall-2024), on the
    `git-tool` branch.
    1. Brainstorm several hints in each category.
    2. Generalize these to principles.
@@ -203,7 +216,7 @@ Week 4
    extension.
 5. CodeChat Editor [manual](course_materials/CodeChat-Editor-manual.md).
 6. Spec design for
-   [git-hint](https://github.com/bjones1/literate-programming-fall-2024), on the
+   [git-hints](https://github.com/bjones1/literate-programming-fall-2024), on the
    `git-tool` branch.
 
 ### Wednesday, 2026-Sep-16
@@ -223,7 +236,7 @@ Week 4
    1. Tetris, maybe with Git
    2. Pong, with ?
    3. Hints utility for CLI Git
-      1. If files are changes, wait bit, then pop up a note: need to stage?
+      1. If files are changed, wait a bit, then pop up a note: need to stage?
       2. Have highlighted/hyperlinked items with links to definitions. Hover
          summary, click for deep info.
    4. Game day parking, game day tailgating? Open spots, where people are, etc.
@@ -311,7 +324,7 @@ Week 2
    message me on Teams.
 2. The origins of literate programming: (TODO: add a summary image for each)
    1. Knuth introduced the idea of writing for a person. Literate source code is
-      ordered topically; weave typesets it as HTML/PDF, while while reorders it
+      ordered topically; weave typesets it as HTML/PDF, while tangle reorders it
       to conform to compiler requirements. Used TeX along with somewhat cryptic
       markup. Spawned many follow-up tools; rarely adopted.
    2. Documentation generators provide markup in comments, allowing
