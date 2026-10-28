@@ -4,17 +4,17 @@
 
 The purpose of writing a specification is to come to a deeper understanding of
 the problem you're solving. Take time to step back, think about the overall
-approach, re-read the specification, and find unique solutions.
+approach, re-read the specification, and find creative solutions.
 
 LLM use
 -------
 
 1. Keep prompts short: "Review this specification" or "Implement this
-   specification."
+   specification." Complexity belongs in the specification, not the prompt.
 2. Start a new session when providing a prompt of this type; this helps avoid
    [context rot](https://www.salesforce.com/artificial-intelligence/ai-context/context-rot/).
 3. Avoid long conversations with the LLM; they reduce reproducibility (see
-   [item 11](#cc-0VeK0e9v8J)) and lead to
+   [item 2 of iterative implementation](#cc-0VeK0e9v8J)) and lead to
    [context rot](https://www.salesforce.com/artificial-intelligence/ai-context/context-rot/).
 
 ### Setup
@@ -34,12 +34,11 @@ LLM use
 
 1. Repeatedly review your specification using an LLM until reviews produce
    trivial or contradictory items. After each review, revise the specification
-   manually. Per item 2, always begin a new session with each review.
+   manually. Per LLM use item 2, always begin a new session with each review.
 
-2. Be concise; use only the minimum of prose needed to fully define the desired
-   behavior. In general, allowing LLMs to perform significant revisions produces
-   a bloated, overspecified result. Review and manually edit any LLM-based edits
-   to your specification.
+2. Avoid large LLM edits; in general, allowing LLMs to perform significant
+   revisions produces a bloated, overspecified result. Review and manually edit
+   any LLM-based edits to your specification.
 
 3. Ask the LLM to focus on short sections of a specification when reviewing or
    implementing: "Review the section titled 'Task lists' of spec.md". Asking for
@@ -58,6 +57,9 @@ LLM use
 
    As you address each point in the review, delete it in the Client or format it
    using strikethrough to keep track of which issues remain.
+
+5. Verify API, links, and citations suggested by the LLM to avoid hallucinated
+   references.
 
 ### Iterative implementation
 
@@ -80,9 +82,8 @@ Be careful what information you disclose or provide to LLMs:
 
 1. Don't put sensitive or confidential information into prompts or files your
    LLM reads. LLM agents usually have access to all files in your project.
-2. Ask the LLM to review only information yur trust; see
+2. Ask the LLM to review only information you trust; see
    [Simon Willison: The lethal trifecta for AI agents](https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/).
-3. Ensure that the LLM didn't weaken, skip, or rewrite tests to make them pass.
 
 Git
 ---
@@ -98,8 +99,8 @@ Git
    add a line such as `Co-Authored-By: <model name>
    <noreply@llm-company-address.com>` to your commits, pull requests, comments,
    etc.
-5. Ask the LLM to commit changes after it makes edits. It usually writes a
-   helpful commit message.
+5. Ask the LLM to commit changes after finishing an iterative implementation. It
+   usually writes a helpful commit message.
 6. Ask the LLM to resolve merge or rebase conflicts. Review the results; LLMs
    can drop part of a conflict as a "resolution."
 7. If a series of LLM interactions produces a large number of changes, ask the
@@ -110,30 +111,32 @@ Specification design
 
 1. Record your ideas in a specification or set of design requirements, formatted
    in Markdown.
-2. When composing the specification, consider: What is the purpose of this code?
+2. Be concise; use only the minimum of prose needed to fully define the desired
+   behavior.
+3. When composing the specification, consider: What is the purpose of this code?
    How can it best be expressed or explained?
-3. Use pseudocode, block diagrams, flowcharts, truth tables, etc. to visually
-   capture your idea. See guideslines on [diagrams](#cc-M8IRskMnku),
+4. Use pseudocode, block diagrams, flowcharts, truth tables, etc. to visually
+   capture your idea. See guidelines on [diagrams](#cc-M8IRskMnku),
    [equations, and tables](#cc-zoUcUJXRmm).
-4. Write down the expected inputs, expected outputs, and record an approach to
+5. Write down the expected inputs, expected outputs, and record an approach to
    produce the desired outputs from the provided inputs.
-5. Anticipate any corner cases or problems your approach must correctly handle.
-6. Include hyperlinks to relevant specifications, API documentation, etc. This
+6. Anticipate any corner cases or problems your approach must correctly handle.
+7. Include hyperlinks to relevant specifications, API documentation, etc. This
    improves LLM reasoning and context.
-7. Update the approach you sketched out as you learn what works (and doesn't)
+8. Update the approach you sketched out as you learn what works (and doesn't)
    through the implementation process.
-8. Add additional explanation for any pieces of code that took significant
-   development or debug time, or which contain difficult-to-understand code.
-9. If the code becomes long or complex, re-consider your approach: would
-   dropping features or relaxing constraints help simplify the resulting
-   implementation?
-10. Define data structures as part of the design. For example, the CodeChat
+9. Include explanation for any pieces of code that took significant development
+   or debug time, or which contain difficult-to-understand code.
+10. If the code becomes long or complex, re-consider your approach: would
+    dropping features or relaxing constraints help simplify the resulting
+    implementation?
+11. Define data structures as part of the design. For example, the CodeChat
     Editor's
     [cache design](https://github.com/bjones1/CodeChat_Editor/blob/main/server/src/processing/cache.rs)
     is heavily structured by this approach.
-11. Where possible, avoid OS-specific and language-specific details in a
-    specification. When necessary, place this in an implementation section.
-12. Additional resources:
+12. Where possible, avoid OS-specific and language-specific details in a
+    specification. When necessary, place these in an implementation section.
+13. Additional resources:
     [A practical guide to writing technical specs](https://stackoverflow.blog/2020/04/06/a-practical-guide-to-writing-technical-specs/).
 
 Testing
@@ -147,6 +150,7 @@ Testing
 3. Verify that when the LLM implements a specification, it also implements tests
    defined in the spec; verify that it runs existing tests before completing an
    implementation.
+4. Ensure that the LLM didn't weaken, skip, or rewrite tests to make them pass.
 
 CodeChat Editor guidelines
 --------------------------
@@ -205,7 +209,10 @@ improves the authoring process. Recommended settings:
    [VS Code](https://code.visualstudio.com/docs/editing/codebasics#_save-auto-save)
 4. Enable auto-reload (enabled by default in VS Code)
 5. On save, remove trailing whitespace:
-   [VS Code](https://stackoverflow.com/a/53663494/16038919)
+   [VS Code](https://stackoverflow.com/a/53663494/16038919). Note that two
+   trailing spaces indicates a hard line break in Markdown, which trailing
+   whitespace remove would delete. Always write hard line breaks in Markdown as
+   `<br>`.
 6. Use a spell checker:
    [VS Code](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker)
 7. On a big monitor, place your IDE side by side with the CodeChat Editor.

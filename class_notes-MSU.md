@@ -43,7 +43,8 @@ Week 9
    1. CommonMark [spec](https://spec.commonmark.org/0.31.2/) and
       [demo](https://spec.commonmark.org/dingus/)
    2. GitHub-flavored markdown [spec](https://github.github.com/gfm/)
-   3. Pulldown-cmark
+   3. [Markdown guide](https://www.markdownguide.org/); see the [Extended Syntax](https://www.markdownguide.org/extended-syntax/) for many of the items below.
+   4. Pulldown-cmark
       [specs](https://pulldown-cmark.github.io/pulldown-cmark/specs.html),
       [docs](https://docs.rs/pulldown-cmark/0.13.4/pulldown_cmark/index.html),
       [options](https://docs.rs/pulldown-cmark/0.13.4/pulldown_cmark/struct.Options.html),
