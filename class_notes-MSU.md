@@ -1,6 +1,62 @@
 MSU class notes
 ===============
 
+Week 11
+-------
+
+### Monday, 2026-Nov-02
+
+1. [Homework](https://canvas.msstate.edu/courses/186065/assignments) - due
+   Sunday! Week 1 of class projects. Collaborate with international partners.
+
+2. Enable Capture when using the CodeChat Editor.
+
+3. Article:
+   [Recursive self-improvement](https://www.wsj.com/tech/ai/ai-anthropic-rsi-recursive-self-improvement-bff4e815).
+
+4. Discuss [LLM use](LLM-use.md).
+
+5. Available projects:
+
+   1. [git-hints](https://github.com/bjones1/literate-programming-fall-2024/tree/git-tool)
+      (see the `git-tool` branch in that repository).
+   2. Standardize testing of [htmd](https://github.com/letmutex/htmd) based on
+      round-trip stability/idempotency (fork
+      [my repo](https://github.com/bjones1/htmd), not upstream).
+   3. Add a fuzzer for [htmd](https://github.com/letmutex/htmd) based on
+      round-trip stability/idempotency.
+   4. Create a pulldown-cmark / htmd live demo: like the
+      CommonMark [demo](https://markdown.fastlylabs.com/), but allows HTML to
+      Markdown or Markdown to HTML. Use the Rust
+      [Leptos framework](https://leptos.dev/),
+      [client-side rendering](https://book.leptos.dev/getting_started/index.html).
+   5. [dprint-plugin-markdown](https://github.com/dprint/dprint-plugin-markdown)
+      (fork [my repo](https://github.com/bjones1/dprint-plugin-markdown.git),
+      not upstream) support for:
+      1. Smart punctuation
+      2. Heading attributes
+      3. Superscript
+      4. Subscript
+      5. A `<br>` starts a new line
+      6. [Support indentation with tabs](https://github.com/dprint/dprint-plugin-markdown/issues/242)
+         (see [Tabs](https://spec.commonmark.org/0.31.2/#tabs) in the CommonMark
+         spec and an
+         [existing PR](https://github.com/dprint/dprint-plugin-markdown/pull/253))
+      7. [Add a fuzzer](https://github.com/dprint/dprint-plugin-markdown/pull/166)
+
+   Resources:
+
+   1. dprint [manual](https://dprint.dev/) and
+      [Markdown section](https://dprint.dev/plugins/markdown/) of the manual
+   2. CommonMark [spec](https://spec.commonmark.org/0.31.2/) and
+      [demo](https://spec.commonmark.org/dingus/)
+   3. GitHub-flavored markdown [spec](https://github.github.com/gfm/)
+   4. Pulldown-cmark
+      [specs](https://pulldown-cmark.github.io/pulldown-cmark/specs.html),
+      [docs](https://docs.rs/pulldown-cmark/0.13.4/pulldown_cmark/index.html),
+      [options](https://docs.rs/pulldown-cmark/0.13.4/pulldown_cmark/struct.Options.html),
+      and [demo](https://markdown.fastlylabs.com/)
+
 Week 10
 -------
 
@@ -8,9 +64,7 @@ Week 10
 
 1. [Homework](https://canvas.msstate.edu/courses/186065/assignments) - due
    Sunday! Week 2 of class projects.
-
 2. Enable Capture when using the CodeChat Editor.
-
 3. Discuss [LLM use](LLM-use.md).
 
 Week 9
@@ -43,7 +97,9 @@ Week 9
    1. CommonMark [spec](https://spec.commonmark.org/0.31.2/) and
       [demo](https://spec.commonmark.org/dingus/)
    2. GitHub-flavored markdown [spec](https://github.github.com/gfm/)
-   3. [Markdown guide](https://www.markdownguide.org/); see the [Extended Syntax](https://www.markdownguide.org/extended-syntax/) for many of the items below.
+   3. [Markdown guide](https://www.markdownguide.org/); see the
+      [Extended Syntax](https://www.markdownguide.org/extended-syntax/) for many
+      of the items below.
    4. Pulldown-cmark
       [specs](https://pulldown-cmark.github.io/pulldown-cmark/specs.html),
       [docs](https://docs.rs/pulldown-cmark/0.13.4/pulldown_cmark/index.html),
@@ -89,8 +145,8 @@ Week 8
 3. Article:
    [Investigating unintended model actions in our evaluations and internal use](https://www.anthropic.com/research/investigating-unintended-model-actions).
 4. Spec design for
-   [git-hints](https://github.com/bjones1/literate-programming-fall-2024), on the
-   `git-tool` branch.
+   [git-hints](https://github.com/bjones1/literate-programming-fall-2024), on
+   the `git-tool` branch.
 5. Dev notes: recent
    [CodeChat Editor](https://github.com/bjones1/CodeChat_Editor) features.
    1. Clone this repo.
@@ -116,8 +172,8 @@ Week 7
    Sunday! Will be released after today's class.
 2. Enable Capture when using the CodeChat Editor.
 3. Spec design for
-   [git-hints](https://github.com/bjones1/literate-programming-fall-2024), on the
-   `git-tool` branch.
+   [git-hints](https://github.com/bjones1/literate-programming-fall-2024), on
+   the `git-tool` branch.
 
 Week 6
 ------
@@ -128,8 +184,8 @@ Week 6
    Sunday! Will be released after today's class.
 2. Enable Capture when using the CodeChat Editor.
 3. Spec design for
-   [git-hints](https://github.com/bjones1/literate-programming-fall-2024), on the
-   `git-tool` branch.
+   [git-hints](https://github.com/bjones1/literate-programming-fall-2024), on
+   the `git-tool` branch.
 
 Week 5
 ------
@@ -146,8 +202,8 @@ Week 5
 3. [3 Skills That Will Matter More in the Age of AI](https://spectrum.ieee.org/top-engineering-skills)
 4. Enable Capture when using the CodeChat Editor.
 5. Spec design for
-   [git-hints](https://github.com/bjones1/literate-programming-fall-2024), on the
-   `git-tool` branch
+   [git-hints](https://github.com/bjones1/literate-programming-fall-2024), on
+   the `git-tool` branch
    1. Review current input.
    2. Testing.
 6. Spec design for converting HTML to
@@ -169,8 +225,8 @@ Week 5
 2. Dev notes -- [pnpm issue triage](https://github.com/pnpm/pnpm/issues).
 3. Enable Capture when using the CodeChat Editor.
 4. Spec design for
-   [git-hints](https://github.com/bjones1/literate-programming-fall-2024), on the
-   `git-tool` branch.
+   [git-hints](https://github.com/bjones1/literate-programming-fall-2024), on
+   the `git-tool` branch.
 
 ### Monday, 2026-Sep-21
 
@@ -193,8 +249,8 @@ Week 5
 5. CodeChat Editor [manual](course_materials/CodeChat-Editor-manual.md). To
    create a CodeChat Editor project, simply add a `toc.md`.
 6. Spec design for
-   [git-hints](https://github.com/bjones1/literate-programming-fall-2024), on the
-   `git-tool` branch.
+   [git-hints](https://github.com/bjones1/literate-programming-fall-2024), on
+   the `git-tool` branch.
    1. Brainstorm several hints in each category.
    2. Generalize these to principles.
    3. Develop an overall architecture.
@@ -217,8 +273,8 @@ Week 4
    extension.
 5. CodeChat Editor [manual](course_materials/CodeChat-Editor-manual.md).
 6. Spec design for
-   [git-hints](https://github.com/bjones1/literate-programming-fall-2024), on the
-   `git-tool` branch.
+   [git-hints](https://github.com/bjones1/literate-programming-fall-2024), on
+   the `git-tool` branch.
 
 ### Wednesday, 2026-Sep-16
 

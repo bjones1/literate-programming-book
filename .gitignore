@@ -36,4 +36,7 @@ grader/.grader-cache/
 grader/*.csv
 grader/*.json
 
+# LLM reviews.
+review.md
+
 # CodeChat Editor lexer: python.

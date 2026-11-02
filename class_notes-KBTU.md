@@ -5,7 +5,7 @@ Week 7: Saturday, 2026-Oct-24
 -----------------------------
 
 1. Attendance is taken online during the first 10 minutes of each class session.
-   Mark yourself as present! **Attendance requires participation.**
+   Mark yourself as present! <strong>Attendance requires participation.</strong>
 
 2. Homework is due next Friday; see Assignments in the
    [course team](https://teams.cloud.microsoft/l/team/19%3A1zAx6-5JAiMa-lWMwfGS_gCGKl2WS72-A-RtNFHAXkg1%40thread.tacv2/conversations?groupId=4e917b3b-d914-4d2b-807e-c8029802603f\&tenantId=57081b5e-e66a-4993-8eaf-15b0b309293f).
@@ -37,24 +37,24 @@ Week 7: Saturday, 2026-Oct-24
       [my repo](https://github.com/bjones1/htmd), not upstream).
    3. Add a fuzzer for [htmd](https://github.com/letmutex/htmd) based on
       round-trip stability/idempotency.
-   4. [dprint-plugin-markdown](https://github.com/dprint/dprint-plugin-markdown)
+   4. Create a pulldown-cmark / htmd live demo: like the
+      CommonMark [demo](https://markdown.fastlylabs.com/), but allows HTML to
+      Markdown or Markdown to HTML. Use the Rust
+      [Leptos framework](https://leptos.dev/),
+      [client-side rendering](https://book.leptos.dev/getting_started/index.html).
+   5. [dprint-plugin-markdown](https://github.com/dprint/dprint-plugin-markdown)
       (fork [my repo](https://github.com/bjones1/dprint-plugin-markdown.git),
       not upstream) support for:
-      1. Footnotes
-      2. Strikethrough
-      3. Task lists
-      4. Smart punctuation
-      5. Heading attributes
-      6. Definition list
-      7. Superscript
-      8. Subscript
-      9. A `<br>` starts a new line
-      10. [YAML frontmatter support](https://github.com/dprint/dprint-plugin-markdown/issues/162)
-      11. [Support indentation with tabs](https://github.com/dprint/dprint-plugin-markdown/issues/242) (see
-          [Tabs](https://spec.commonmark.org/0.31.2/#tabs) in the CommonMark
-          spec and an
-          [existing PR](https://github.com/dprint/dprint-plugin-markdown/pull/253))
-      12. [Add a fuzzer](https://github.com/dprint/dprint-plugin-markdown/pull/166)
+      1. Smart punctuation
+      2. Heading attributes
+      3. Superscript
+      4. Subscript
+      5. A `<br>` starts a new line
+      6. [Support indentation with tabs](https://github.com/dprint/dprint-plugin-markdown/issues/242)
+         (see [Tabs](https://spec.commonmark.org/0.31.2/#tabs) in the CommonMark
+         spec and an
+         [existing PR](https://github.com/dprint/dprint-plugin-markdown/pull/253))
+      7. [Add a fuzzer](https://github.com/dprint/dprint-plugin-markdown/pull/166)
 
    Resources:
 
@@ -112,8 +112,9 @@ Week 5: Saturday, 2026-Oct-10
    2. View the following sections of CodeChat Editor manual (`README.md`):
       1. Cross-references
       2. Gathering fragments
-   3. Look at the [CodeChat Editor cache spec](https://github.com/bjones1/CodeChat_Editor/blob/main/server/src/processing/cache-spec.md) under Server / processing.rs section on Cache
-      design.
+   3. Look at the
+      [CodeChat Editor cache spec](https://github.com/bjones1/CodeChat_Editor/blob/main/server/src/processing/cache-spec.md)
+      under Server / processing.rs section on Cache design.
 8. CodeChat Editor features: clone [htmd](https://github.com/letmutex/htmd).
    1. Creating a project.
    2. Adding entries to the table of contents.
@@ -170,9 +171,9 @@ Week 3: Saturday, 2026-Sep-26
 3. Questions? Message me on Teams / meet on Teams.
 4. [Resources](README.md).
 5. Download the [e-book](https://github.com/bjones1/literate-programming-book).
-6. Start using [Capture](https://3.146.138.182/capture-registration/)! Follow the
-   [setup guide](course_materials/capture-token-setup-guide-KBTU.html). Use a
-   class code of `ECE9990`.
+6. Start using [Capture](https://3.146.138.182/capture-registration/)! Follow
+   the [setup guide](course_materials/capture-token-setup-guide-KBTU.html). Use
+   a class code of `ECE9990`.
 7. Articles:
    1. [AI coding article](https://spectrum.ieee.org/ai-code-review-software-engineers) -
       spec writing is central. See "AI Agents in Code Review Workflows" section.
