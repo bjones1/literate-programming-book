@@ -20,42 +20,60 @@ Week 11
 
    1. [git-hints](https://github.com/bjones1/literate-programming-fall-2024/tree/git-tool)
       (see the `git-tool` branch in that repository).
-   2. Standardize testing of [htmd](https://github.com/letmutex/htmd) based on
-      round-trip stability/idempotency (fork
-      [my repo](https://github.com/bjones1/htmd), not upstream).
-   3. Add a fuzzer for [htmd](https://github.com/letmutex/htmd) based on
-      round-trip stability/idempotency.
-   4. Create a pulldown-cmark / htmd live demo: like the
-      CommonMark [demo](https://markdown.fastlylabs.com/), but allows HTML to
-      Markdown or Markdown to HTML. Use the Rust
-      [Leptos framework](https://leptos.dev/),
-      [client-side rendering](https://book.leptos.dev/getting_started/index.html).
-   5. [dprint-plugin-markdown](https://github.com/dprint/dprint-plugin-markdown)
+
+   2. Add capabilities to [htmd](https://github.com/letmutex/htmd):
+
+      1. Standardize testing of [htmd](https://github.com/letmutex/htmd) based
+         on round-trip stability/idempotency (fork
+         [my repo](https://github.com/bjones1/htmd), not upstream).
+      2. Add a fuzzer for [htmd](https://github.com/letmutex/htmd) based on
+         round-trip stability/idempotency.
+      3. Add support for subscript.
+      4. Create a pulldown-cmark / htmd live demo: like the
+         CommonMark [demo](https://markdown.fastlylabs.com/), but allows HTML to
+         Markdown or Markdown to HTML. Use the Rust
+         [Leptos framework](https://leptos.dev/),
+         [client-side rendering](https://book.leptos.dev/getting_started/index.html).
+
+      Resources:
+
+      * CommonMark [spec](https://spec.commonmark.org/0.31.2/) and
+        [demo](https://spec.commonmark.org/dingus/)
+      * GitHub-flavored markdown [spec](https://github.github.com/gfm/)
+      * [Markdown guide](https://www.markdownguide.org/); see the
+        [Extended Syntax](https://www.markdownguide.org/extended-syntax/) for
+        many of the items below.
+      * Pulldown-cmark
+        [specs](https://pulldown-cmark.github.io/pulldown-cmark/specs.html),
+        [docs](https://docs.rs/pulldown-cmark/0.13.4/pulldown_cmark/index.html),
+        [options](https://docs.rs/pulldown-cmark/0.13.4/pulldown_cmark/struct.Options.html),
+        and [demo](https://markdown.fastlylabs.com/).
+   3. [dprint-plugin-markdown](https://github.com/dprint/dprint-plugin-markdown)
       (fork [my repo](https://github.com/bjones1/dprint-plugin-markdown.git),
       not upstream) support for:
-      1. Smart punctuation
-      2. Heading attributes
-      3. Superscript
-      4. Subscript
-      5. A `<br>` starts a new line
-      6. [Support indentation with tabs](https://github.com/dprint/dprint-plugin-markdown/issues/242)
+
+      1. Heading attributes
+      2. Superscript
+      3. Subscript
+      4. A `<br>` starts a new line
+      5. [Support indentation with tabs](https://github.com/dprint/dprint-plugin-markdown/issues/242)
          (see [Tabs](https://spec.commonmark.org/0.31.2/#tabs) in the CommonMark
          spec and an
          [existing PR](https://github.com/dprint/dprint-plugin-markdown/pull/253))
-      7. [Add a fuzzer](https://github.com/dprint/dprint-plugin-markdown/pull/166)
+      6. [Add a fuzzer](https://github.com/dprint/dprint-plugin-markdown/pull/166)
 
-   Resources:
+      Resources:
 
-   1. dprint [manual](https://dprint.dev/) and
-      [Markdown section](https://dprint.dev/plugins/markdown/) of the manual
-   2. CommonMark [spec](https://spec.commonmark.org/0.31.2/) and
-      [demo](https://spec.commonmark.org/dingus/)
-   3. GitHub-flavored markdown [spec](https://github.github.com/gfm/)
-   4. Pulldown-cmark
-      [specs](https://pulldown-cmark.github.io/pulldown-cmark/specs.html),
-      [docs](https://docs.rs/pulldown-cmark/0.13.4/pulldown_cmark/index.html),
-      [options](https://docs.rs/pulldown-cmark/0.13.4/pulldown_cmark/struct.Options.html),
-      and [demo](https://markdown.fastlylabs.com/)
+      * dprint [manual](https://dprint.dev/) and
+        [Markdown section](https://dprint.dev/plugins/markdown/) of the manual
+      * CommonMark [spec](https://spec.commonmark.org/0.31.2/) and
+        [demo](https://spec.commonmark.org/dingus/)
+      * GitHub-flavored markdown [spec](https://github.github.com/gfm/)
+      * Pulldown-cmark
+        [specs](https://pulldown-cmark.github.io/pulldown-cmark/specs.html),
+        [docs](https://docs.rs/pulldown-cmark/0.13.4/pulldown_cmark/index.html),
+        [options](https://docs.rs/pulldown-cmark/0.13.4/pulldown_cmark/struct.Options.html),
+        and [demo](https://markdown.fastlylabs.com/)
 
 Week 10
 -------

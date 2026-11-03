@@ -1,6 +1,49 @@
 KBTU class notes
 ================
 
+Week 8
+------
+
+Class was canceled due to conflicts with an exam in another class.
+
+1. Work on your assigned [project](project_2_draft.md).
+
+2. Schedule for the remainder of the semester:
+
+   | Week | Date   | Topic         |
+   | ---- | ------ | ------------- |
+   | 8    | 31-Oct | Project 1     |
+   | 9    | 7-Nov  | Project 1     |
+   | 10   | 14-Nov | Project 2     |
+   | 11   | 21-Nov | Project 2     |
+   | 12   | 28-Nov | Project 2     |
+   | 13   | 5-Dec  | Final project |
+   | 14   | 12-Dec | Final project |
+   | 15   | 19-Dec | Final project |
+
+3. Projects: add capabilities to [htmd](https://github.com/letmutex/htmd).
+   Resources:
+
+   1. CommonMark [spec](https://spec.commonmark.org/0.31.2/) and
+      [demo](https://spec.commonmark.org/dingus/)
+   2. GitHub-flavored markdown [spec](https://github.github.com/gfm/)
+   3. [Markdown guide](https://www.markdownguide.org/); see the
+      [Extended Syntax](https://www.markdownguide.org/extended-syntax/) for many
+      of the items below.
+   4. Pulldown-cmark
+      [specs](https://pulldown-cmark.github.io/pulldown-cmark/specs.html),
+      [docs](https://docs.rs/pulldown-cmark/0.13.4/pulldown_cmark/index.html),
+      [options](https://docs.rs/pulldown-cmark/0.13.4/pulldown_cmark/struct.Options.html),
+      and [demo](https://markdown.fastlylabs.com/):
+      1. Footnotes (sbe80)
+      2. Strikethrough (drj228)
+      3. Task lists (raf322)
+      4. Smart punctuation (ams2083)
+      5. Heading attributes (jhg246)
+      6. Definition list (jit45)
+      7. Superscript (ewj55)
+      8. Subscript
+
 Week 7: Saturday, 2026-Oct-24
 -----------------------------
 
