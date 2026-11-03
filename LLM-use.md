@@ -5,8 +5,8 @@
 The purpose of writing a specification is to come to a deeper understanding of
 the problem you're solving. Take time to step back, think about the overall
 approach, re-read the specification, and find creative solutions. The
-specification is the LLM's primary input; a well-written specification produces
-a good implementation.
+specification is the LLM's primary input; a well-written specification is the
+foundation for a good implementation.
 
 Specification design
 --------------------
@@ -25,18 +25,14 @@ Specification design
 6. Anticipate any corner cases or problems your approach must correctly handle.
 7. Include hyperlinks to relevant specifications, API documentation, etc. This
    improves LLM reasoning and context.
-8. Update the approach you sketched out as you learn what works (and doesn't
-   work) through the implementation process.
-9. Explain any code that took significant development or debugging time, or that
-   is difficult to understand.
-10. If the code becomes long or complex, re-consider your approach: would
-    dropping features or relaxing constraints help simplify the resulting
-    implementation?
-11. Define data structures as part of the design. For example, the CodeChat
-    Editor's
-    [cache design](https://github.com/bjones1/CodeChat_Editor/blob/main/server/src/processing/cache.rs)
-    is heavily structured by this approach.
-12. Where possible, avoid OS-specific and language-specific details in a
+8. If the code becomes long or complex, re-consider your approach: would
+   dropping features or relaxing constraints help simplify the resulting
+   implementation?
+9. Define data structures as part of the design. For example, the CodeChat
+   Editor's
+   [cache design](https://github.com/bjones1/CodeChat_Editor/blob/main/server/src/processing/cache.rs)
+   is heavily structured by this approach.
+10. Where possible, avoid OS-specific and language-specific details in a
     specification. When necessary, place these in an implementation section.
 
 Additional resources:
@@ -48,13 +44,17 @@ LLM use
 
 ### Setup
 
-1. Provide context for LLMs: Avoid web use of LLMs for software development.
-   Instead, use an IDE plugin, or the desktop/CLI app run from your project's
-   root folder, so the LLM can see all project files.
-2. Use a paid, high-quality model at high effort levels when possible. The
+1. Provide context for LLMs: Avoid browser-based chat interfaces for software
+   development. Instead, use an IDE plugin, or the desktop/CLI app run from your
+   project's root folder, so the LLM can see all project files, compile and run
+   tests, etc.
+2. <a id="cc-Rk4wTz8NqB"></a>Install the relevant compiler and tools. LLMs need
+   to run tests, throwaway probes, etc. Use a short prompt: "Verify that you can
+   build the project in the current git repo and run its tests."
+3. Use a paid, high-quality model at high effort levels when possible. The
    quality difference between low-quality and high-quality models is large and
    directly impacts review and implementation quality.
-3. Develop an `AGENTS.md` file for each project to enforce project development
+4. Develop an `AGENTS.md` file for each project to enforce project development
    guidelines. For an example, see the CodeChat Editor's
    [`AGENTS.md`](https://github.com/bjones1/CodeChat_Editor/blob/main/AGENTS.md).
 
@@ -64,10 +64,12 @@ LLM use
    this specification; write comments to review.md." Complexity belongs in the
    specification, not the prompt. See also
    [Iterative review item 4](#cc-jaEUDjWPbS).
-2. <a id="cc-Eulg3z82r1"></a> Start a new session for each prompt; long
-   conversations reduce reproducibility (see
+2. <a id="cc-Eulg3z82r1"></a> Start a new session for each review or
+   implementation; long conversations reduce reproducibility (see
    [Iterative implementation item 2](#cc-0VeK0e9v8J)) and cause
-   [context rot](https://www.trychroma.com/research/context-rot).
+   [context rot](https://www.trychroma.com/research/context-rot). Short
+   follow-ups to that work, such as questions about the code or a request to
+   commit it, can stay in the same session.
 3. Verify APIs, links, and citations suggested by the LLM to avoid hallucinated
    references.
 
@@ -103,9 +105,9 @@ LLM use
 ### Iterative implementation
 
 1. After an LLM implementation, repeatedly ask the LLM to review its work,
-   starting a new session with each repetition. Study the issues raised to see
-   if the spec needs revision, or if these issues are relevant only to the
-   implementation.
+   starting a new session with each repetition, until reviews produce trivial or
+   contradictory items. Study the issues raised to see if the spec needs
+   revision, or if these issues are relevant only to the implementation.
 
 2. <a id="cc-0VeK0e9v8J"></a>If an implementation is unsatisfactory, or you made
    large changes to the spec that produced a code mess, simply throw away the
@@ -113,6 +115,12 @@ LLM use
 
 3. Ask the LLM about portions of the code that you don't understand. Make sure
    the overall flow of what the LLM implemented makes sense.
+
+4. Update the approach in your spec as you learn what works (and doesn't work)
+   through the implementation process.
+
+5. Explain any code that took significant development or debugging time, or that
+   is difficult to understand.
 
 Security
 --------
@@ -156,8 +164,10 @@ Testing
    output?
 3. Verify that when the LLM implements a specification, it also implements tests
    defined in the spec; verify that it runs existing tests before completing an
-   implementation.
+   implementation (see [Setup item 2](#cc-Rk4wTz8NqB)).
 4. Ensure that the LLM didn't weaken, skip, or rewrite tests to make them pass.
+   Run the tests yourself after the LLM reports success; LLMs sometimes claim
+   tests pass without running them, or after running only some of them.
 
 [CodeChat Editor](https://github.com/bjones1/CodeChat_Editor#welcome-to-the-codechat-editor)
 guidelines
