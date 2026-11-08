@@ -10,10 +10,13 @@ your section** repeatedly with an LLM until it produces a limited number of
 relevant findings. Avoid letting the LLM make significant changes, since these
 are often too wordy. Turn the following in:
 
-1. The LLM output from the following prompt: "Verify that you can compile and
+1. A brief, one sentence summary of each person's contributions to the team's
+   pull request.
+
+2. The LLM output from the following prompt: "Verify that you can compile and
    run the project in the current git repo."
 
-2. Create a [table](https://github.github.com/gfm/#tables-extension-) which
+3. Create a [table](https://github.github.com/gfm/#tables-extension-) which
    provides the review round, number of findings, and a 1-sentence summary of
    major changes in each round of your review. For example:
 
@@ -26,7 +29,7 @@ are often too wordy. Turn the following in:
    | 5     | 7        | Rule 2 prose fixed (it contradicted its own grammar); numeric ideographs are letters; surrogates; `ß`/`ss`; zero-width joiner; return types                                                      |
    | 6     | 5        | Findings below, all applied                                                                                                                                                                      |
 
-3. Attach the last review your LLM performed, the prompt you used, and the
+4. Attach the last review your LLM performed, the prompt you used, and the
    specific LLM you used. For example: "Prompting Claude 5.5 Opus, extra high
    effort, with \`Review the section named "Task lists" in spec.md\` produced
    the following output; strikethrough indicates LLM output that I deemed
