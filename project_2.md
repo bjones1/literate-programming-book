@@ -10,7 +10,8 @@ projects have two different teams: "pulldown-cmark / htmd demo" and
 "pulldown-cmark / htmd demo 2" are different teams.
 
 Submit the following in a pull request to the instructor's fork of the assigned
-repo:
+repo. Each team member must author at least one commit from their own GitHub
+account.
 
 1. An additional section added to the existing specification, or a newly-created
    specification, detailing the strategy for your assigned project. Review
@@ -24,8 +25,9 @@ repo:
    1. A brief, one sentence summary of each person's contributions to the team's
       pull request.
 
-   2. The LLM output from the following prompt for each team member: "Verify
-      that you can compile and run the project in the current git repo."
+   2. The LLM output from the following prompt, which each team member runs in
+      their own clone of the repo on their own computer: "Verify that you can
+      compile and run the project in the current git repo."
 
    3. Create a [table](https://github.github.com/gfm/#tables-extension-) which
       provides the review round, number of findings, and a 1-sentence summary of
@@ -41,7 +43,7 @@ repo:
       | 6     | 5        | Findings below, all applied                                                                                                                                                                      |
 
    4. The last review your LLM performed, the prompt you used, and the specific
-      LLM you used. For example: "Prompting Claude 5.5 Opus, extra high effort,
+      LLM you used. For example: "Prompting Claude Opus 5.5, extra high effort,
       with \`Review the section named "Task lists" in spec.md, writing findings
       to review.md\` produced the following output; strikethrough indicates LLM
       output that I deemed incorrect or irrelevant."
@@ -50,7 +52,8 @@ Final submission
 ----------------
 
 Submit the following via additional commits to the pull request you created for
-the draft submission:
+the draft submission. Each team member must author at least one of these
+additional commits from their own GitHub account.
 
 1. Changes to the additional section added to the existing specification, or to
    your newly-created specification, detailing the finalized strategy for your
