@@ -1,6 +1,8 @@
 Project 2 assignments
 =====================
 
+This project is divided into two submissions: draft and final.
+
 Draft submission
 ----------------
 
@@ -13,25 +15,26 @@ Submit the following in a pull request to the instructor's fork of the assigned
 repo. Each team member must author at least one commit from their own GitHub
 account.
 
-1. An additional section added to the existing specification, or a newly-created
-   specification, detailing the strategy for your assigned project. Review
-   **only your section** repeatedly with an LLM until it produces a limited
-   number of relevant findings. Avoid letting the LLM make significant changes,
-   since these produce an overspecified result and limit your understanding of
-   the problem.
+1. (70 points) An additional section added to the existing specification, or a
+   newly-created specification, detailing the strategy for your assigned
+   project. Review **only your section** repeatedly with an LLM until it
+   produces a limited number of relevant findings. Avoid letting the LLM make
+   significant changes, since these produce an overspecified result and limit
+   your understanding of the problem.
 
 2. A separate document named `submission.md` with the following contents:
 
-   1. A brief, one sentence summary of each person's contributions to the team's
-      pull request.
+   1. (5 points) A brief, one sentence summary of each person's contributions to
+      the team's pull request.
 
-   2. The LLM output from the following prompt, which each team member runs in
-      their own clone of the repo on their own computer: "Verify that you can
-      compile and run the project in the current git repo."
+   2. (5 points) The LLM output from the following prompt, which each team
+      member runs in their own clone of the repo on their own computer: "Verify
+      that you can compile and run the project in the current git repo."
 
-   3. Create a [table](https://github.github.com/gfm/#tables-extension-) which
-      provides the review round, number of findings, and a 1-sentence summary of
-      major changes in each round of your review. For example:
+   3. (10 points) Create a
+      [table](https://github.github.com/gfm/#tables-extension-) which provides
+      the review round, number of findings, and a 1-sentence summary of major
+      changes in each round of your review. For example:
 
       | Round | Findings | Main changes made                                                                                                                                                                                |
       | ----- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -42,11 +45,11 @@ account.
       | 5     | 7        | Rule 2 prose fixed (it contradicted its own grammar); numeric ideographs are letters; surrogates; `ß`/`ss`; zero-width joiner; return types                                                      |
       | 6     | 5        | Findings below, all applied                                                                                                                                                                      |
 
-   4. The last review your LLM performed, the prompt you used, and the specific
-      LLM you used. For example: "Prompting Claude Opus 5.5, extra high effort,
-      with \`Review the section named "Task lists" in spec.md, writing findings
-      to review.md\` produced the following output; strikethrough indicates LLM
-      output that I deemed incorrect or irrelevant."
+   4. (10 points) The last review your LLM performed, the prompt you used, and
+      the specific LLM you used. For example: "Prompting Claude Opus 5.5, extra
+      high effort, with `Review the section named "Task lists" in spec.md,
+      writing findings to review.md` produced the following output;
+      strikethrough indicates LLM output that I deemed incorrect or irrelevant."
 
 Final submission
 ----------------
