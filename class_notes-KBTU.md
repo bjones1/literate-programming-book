@@ -1,10 +1,55 @@
 KBTU class notes
 ================
 
+Week 9 - Saturday, 2026-Nov-14
+------------------------------
+
+1. Attendance is taken online during the first 10 minutes of each class session.
+   Mark yourself as present! <strong>Attendance requires participation.</strong>
+2. Project 2 begins after project 1 is submitted. Projects will be assigned
+   early next week. Teams remain the same, except that US grad students work on
+   their own project.
+3. Use the latest project [assignment](project_2.md) and
+   [template](project_2_submission_template.md).
+4. Questions? Message me on Teams / meet on Teams.
+5. Enable Capture when using the CodeChat Editor.
+6. Articles
+   1. [How the Claude Code team does code review](https://claude.dev/blog/solving-code-review-at-anthropic)
+   2. [Best practices for Claude Code](https://code.claude.com/docs/en/best-practices),
+      [Codex](https://learn.chatgpt.com/guides/best-practices)
+   3. [LLMs are making formal software verification feasible at a much larger scale](https://www.anthropic.com/research/formal-verification)
+7. Examples of specs: htmd
+   [headings](https://github.com/letmutex/htmd/blob/main/translation_approach.md#headings),
+   [links](https://github.com/letmutex/htmd/blob/main/translation_approach.md#links),
+   [images](https://github.com/letmutex/htmd/blob/main/translation_approach.md#images),
+   [math](https://github.com/letmutex/htmd/blob/main/translation_approach.md#math);
+   CodeChat Editor
+   [cache spec](https://github.com/bjones1/CodeChat_Editor/blob/main/server/src/processing/cache-spec.md).
+8. Discussion: lessons learned from spec development.
+9. Team meetings:
+   1. dprint tabs
+   2. pulldown-cmark / htmd demo
+   3. htmd fuzzer 3
+   4. git-hints
+   5. htmd subscript
+   6. dprint subscript
+   7. pulldown-cmark / htmd demo 2
+   8. htmd fuzzer 2
+   9. dprint superscript
+   10. dprint heading attributes
+   11. dprint <br>
+   12. git-hints 2
+   13. Standardize htmd testing
+   14. Standardize htmd testing 2
+   15. htmd subscript 2
+   16. dprint heading attributes 2
+   17. htmd fuzzer
+
 Week 8
 ------
 
-Class was canceled due to conflicts with an exam in another class.
+Class was canceled due to conflicts with an exam in another class; see posted
+video lectures.
 
 1. Work on your assigned [project](project_2_draft.md).
 
