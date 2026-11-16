@@ -1,6 +1,38 @@
 MSU class notes
 ===============
 
+Week 13
+-------
+
+### Monday, 2026-Nov-16
+
+1. [Homework](https://canvas.msstate.edu/courses/186065/assignments) - due
+   today!
+   1. This week: final class projects begin. Undergrads: work with international
+      partners. Grad students: work on your project; submit your spec for review
+      by Thursday.
+   2. Use the latest project [assignment](project_2.md) and
+      [template](project_2_submission_template.md).
+2. Enable Capture when using the CodeChat Editor.
+3. Dev notes: debugging.
+   1. Claude created a patch based on a bug report, then identified major
+      issues.
+   2. Claude worked on fixing intermittent failures, but chose longer delays
+      versus fewer tests in parallel.
+4. Articles
+   1. [How the Claude Code team does code review](https://claude.dev/blog/solving-code-review-at-anthropic)
+   2. [Best practices for Claude Code](https://code.claude.com/docs/en/best-practices),
+      [Codex](https://learn.chatgpt.com/guides/best-practices)
+   3. [LLMs are making formal software verification feasible at a much larger scale](https://www.anthropic.com/research/formal-verification)
+5. Examples of specs: htmd
+   [headings](https://github.com/letmutex/htmd/blob/main/translation_approach.md#headings),
+   [links](https://github.com/letmutex/htmd/blob/main/translation_approach.md#links),
+   [images](https://github.com/letmutex/htmd/blob/main/translation_approach.md#images),
+   [math](https://github.com/letmutex/htmd/blob/main/translation_approach.md#math);
+   CodeChat Editor
+   [cache spec](https://github.com/bjones1/CodeChat_Editor/blob/main/server/src/processing/cache-spec.md).
+6. Discussion: lessons learned from spec development.
+
 Week 11
 -------
 
@@ -29,9 +61,9 @@ Week 11
       2. Add a fuzzer for [htmd](https://github.com/letmutex/htmd) based on
          round-trip stability/idempotency.
       3. Add support for subscript.
-      4. Create a pulldown-cmark / htmd live demo: like the
-         CommonMark [demo](https://markdown.fastlylabs.com/), but allows HTML to
-         Markdown or Markdown to HTML. Use the Rust
+      4. Create a pulldown-cmark / htmd live demo: like the CommonMark
+         [demo](https://markdown.fastlylabs.com/), but allows HTML to Markdown
+         or Markdown to HTML. Use the Rust
          [Leptos framework](https://leptos.dev/),
          [client-side rendering](https://book.leptos.dev/getting_started/index.html).
 
