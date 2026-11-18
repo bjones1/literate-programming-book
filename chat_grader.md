@@ -12,6 +12,34 @@ Python Implementation
 * Use [https://github.com/fastapi/typer](https://github.com/fastapi/typer) for
   the CLI.
 
+Download team info
+------------------
+Some copy and paste, some fill in the blanks.
+
+```PowerShell
+# One-time installs.
+Install-Module MicrosoftTeams -Scope CurrentUser
+Install-Module Microsoft.Graph.Authentication, Microsoft.Graph.Users, Microsoft.Graph.Groups -Scope CurrentUser
+
+# Authenticate.
+Connect-MicrosoftTeams
+Connect-MgGraph -Scopes "User.ReadBasic.All"
+
+# Find the team's GroupId. Use this in the next step.
+Get-Team -DisplayName "<Your team name>"
+
+# Download data.
+$groupId = "<groupId here>"
+Get-TeamUser -GroupId $groupId | ForEach-Object {
+    Get-MgUser -UserId $_.User -Property DisplayName,GivenName,Surname,Mail,UserPrincipalName
+} | Select-Object DisplayName, GivenName, Surname, Mail, UserPrincipalName |
+    Export-Csv team_members_names.csv -Encoding utf8BOM
+```
+
+This still needs some processing, since KBTU has Family Name then Given name in their downloads, and the Russian version includes a patronymic.
+
+I need more permission to be allowed to upload grades. But KBTU might give that to me.
+
 Chat grader
 -----------
 

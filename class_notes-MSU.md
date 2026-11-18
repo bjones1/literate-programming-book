@@ -33,6 +33,79 @@ Week 13
    [cache spec](https://github.com/bjones1/CodeChat_Editor/blob/main/server/src/processing/cache-spec.md).
 6. Discussion: lessons learned from spec development.
 
+Project list:
+
+1. Add CodeChat Editor support for collapsing headings -- each heading should
+   have a collapse icon that appears next to it. Collapsing it should collapse
+   everything under that heading, including subheadings, code blocks under that
+   heading, etc. After collapse, the icon should change to an expand icon, allow
+   users to expand the collapsed heading.
+
+2. Add CodeChat Editor `<filetoc ref="id-of-a-heading"></filetoc>` tag which
+   hydrates into a table of contents for the referenced heading and all its
+   subheadings. See the
+   [cache spec](https://github.com/bjones1/CodeChat_Editor/blob/main/server/src/processing/cache-spec.md)
+   for examples of custom tags defined by the CodeChat Editor.
+
+3. Add YAML support to htmd. Extend pulldown-cmark to render metadata blocks in
+   YAML style as a `<script type="application/yaml">YAML text</script>` tag in
+   HTML; see
+   [`ENABLE_YAML_STYLE_METADATA_BLOCKS`](https://docs.rs/pulldown-cmark/latest/pulldown_cmark/struct.Options.html#associatedconstant.ENABLE_YAML_STYLE_METADATA_BLOCKS).
+   Add htmd support for changing it back to YAML.
+
+4. Add the ability for a CodeChat Editor fragment to refer to a portion of a
+   Markdown file; currently, fragments only work in source files. Define a
+   method to specify what a fragment includes: everything in the current
+   heading? Only text inside the fragment tag? Everything until a (new) end
+   fragment tag? See
+   [fragments](https://github.com/bjones1/CodeChat_Editor/blob/main/server/src/processing/cache-spec.md#fragments-and-gather-elements).
+
+5. Enhance the CodeChat Editor cross-reference system, so that the target of
+   [cross-references](https://github.com/bjones1/CodeChat_Editor/blob/main/server/src/processing/cache-spec.md#cross-references)
+   includes links back to each referring cross-reference.
+
+6. Enhance the CodeChat Editor by writing a new spec that causes the Editor to
+   embed line number information in the HTML it sends to the Client: each line
+   of Markdown in a source file or Markdown document should emit a
+   `<l-n>24</l-n>` tag (with exceptions where this isn't possible -- inside code
+   blocks, etc.) See <xref ref="cc-TB0Jxbo_gu"></xref> for an early prototype.
+
+7. Develop a project group creation tool. This is a web app:
+
+   1. The organizer <xref ref="cc-t95-jpUTgJ">authenticates with Teams</xref>
+      then provides a list of all student userids to be placed in a project
+      group and a second list of project names. The app produces a link the
+      organizer posts, asking for students to specify preferences.
+   2. Students click on the link, which takes them to the web app. They
+      authenticate with Teams, then are given the ability to place projects into
+      three categories: unspecified, preferred and not preferred; within the
+      preferred/not preferred category, the projects can be ranked highest to
+      lowest.
+   3. Likewise, students can also rank potential teammates, using the same
+      system.
+   4. After students provide their preferences, the organizer can then ask the
+      tool to form groups which best satisfy the criteria; the resulting group
+      assignments, listing each student and their assigned group, can be
+      downloaded as a `.csv` file (the input to the next project). Given $n$
+      students, each group should have $\approx 1/n$ students.
+8. Develop an app which enables team members to rate the performance of their
+   teammates. This is a web app. See <xref ref="cc-NgJX8yVtOQ"></xref>.
+
+   1. The organizer <xref ref="cc-t95-jpUTgJ">authenticates with Teams</xref>,
+      then can:
+      1. Create an evaluation: a series of questions, in which each question
+         consists of Markdown text and a question type: text response or rating
+         response. Questions can be added, deleted, edited, and reordered.
+      2. Start an evaluation: select an evaluation, upload a `.csv` file (such
+         as one produced by the previous project) which lists each student's
+         userid and their assigned team, then produce a URL to post for students
+         to access the evaluation.
+      3. View evaluation results: select an evaluation, then see the results as
+         described in <xref ref="cc-NgJX8yVtOQ"></xref>.
+   2. Students click on an evaluation link, which asks them to authenticate with
+      Teams then allows them to enter or modify (if they've submitted data
+      earlier) the evaluation data, clicking "Submit" when done.
+
 Week 11
 -------
 
