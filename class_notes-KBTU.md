@@ -1,6 +1,39 @@
 KBTU class notes
 ================
 
+Week 10 - Saturday, 2026-Nov-11
+-------------------------------
+
+1. Attendance is taken online during the first 10 minutes of each class session.
+   Mark yourself as present! <strong>Attendance requires participation.</strong>
+
+2. Project 2 is underway. Most projects will require only a draft submission on
+   **28-Nov**; the line number support and YAML support projects require a final
+   submission, due to their lower complexity.
+
+3. Use the latest project [assignment](project_2.md) and
+   [template](project_2_submission_template.md).
+
+4. Questions? Message me on Teams / meet on Teams.
+
+5. Schedule for the remainder of the semester:
+
+   | Week | Date   | Topic         |
+   | ---- | ------ | ------------- |
+   | 10   | 14-Nov | Project 2     |
+   | 11   | 21-Nov | Project 2     |
+   | 12   | 28-Nov | Project 2     |
+   | 13   | 5-Dec  | Final project |
+   | 14   | 12-Dec | Final project |
+   | 15   | 19-Dec | Final project |
+
+6. Dev notes: debugging.
+
+   1. Claude created a patch based on a bug report, then identified major
+      issues.
+   2. Claude worked on fixing intermittent failures, but chose longer delays
+      versus fewer tests in parallel.
+
 Week 9 - Saturday, 2026-Nov-14
 ------------------------------
 
